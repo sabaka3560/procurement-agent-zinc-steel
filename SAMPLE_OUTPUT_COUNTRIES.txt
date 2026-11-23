@@ -1,0 +1,110 @@
+
+CHEAPEST SOURCE COUNTRIES  —  destination India (IND), HS 720810, trade year 2024
+============================================================================================================
+  origin             proven t   FOB $/t   duty%  frt $/t  LANDED $/t   LPI  basis
+  --------------------------------------------------------------------------------------------------------
+  Japan             1,342,877       591    11.5       42         707   3.9  WITS/TRAINS preferential  [indicative]
+       + safeguard 11.5% in force to 2027-04-20
+  Viet Nam            472,106       571    19.0       34         721   3.3  WITS/TRAINS MFN
+       + safeguard 11.5% in force to 2027-04-20
+  Korea, Rep.       1,502,168       677    11.5       42         803   3.8  WITS/TRAINS preferential  [indicative]
+       + safeguard 11.5% in force to 2027-04-20
+  China               937,833       645    19.0       42         818   3.7  WITS/TRAINS MFN
+       + safeguard 11.5% in force to 2027-04-20
+  Indonesia             4,275       691    19.0       34         864   3.0  WITS/TRAINS MFN
+       + safeguard 11.5% in force to 2027-04-20
+
+  Spread across ranked origins: $157/t (22.2% of the cheapest)
+
+  CAVEATS — read before acting:
+   - FOB is a Comtrade unit-value average across all grades in the HS line.
+     It is a screening signal. A real price comes from an RFQ.
+   - Freight is a region-pair ESTIMATE. No free API prices arbitrary
+     country pairs. Replace with forwarder quotes.
+   - Preferential duty requires a valid certificate of origin.
+   - This ranks COUNTRIES. No public dataset names an exporter.
+
+
+CHEAPEST SOURCE COUNTRIES  —  destination Viet Nam (VNM), HS 720810, trade year 2024
+============================================================================================================
+  origin             proven t   FOB $/t   duty%  frt $/t  LANDED $/t   LPI  basis
+  --------------------------------------------------------------------------------------------------------
+  India               306,589       748     0.0       34         783   3.4  WITS/TRAINS MFN
+  Taiwan              402,959       766     0.0       30         797     -  WITS/TRAINS MFN
+  China             4,748,957       784     0.0       30         815   3.7  WITS/TRAINS MFN
+  Japan             1,016,237       796     0.0       30         827   3.9  WITS/TRAINS MFN
+  United Kingdom        1,429       768     0.0       70         839   3.7  WITS/TRAINS MFN
+
+  Spread across ranked origins: $57/t (7.2% of the cheapest)
+
+  CAVEATS — read before acting:
+   - FOB is a Comtrade unit-value average across all grades in the HS line.
+     It is a screening signal. A real price comes from an RFQ.
+   - Freight is a region-pair ESTIMATE. No free API prices arbitrary
+     country pairs. Replace with forwarder quotes.
+   - Preferential duty requires a valid certificate of origin.
+   - This ranks COUNTRIES. No public dataset names an exporter.
+
+
+CHEAPEST SOURCE COUNTRIES  —  destination Indonesia (IDN), HS 720810, trade year 2024
+============================================================================================================
+  origin             proven t   FOB $/t   duty%  frt $/t  LANDED $/t   LPI  basis
+  --------------------------------------------------------------------------------------------------------
+  China               859,059       633     0.0       30         663   3.7  WITS/TRAINS preferential  [indicative]
+  Viet Nam            321,511       607    15.0       20         721   3.3  WITS/TRAINS MFN
+  Taiwan               35,964       646    15.0       30         778     -  WITS/TRAINS MFN
+  Korea, Rep.         257,499       800     3.2       30         858   3.8  WITS/TRAINS preferential  [indicative]
+  Singapore            36,801       792    15.0       20         935   4.3  WITS/TRAINS MFN
+
+  Spread across ranked origins: $271/t (40.9% of the cheapest)
+
+  CAVEATS — read before acting:
+   - FOB is a Comtrade unit-value average across all grades in the HS line.
+     It is a screening signal. A real price comes from an RFQ.
+   - Freight is a region-pair ESTIMATE. No free API prices arbitrary
+     country pairs. Replace with forwarder quotes.
+   - Preferential duty requires a valid certificate of origin.
+   - This ranks COUNTRIES. No public dataset names an exporter.
+
+
+CHEAPEST SOURCE COUNTRIES  —  destination Thailand (THA), HS 720810, trade year 2024
+============================================================================================================
+  origin             proven t   FOB $/t   duty%  frt $/t  LANDED $/t   LPI  basis
+  --------------------------------------------------------------------------------------------------------
+  China               371,289       581     5.0       30         642   3.7  WITS/TRAINS MFN
+  Viet Nam             14,955       598     5.0       20         649   3.3  WITS/TRAINS MFN
+  Indonesia            24,286       666     5.0       20         721   3.0  WITS/TRAINS MFN
+  Japan             1,698,988       767     0.0       30         798   3.9  WITS/TRAINS preferential  [indicative]
+  Korea, Rep.         172,154       780     5.0       30         851   3.8  WITS/TRAINS MFN
+
+  Spread across ranked origins: $209/t (32.6% of the cheapest)
+
+  CAVEATS — read before acting:
+   - FOB is a Comtrade unit-value average across all grades in the HS line.
+     It is a screening signal. A real price comes from an RFQ.
+   - Freight is a region-pair ESTIMATE. No free API prices arbitrary
+     country pairs. Replace with forwarder quotes.
+   - Preferential duty requires a valid certificate of origin.
+   - This ranks COUNTRIES. No public dataset names an exporter.
+
+
+CHEAPEST SOURCE COUNTRIES  —  destination Turkiye (TUR), HS 720810, trade year 2024
+============================================================================================================
+  origin             proven t   FOB $/t   duty%  frt $/t  LANDED $/t   LPI  basis
+  --------------------------------------------------------------------------------------------------------
+  Netherlands           5,181       528    13.0       45         648   4.1  WITS/TRAINS MFN
+  United Kingdom        9,621       581    13.0       45         708   3.7  WITS/TRAINS MFN
+  Egypt               614,285       645     0.0       70         716   3.1  WITS/TRAINS preferential  [indicative]
+  Russia               51,302       603    13.0       70         761   2.6  WITS/TRAINS MFN
+  Korea, Rep.         421,803       721     0.0       48         770   3.8  WITS/TRAINS preferential  [indicative]
+
+  Spread across ranked origins: $122/t (18.9% of the cheapest)
+
+  CAVEATS — read before acting:
+   - FOB is a Comtrade unit-value average across all grades in the HS line.
+     It is a screening signal. A real price comes from an RFQ.
+   - Freight is a region-pair ESTIMATE. No free API prices arbitrary
+     country pairs. Replace with forwarder quotes.
+   - Preferential duty requires a valid certificate of origin.
+   - This ranks COUNTRIES. No public dataset names an exporter.
+

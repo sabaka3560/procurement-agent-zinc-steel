@@ -1,0 +1,65 @@
+{
+  "reviewed_at": "2026-09-08",
+  "suppliers": {
+    "AZSA-ESP": {
+      "price": {
+        "status": "quote_required",
+        "note": "Z1/SHG product page directs buyers to the commercial department; no dated, executable price per tonne was found on the reviewed pages.",
+        "url": "https://www.azsa.es/que-hacemos/zinc-z1",
+        "observed_at": null
+      },
+      "delivery": {
+        "status": "published_terms_not_quote",
+        "note": "Undated general conditions cite Incoterms 2010: destination duties/taxes are the buyer's responsibility; origin export taxes are the seller's. Actual Incoterm, freight amount and delivery date need a quotation.",
+        "url": "https://www.azsa.es/dam/jcr:e14d1ed6-d9c3-4ae2-bbd0-3a502471c745/General-Conditions-EN.pdf",
+        "observed_at": null
+      },
+      "change": {
+        "status": "quote_history_unavailable",
+        "note": "No comparable dated supplier quotations were found in the reviewed public material. An LME benchmark movement is not an AZSA offer-price change.",
+        "url": "https://www.azsa.es/que-hacemos/zinc-z1",
+        "observed_at": null
+      }
+    },
+    "ACOMET-ESP": {
+      "price": {
+        "status": "quote_required",
+        "note": "Published terms dated 21 February 2018 place prices in the order confirmation, normally EUR excluding VAT and other government charges. No current per-tonne offer was found; confirm today's terms.",
+        "url": "https://www.acomet.es/Downloads/ACOMETCondicionesGeneralesVentaR2.pdf",
+        "observed_at": null
+      },
+      "delivery": {
+        "status": "historical_published_terms_not_quote",
+        "note": "2018 terms default to EXW unless agreed otherwise; transport risk and insurance fall to the buyer. Delivery dates are not strict deadlines and partial deliveries are permitted. Freight amount and committed ETA require a current quote.",
+        "url": "https://www.acomet.es/Downloads/ACOMETCondicionesGeneralesVentaR2.pdf",
+        "observed_at": null
+      },
+      "change": {
+        "status": "quote_history_unavailable",
+        "note": "2018 terms permit notified cost-related price increases; this is not evidence of an actual increase. No comparable dated quote pair was found, so supplier price change is unavailable.",
+        "url": "https://www.acomet.es/Downloads/ACOMETCondicionesGeneralesVentaR2.pdf",
+        "observed_at": null
+      }
+    },
+    "AMPERE-ESP": {
+      "price": {
+        "status": "quote_required",
+        "note": "The public SHG zinc-ingot page lists product specifications but no dated per-tonne price. Obtain a quotation for the required grade, quantity, destination and Incoterm.",
+        "url": "https://www.ampere.com/es/cproduct/lingotes-de-zinc/",
+        "observed_at": null
+      },
+      "delivery": {
+        "status": "undated_catalog_claim_not_commitment",
+        "note": "Catalog lists approximately 1-tonne bundles and an undated in-stock claim. This is not a current allocation or delivery commitment; freight charges, shipment origin and ETA require confirmation.",
+        "url": "https://www.ampere.com/es/cproduct/lingotes-de-zinc/",
+        "observed_at": null
+      },
+      "change": {
+        "status": "quote_history_unavailable",
+        "note": "No comparable dated supplier quotes were found on the reviewed pages. Benchmark percentage movements must not be presented as AMPERE price changes.",
+        "url": "https://www.ampere.com/es/cproduct/lingotes-de-zinc/",
+        "observed_at": null
+      }
+    }
+  }
+}

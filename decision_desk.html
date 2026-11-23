@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Procurement desk · Decision workspace</title>
+  <link rel="stylesheet" href="/decision-desk.css">
+  <script src="/decision-desk.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="Procurement desk home"><span class="brand-icon">p.</span>procurement<span class="brand-light"> / decision desk</span></a><span class="badge">ADVISORY WORKSPACE</span></header>
+<main>
+  <div class="intro"><div><p class="eyebrow">FROM INVENTORY TO A SOURCING DECISION</p><h1>What to buy. When. And from whom.</h1><p>One recommendation, with the stock, price outlook and supplier evidence behind it.</p></div><span class="sample-note"><i></i> Sample company inputs · real public market sources</span></div>
+  <section aria-label="Latest available market prices" class="market-strip"><div class="market-label"><span class="eyebrow">MARKET REFERENCE</span><button type="button" id="refresh-feed" class="text-button">Refresh snapshot ↻</button></div><div id="feed" class="feed"><p class="muted">Loading source observations…</p></div></section>
+  <details class="panel inputs-panel" id="input-panel" open>
+    <summary><span class="step">01</span><span><strong>Procurement details</strong><small id="input-summary">Set your material, stock position and sourcing preference.</small></span><span class="edit-label">Edit inputs</span></summary>
+    <form id="procurement-form">
+      <fieldset id="input-fields"><legend class="sr-only">Company and procurement inputs</legend>
+        <div class="input-grid">
+          <div class="input-group"><h3>Material & destination</h3>
+            <label>Plant / company<input name="plant" value="Pune manufacturing plant" maxlength="120" required></label>
+            <label>Commodity<select name="material" id="material"><option value="ZINC_SHG">Zinc · Special High Grade</option><option value="STEEL_HRC">Steel · Hot-rolled coil</option></select></label>
+            <label>Quality / specification<input name="specification" id="specification" value="SHG zinc · minimum 99.995% purity" maxlength="240" required></label>
+            <div class="two-fields"><label>Buying country<select name="destination" id="destination"><option value="IND">India</option></select></label><label>Preferred source<select name="preferred_source_country" id="preferred"><option value="IND">India</option><option value="ANY">No preference</option></select></label></div>
+          </div>
+          <div class="input-group"><h3>Stock & purchase requirement</h3>
+            <label>Usable stock now <span>tonnes</span><input type="number" name="on_hand_t" id="stock" value="450" min="0" max="10000000" step="0.01" required></label>
+            <label>Monthly consumption <span>tonnes / 30 days</span><input type="number" name="monthly_demand_t" value="300" min="0" max="10000000" step="0.01" required></label>
+            <label>Safety stock <span>tonnes</span><input type="number" name="safety_stock_t" id="safety" value="100" min="0.01" max="10000000" step="0.01" required></label>
+            <label>Replenishment cycle<select name="planning_months"><option value="1">1 month of consumption</option><option value="2">2 months of consumption</option><option value="3">3 months of consumption</option></select></label>
+          </div>
+          <div class="input-group"><h3>Review trigger & delivery</h3>
+            <label>Trigger below safety stock <span>% below</span><input type="number" name="safe_value_pct" id="safe-percent" value="10" min="0" max="99" step="0.1" required></label>
+            <p class="threshold" id="threshold-copy">Review when usable stock is 90 t or less.</p>
+            <div class="two-fields"><label>Domestic lead time<input type="number" name="domestic_lead_days" value="7" min="1" max="365" step="1" required><small>Planning days</small></label><label>Import lead time<input type="number" name="import_lead_days" value="35" min="1" max="365" step="1" required><small>Planning days</small></label></div>
+            <label class="switch-label"><input type="checkbox" id="auto-review">Auto-review when entered stock crosses the trigger</label>
+            <p class="help">Demo inputs only. No live ERP polling. Delivery times must be confirmed with suppliers.</p>
+          </div>
+        </div>
+      </fieldset>
+      <div class="form-actions"><span id="trigger-status" class="muted">Manual review ready</span><div class="button-group"><button type="button" id="demo-button" class="button secondary">Demo: stock below safety ↘</button><button type="submit" id="analyze-button" class="button primary">Get recommendation <span aria-hidden="true">→</span></button></div></div>
+    </form>
+  </details>
+  <div id="request-status" class="request-status" hidden>
+    <div class="progress-heading"><strong>Building your sourcing recommendation</strong><span id="request-elapsed">0s elapsed</span></div>
+    <p id="request-summary" role="status" aria-live="polite">Connecting to the analysis service…</p>
+    <ol id="request-steps" class="request-steps"></ol>
+    <p class="help">Actual backend stages—not simulated AI thinking. Public sources can take a few minutes. No supplier contacted; no order created.</p>
+  </div>
+  <div id="error" class="error" role="alert" hidden></div>
+  <p class="footnote">Data coverage: latest available public benchmarks (may be delayed or cached), historical country costs, and a stored supplier research catalogue. Country selection does not fetch live vendor quotes. Some countries have no researched suppliers. A 2024 observation remains 2024 data even if retrieved in 2026.</p>
+  <div id="empty-state" class="empty-state"><div class="empty-icon">↗</div><h2>Your next purchase, in one view.</h2><p>Enter your stock position or simulate a safety-stock breach.<br>We’ll work through timing, countries and supplier options.</p><div class="flow-hint">When & how much <span>→</span> Top 3 countries + preference <span>→</span> Up to 3 suppliers per country</div></div>
+  <div id="results" hidden>
+    <section id="decision" class="decision" aria-labelledby="decision-title"></section>
+    <details class="panel evidence" id="prediction-sources"><summary>Prediction sources & calculation trail <span>+</span></summary><p class="footnote">These publications supply input data. Forecasts are calculated by this application, not published or endorsed by those sources. Missing dates and assumptions are disclosed below.</p><div id="prediction-source-list"></div></details>
+    <section class="panel result-panel" aria-labelledby="timing-title"><div class="section-heading"><span class="step">02</span><div><h2 id="timing-title">When should we buy?</h2><p>Today's reference against the next 1, 2 and 3 months. Stock feasibility comes first.</p></div></div><div id="inventory-summary" class="inventory-summary"></div><div id="timing-table" class="table-wrap" tabindex="0" role="region" aria-label="Purchase timing comparison"></div><p id="forecast-basis" class="footnote"></p></section>
+    <section class="panel result-panel" aria-labelledby="countries-title"><div class="section-heading"><span class="step">03</span><div><h2 id="countries-title">Where should we source it?</h2><p>Top three screening candidates, with your preferred country kept in the comparison.</p></div></div><div id="country-table" class="table-wrap" tabindex="0" role="region" aria-label="Source country comparison"></div><p class="footnote">Country costs are historical import screens, not current offers. Current delivered prices, local taxes, exact shipment origin and delivery dates require an RFQ. Unverified duties are not purchasing clearance.</p></section>
+    <details class="panel evidence"><summary>Worldwide reported country / area rates <span>+</span></summary><p class="footnote">All partner rows returned by the trade source, including small flows and areas outside the tariff registry. Annual import unit values in USD/t—not current offers or a complete worldwide price feed. Taxes are not included in this raw comparison. Missing records do not establish that a country cannot supply.</p><div id="worldwide-rates" class="table-wrap" tabindex="0" role="region" aria-label="Worldwide reported trade rates"></div></details>
+    <section class="panel result-panel" aria-labelledby="suppliers-title"><div class="section-heading"><span class="step">04</span><div><h2 id="suppliers-title">Which suppliers should we approach?</h2><p>Top three RFQ candidates per shortlisted country, plus the complete researched catalogue below. No order acceptance confirmed.</p></div></div><p id="supplier-coverage" class="footnote"></p><div id="supplier-tabs" class="country-tabs" role="group" aria-label="Choose shortlisted supplier country"></div><label class="supplier-browse">Browse all selectable countries and all their researched suppliers<select id="supplier-country"></select></label><div id="supplier-content"></div></section>
+    <section class="panel result-panel" aria-labelledby="negotiation-title"><div class="section-heading"><span class="step">05</span><div><h2 id="negotiation-title">What should we negotiate?</h2><p>A comparable quotation first. A volume commitment only when it improves total cost.</p></div></div><div id="negotiation" class="negotiation-grid"></div></section>
+    <details class="panel evidence"><summary>Data limitations & calculation assumptions <span>+</span></summary><div id="evidence-content"></div></details>
+  </div>
+  <footer>Procurement decision workspace <span>Scenario advice · buyer approval required · no orders sent</span></footer>
+</main>
+</body></html>

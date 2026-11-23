@@ -1,0 +1,500 @@
+{
+  "reviewed_at": "2026-09-09",
+  "method": "Primary supplier product and public contact evidence inspected. Website accessibility and public enquiry channels do not confirm stock, order acceptance, export eligibility, lot origin or an executable quote. Exact means product-family/spec match only, not plant qualification. Undated publications retain null publication dates.",
+  "suppliers": [
+    {
+      "id": "SHANDONGSTEEL-CHN",
+      "name": "Shandong Iron and Steel / Marketing General Company",
+      "country": "CHN",
+      "material": "STEEL_HRC",
+      "evidence": "Official group product page explicitly identifies hot-rolled coils including carbon structural steel, with 2.0-25.4 mm thickness and 900-1900 mm width range. Grade, prime quality, export eligibility, current allocation and original production lot require confirmation.",
+      "url": "https://shansteelgroup.com/home/cpyfw/cpyfw/pid/2.html",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "producer",
+      "contact_url": "https://shansteelgroup.com/home/cpyfw/cpyfw/pid/2.html",
+      "contact_evidence": "HRC section publishes dedicated hot-rolled sales department +86 633 7920826 and Marketing General Company address in Gangcheng, Jinan, Shandong, China. This is a sales contact, not a quoted export offer.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "YUNNANTIN-ZN-CHN",
+      "name": "Yunnan Tin Group",
+      "country": "CHN",
+      "material": "ZINC_SHG",
+      "evidence": "Official zinc product page lists zinc ingot grade Zn99.995 alongside lower grades under GB/T 470-2008; about 28 kg per ingot and 46 ingots per bundle. Specify 99.995 explicitly; do not substitute listed zinc alloys or lower-purity ingots. Current CoA, smelter and lot allocation remain unconfirmed.",
+      "url": "https://en.ytc.cn/Products_and_Services/Nonferrous_metal_raw_material/Zinc.htm",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "producer",
+      "contact_url": "https://en.ytc.cn/Contact_Us.htm",
+      "contact_evidence": "Official contact page publishes Kunming, Yunnan, China address, Sales Tel +86 871 66287196, foreign trade +86 871 66287202 and internal trade +86 871 66287201. Zinc-specific routing and legal contracting entity require confirmation; no contact made.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "EASTERNSTEEL-MYS",
+      "name": "Eastern Steel Sdn Bhd",
+      "country": "MYS",
+      "material": "STEEL_HRC",
+      "evidence": "Official product outline lists coils including ordinary and high-quality carbon structural steel, 1.2-25.4 mm thick and 800-1300 mm wide. Official 7 May 2025 publication separately identifies hot-rolled coil SIRIM certification. Confirm grade, mill test certificate, current certification, allocation and lot origin.",
+      "url": "https://www.easternsteel.com.my/about3.html",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "producer",
+      "contact_url": "https://www.easternsteel.com.my/contact.html",
+      "contact_evidence": "Kemaman, Terengganu, Malaysia address and explicit product-enquiry email essb_sales@ejianlong.com published; no enquiry submitted or reply verified.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "ASTINO-MYS",
+      "name": "Astino Berhad / Astino Metal Industries",
+      "country": "MYS",
+      "material": "STEEL_HRC",
+      "evidence": "Coils and sheets publication offers slitting/shearing and explicitly lists hot-rolled coils and pickled/oiled HRC. Confirm full-coil availability versus processed sheets, exact carbon grade, legal contracting entity and original mill.",
+      "url": "https://www.astino.com.my/products/coils-sheets/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "distributor",
+      "contact_url": "https://www.astino.com.my/contact/",
+      "contact_evidence": "Malaysia group offices including Astino Metal Industries in Nibong Tebal, Penang, enquiry form and Sales WhatsApp +6012-4727088 published. Inbox operation and order acceptance untested.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "family_only"
+    },
+    {
+      "id": "THESTEEL-THA",
+      "name": "The Steel Public Company Limited",
+      "country": "THA",
+      "material": "STEEL_HRC",
+      "evidence": "Explicit hot-rolled coil publication lists carbon/structural grades including SPHC, SS400, ASTM A36 and S235/S275/S355. Required dimensions, grade, prime quality, mill origin and current availability remain to be quoted.",
+      "url": "https://www.thesteel.co.th/en/hot-rolled-steel-coils/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "distributor",
+      "contact_url": "https://www.thesteel.co.th/en/hot-rolled-steel-coils/",
+      "contact_evidence": "Product page publishes Samutsakorn, Thailand address, +66 (0) 2894 8889 and saleonline@thesteel.co.th; export fulfilment and response not confirmed.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "QUEENS-LKA",
+      "name": "Queens Group",
+      "country": "LKA",
+      "material": "STEEL_HRC",
+      "evidence": "Steel division explicitly describes importing and supplying hot-rolled coils and plates from international sources. Confirm carbon grade, coil dimensions, contracting entity, original mill and ability to export; Sri Lankan office is not shipment origin.",
+      "url": "https://queensgroup.net/steel/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "trader",
+      "contact_url": "https://queensgroup.net/steel/",
+      "contact_evidence": "Dedicated Steel Inquiry form, Colombo 15, Sri Lanka address and +94 11 2523511 / 12 published. Form was inspected, not submitted.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "GRP-IDN",
+      "name": "PT Gunung Raja Paksi Tbk",
+      "country": "IDN",
+      "material": "STEEL_HRC",
+      "evidence": "Official HRC page lists carbon/structural specifications ASTM A36/A572 and JIS G3101/G3131, thickness 2–25 mm and width 900–1524 mm. Quote, allocation, precise mill origin and export paperwork require confirmation.",
+      "url": "https://www.gunungrajapaksi.com/products/flat-products/hot-roll-coil-hrc",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "producer",
+      "contact_url": "https://gunungrajapaksi.com/contact",
+      "contact_evidence": "Bekasi, Indonesia head office/factory and dedicated export sales, manufacturer sales and distributor sales contacts published.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "STAVIAN-HRC-VNM",
+      "name": "Stavian Industrial Metal",
+      "country": "VNM",
+      "material": "STEEL_HRC",
+      "evidence": "Publishes hot-rolled coils 3–16 mm in grades including SS400, A36 and Q235B, sourced from several global mills. Vietnamese trading location is not origin. Displayed 0 VND is a placeholder, not an offer.",
+      "url": "https://stavianmetal.com/en/product/hot-rolled-steel/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "distributor",
+      "contact_url": "https://stavianmetal.com/en/product/hot-rolled-steel/",
+      "contact_evidence": "Product page specifically directs price enquiries to info@stavianmetal.com and hotline 0975271499, with Vietnam offices and consultation/order form.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "GSTEELMET-SGP",
+      "name": "G-Steelmet Pte Limited",
+      "country": "SGP",
+      "material": "ZINC_SHG",
+      "evidence": "Publishes minimum 99.995% zinc conforming to BS EN 1179:2003, alongside lower grades. Exact ingot/slab form, brand, original smelter and shipment origin must be confirmed; undated product page is not current stock.",
+      "url": "https://g-steelmet.com/metals.html",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "trader",
+      "contact_url": "https://g-steelmet.com/contact.html",
+      "contact_evidence": "Singapore office, contact form, business email information@g-steelmet.com and +65 62243377 published.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "family_only"
+    },
+    {
+      "id": "APOLLO-ZN-SGP",
+      "name": "Apollo Energy Technologies Pte. Ltd.",
+      "country": "SGP",
+      "material": "ZINC_SHG",
+      "evidence": "Singapore trader lists zinc ingots. No SHG purity, manufacturer or origin specification published; qualification lead only. Conflicting Singapore addresses on the same page require confirmation.",
+      "url": "https://www.apolloenergy.asia/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "trader",
+      "contact_url": "https://www.apolloenergy.asia/",
+      "contact_evidence": "Product page publishes trade@apolloenergy.asia and +65 85918467 for trading enquiries.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "unconfirmed_grade"
+    },
+    {
+      "id": "INDOASIA-SGP",
+      "name": "Indo-Asia Steel Trading",
+      "country": "SGP",
+      "material": "STEEL_HRC",
+      "evidence": "Singapore trader explicitly lists hot-rolled sheets and coils sourced from multiple Asian countries. Confirm required grade, dimensions, prime quality, mill and shipment origin.",
+      "url": "https://indoasiasteel.com/about-us/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "trader",
+      "contact_url": "https://indoasiasteel.com/contact-us/",
+      "contact_evidence": "Singapore address, +65 6384 1638 and public company/message enquiry form.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "VISE-SGP",
+      "name": "VISE Pte Ltd",
+      "country": "SGP",
+      "material": "STEEL_HRC",
+      "evidence": "Publishes hot-rolled coils and carbon/structural grades including Q235, A36 and S355JR. Confirm dimensions and original mill; Singapore office is not proof of steel origin.",
+      "url": "https://www.vise.sg/business-division/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "trader",
+      "contact_url": "https://www.vise.sg/contact-us/",
+      "contact_evidence": "Singapore address, enquiry form, +65 6911 1970 and business WhatsApp channel published.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "DGSG-SGP",
+      "name": "DGSG Pte. Ltd.",
+      "country": "SGP",
+      "material": "STEEL_HRC",
+      "evidence": "Publishes hot-rolled coils in prime and non-prime ranges. Secondary/third-choice material is explicitly offered: prime grade, coil defects and mill test certificate must be resolved before qualification.",
+      "url": "https://www.dgsgsteelindustry.com/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "trader",
+      "contact_url": "https://www.dgsgsteelindustry.com/contact",
+      "contact_evidence": "Singapore address and info@dgsgsteelindustry.com published with invitation to send a message.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "RISHEEK-HRC-SGP",
+      "name": "Risheek Global Pte Ltd.",
+      "country": "SGP",
+      "material": "STEEL_HRC",
+      "evidence": "Lists hot-rolled flat products within prime/secondary ferrous products. Full coil format and carbon grade require confirmation. Imported goods must not be treated as Singapore-origin.",
+      "url": "https://www.risheekglobal.com/products.php",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "trader",
+      "contact_url": "https://www.risheekglobal.com/products.php",
+      "contact_evidence": "Product page invites procurement/supply enquiries and publishes Singapore office, info@risheekglobal.com and +65 6534 0395.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "family_only"
+    },
+    {
+      "id": "PARAGON-MYS",
+      "name": "Paragon Intercommodities Sdn. Bhd.",
+      "country": "MYS",
+      "material": "ZINC_SHG",
+      "evidence": "Publishes minimum 99.995% SHG zinc slabs, BS EN 1179 Z1 / ISO 752 ZN-1 / ASTM B6, about 25 kg slabs and one-tonne bundles. Original smelter and origin not established by Malaysian distributor location.",
+      "url": "https://www.paragon.net.my/products/special-high-grade-shg-zinc/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "distributor",
+      "contact_url": "https://www.paragon.net.my/contact-us/",
+      "contact_evidence": "Klang, Malaysia address, product enquiry form, daisy@paragon.net.my and +603 3324 8298 published.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "STAVIAN-ZN-VNM",
+      "name": "Stavian Industrial Metal",
+      "country": "VNM",
+      "material": "ZINC_SHG",
+      "evidence": "Publishes zinc ingots at minimum 99.995% and BS EN 1179 / ISO 752 / ASTM B6 specifications. Its displayed 0 VND is not a commercial quotation and must not be imported as a price.",
+      "url": "https://stavianmetal.com/en/product/zinc-ingots/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "distributor",
+      "contact_url": "https://stavianmetal.com/en/product/zinc-ingots/",
+      "contact_evidence": "Product page has Contact to order, Hanoi/Ho Chi Minh addresses, info@stavianmetal.com and +84 2471001868.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "PAREX-TWN",
+      "name": "Parex International Corp.",
+      "country": "TWN",
+      "material": "ZINC_SHG",
+      "evidence": "Publishes Nyrstar AZ SHG zinc and other LME-registered SHG brands. Taiwan sales location is not smelter origin. Reference LME prices on the site are not supplier premiums or offers.",
+      "url": "https://www.parexmetals.com.tw/products/zinc",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "distributor",
+      "contact_url": "https://www.parexmetals.com.tw/products/zinc",
+      "contact_evidence": "Taichung, Taiwan address, parex@parexmetals.com.tw and +886 4 23598117 published.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "CSC-TWN",
+      "name": "China Steel Corporation (Taiwan)",
+      "country": "TWN",
+      "material": "STEEL_HRC",
+      "evidence": "Official domestic sales directory lists hot-rolled coils, sheets and pickled/oiled coils under Sales Group 4. Required carbon grade, export sales route and order allocation must be confirmed.",
+      "url": "https://www.csc.com.tw/csc/cs/sls/dom.html",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "producer",
+      "contact_url": "https://www.csc.com.tw/csc/cs/sls/dom.html",
+      "contact_evidence": "Official HRC sales group contact +886 7 3371151 and corporate-domain business email. This is domestic sales; export fulfilment unconfirmed.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "TOPMARK-PHL",
+      "name": "Topmark Steel Corporation",
+      "country": "PHL",
+      "material": "STEEL_HRC",
+      "evidence": "Philippine distributor lists hot-rolled coils alongside cold-rolled/coated coils and mild steel plate. Confirm precise carbon grade, dimensions, prime quality and mill origin.",
+      "url": "https://www.topmarksteel.com/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "distributor",
+      "contact_url": "https://www.topmarksteel.com/contact",
+      "contact_evidence": "Explicit Request for a Quotation form, Manila office, Philippine warehouses, topmarksteel@yahoo.com and +63 2 85674300 published.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "HANSU-BGD",
+      "name": "M/S Hansu Steel Co.",
+      "country": "BGD",
+      "material": "STEEL_HRC",
+      "evidence": "Bangladesh supplier explicitly lists hot-rolled coil and sheet. No grade/size/stock promise established. Confirm imported mill origin and ability to export to the buyer destination.",
+      "url": "https://www.hansusteel.com/products/hot-rolled-coil-hr-coil-and-sheet",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "distributor",
+      "contact_url": "https://www.hansusteel.com/products/hot-rolled-coil-hr-coil-and-sheet",
+      "contact_evidence": "Dhaka address, hansusteel@gmail.com and +880 1886088838 published for business enquiries.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "exact"
+    },
+    {
+      "id": "SCG-ZN-THA",
+      "name": "SCG International Corporation",
+      "country": "THA",
+      "material": "ZINC_SHG",
+      "evidence": "Publishes supply/import of zinc ingots for coating applications. Exact SHG purity and smelter not specified; general LME and documentation claims do not replace lot-level CoA.",
+      "url": "https://scginternational.com/products/industrial-supply/non-ferrous-metal/",
+      "reviewed_at": "2026-09-09",
+      "supplier_type": "trader",
+      "contact_url": "https://scginternational.com/products/industrial-supply/non-ferrous-metal/",
+      "contact_evidence": "Bangkok head office and product enquiry form requesting quantity and destination port published.",
+      "order_status": "rfq_channel_published",
+      "publication_date": null,
+      "origin_status": "unconfirmed",
+      "product_match": "unconfirmed_grade"
+    }
+  ],
+  "coverage": [
+    {
+      "country": "SGP",
+      "material": "ZINC_SHG",
+      "status": "partial",
+      "note": "Primary product and public enquiry evidence found; no current stock, quote or order acceptance confirmed."
+    },
+    {
+      "country": "SGP",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "Primary product and public enquiry evidence found; no current stock, quote or order acceptance confirmed."
+    },
+    {
+      "country": "CHN",
+      "material": "ZINC_SHG",
+      "status": "partial",
+      "note": "Yunnan Tin publishes Zn99.995 ingots and explicit foreign-trade contact. Zinc routing, current stock, CoA and export eligibility remain unconfirmed."
+    },
+    {
+      "country": "CHN",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "Shandong Steel official HRC page publishes carbon coil range and dedicated HRC sales contact. Current quotation and export allocation remain unconfirmed."
+    },
+    {
+      "country": "THA",
+      "material": "ZINC_SHG",
+      "status": "partial",
+      "note": "Primary product and public enquiry evidence found; no current stock, quote or order acceptance confirmed."
+    },
+    {
+      "country": "THA",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "The Steel PLC publishes HRC grades and sales contact. No executable export quotation or allocation confirmed."
+    },
+    {
+      "country": "MYS",
+      "material": "ZINC_SHG",
+      "status": "partial",
+      "note": "Primary product and public enquiry evidence found; no current stock, quote or order acceptance confirmed."
+    },
+    {
+      "country": "MYS",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "Eastern Steel has carbon coil product and sales evidence; Astino is a processing/product-family lead. Exact lot, quote and delivery remain unconfirmed."
+    },
+    {
+      "country": "TWN",
+      "material": "ZINC_SHG",
+      "status": "partial",
+      "note": "Primary product and public enquiry evidence found; no current stock, quote or order acceptance confirmed."
+    },
+    {
+      "country": "TWN",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "Primary product and public enquiry evidence found; no current stock, quote or order acceptance confirmed."
+    },
+    {
+      "country": "IDN",
+      "material": "ZINC_SHG",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    },
+    {
+      "country": "IDN",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "Gunung Raja Paksi publishes HRC specifications and dedicated export sales. Allocation and shipment origin require confirmation."
+    },
+    {
+      "country": "VNM",
+      "material": "ZINC_SHG",
+      "status": "partial",
+      "note": "Primary product and public enquiry evidence found; no current stock, quote or order acceptance confirmed."
+    },
+    {
+      "country": "VNM",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "Stavian publishes HRC specifications and commercial contact; imported mill origin and current quotation require confirmation."
+    },
+    {
+      "country": "PHL",
+      "material": "ZINC_SHG",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    },
+    {
+      "country": "PHL",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "Primary product and public enquiry evidence found; no current stock, quote or order acceptance confirmed."
+    },
+    {
+      "country": "BGD",
+      "material": "ZINC_SHG",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    },
+    {
+      "country": "BGD",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "Primary product and public enquiry evidence found; no current stock, quote or order acceptance confirmed."
+    },
+    {
+      "country": "LKA",
+      "material": "ZINC_SHG",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    },
+    {
+      "country": "LKA",
+      "material": "STEEL_HRC",
+      "status": "partial",
+      "note": "Queens Group lists HRC imports/supply and a dedicated steel enquiry form. Export eligibility and shipment origin not established."
+    },
+    {
+      "country": "JPN",
+      "material": "ZINC_SHG",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    },
+    {
+      "country": "JPN",
+      "material": "STEEL_HRC",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    },
+    {
+      "country": "KOR",
+      "material": "ZINC_SHG",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    },
+    {
+      "country": "KOR",
+      "material": "STEEL_HRC",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    },
+    {
+      "country": "IND",
+      "material": "ZINC_SHG",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    },
+    {
+      "country": "IND",
+      "material": "STEEL_HRC",
+      "status": "research_gap",
+      "note": "No additional primary product + contact pair admitted in this regional pass. Existing catalogue may contain earlier leads; absence here does not mean no suppliers exist."
+    }
+  ]
+}

@@ -1,0 +1,1738 @@
+{
+ "captured_at": "2026-09-06T13:24:28+00:00",
+ "destination": {
+  "iso3": "IND",
+  "name": "India",
+  "currency": "INR",
+  "tier": "FULL",
+  "fx_source": "FBIL (India's official reference rate) via frankfurter",
+  "domestic_benchmark": "Tata Nexarc \u2014 HRC by brand/city/grade/thickness, free",
+  "missing": []
+ },
+ "material": "HRC-E250A-2.0",
+ "plant": "PLANT-PUNE-1",
+ "hs6": "720810",
+ "zinc": {
+  "cash": 3995.5,
+  "m3": 3868.0,
+  "stock": 110500.0,
+  "as_of": "2026-09-03",
+  "age_days": 3.6,
+  "source": "LME via westmetall.com (free republication of official settlement)",
+  "history": [
+   {
+    "d": "2026-01-02",
+    "cash": 3106.0,
+    "m3": 3130.5,
+    "stock": 106325.0
+   },
+   {
+    "d": "2026-01-05",
+    "cash": 3128.0,
+    "m3": 3170.5,
+    "stock": 105850.0
+   },
+   {
+    "d": "2026-01-06",
+    "cash": 3206.5,
+    "m3": 3242.0,
+    "stock": 105775.0
+   },
+   {
+    "d": "2026-01-07",
+    "cash": 3165.0,
+    "m3": 3208.0,
+    "stock": 105500.0
+   },
+   {
+    "d": "2026-01-08",
+    "cash": 3107.0,
+    "m3": 3152.0,
+    "stock": 108000.0
+   },
+   {
+    "d": "2026-01-09",
+    "cash": 3101.5,
+    "m3": 3144.0,
+    "stock": 107450.0
+   },
+   {
+    "d": "2026-01-12",
+    "cash": 3150.0,
+    "m3": 3195.0,
+    "stock": 106800.0
+   },
+   {
+    "d": "2026-01-13",
+    "cash": 3259.5,
+    "m3": 3256.0,
+    "stock": 106900.0
+   },
+   {
+    "d": "2026-01-14",
+    "cash": 3237.5,
+    "m3": 3250.0,
+    "stock": 106725.0
+   },
+   {
+    "d": "2026-01-15",
+    "cash": 3288.5,
+    "m3": 3308.0,
+    "stock": 106700.0
+   },
+   {
+    "d": "2026-01-16",
+    "cash": 3201.5,
+    "m3": 3242.0,
+    "stock": 106525.0
+   },
+   {
+    "d": "2026-01-19",
+    "cash": 3184.0,
+    "m3": 3217.0,
+    "stock": 105050.0
+   },
+   {
+    "d": "2026-01-20",
+    "cash": 3153.0,
+    "m3": 3195.5,
+    "stock": 112300.0
+   },
+   {
+    "d": "2026-01-21",
+    "cash": 3152.5,
+    "m3": 3202.0,
+    "stock": 111850.0
+   },
+   {
+    "d": "2026-01-22",
+    "cash": 3150.5,
+    "m3": 3192.0,
+    "stock": 111700.0
+   },
+   {
+    "d": "2026-01-23",
+    "cash": 3221.0,
+    "m3": 3262.0,
+    "stock": 111500.0
+   },
+   {
+    "d": "2026-01-26",
+    "cash": 3329.0,
+    "m3": 3367.0,
+    "stock": 111325.0
+   },
+   {
+    "d": "2026-01-27",
+    "cash": 3293.0,
+    "m3": 3331.0,
+    "stock": 110550.0
+   },
+   {
+    "d": "2026-01-28",
+    "cash": 3359.0,
+    "m3": 3392.5,
+    "stock": 110375.0
+   },
+   {
+    "d": "2026-01-29",
+    "cash": 3487.0,
+    "m3": 3515.0,
+    "stock": 109750.0
+   },
+   {
+    "d": "2026-01-30",
+    "cash": 3343.5,
+    "m3": 3372.0,
+    "stock": 110000.0
+   },
+   {
+    "d": "2026-02-02",
+    "cash": 3372.0,
+    "m3": 3360.0,
+    "stock": 109100.0
+   },
+   {
+    "d": "2026-02-03",
+    "cash": 3290.0,
+    "m3": 3322.0,
+    "stock": 108975.0
+   },
+   {
+    "d": "2026-02-04",
+    "cash": 3333.5,
+    "m3": 3357.0,
+    "stock": 108200.0
+   },
+   {
+    "d": "2026-02-05",
+    "cash": 3255.0,
+    "m3": 3278.0,
+    "stock": 107800.0
+   },
+   {
+    "d": "2026-02-06",
+    "cash": 3290.0,
+    "m3": 3306.5,
+    "stock": 107600.0
+   },
+   {
+    "d": "2026-02-09",
+    "cash": 3325.5,
+    "m3": 3348.0,
+    "stock": 106925.0
+   },
+   {
+    "d": "2026-02-10",
+    "cash": 3342.0,
+    "m3": 3367.0,
+    "stock": 106750.0
+   },
+   {
+    "d": "2026-02-11",
+    "cash": 3437.0,
+    "m3": 3447.0,
+    "stock": 105250.0
+   },
+   {
+    "d": "2026-02-12",
+    "cash": 3396.0,
+    "m3": 3418.0,
+    "stock": 103500.0
+   },
+   {
+    "d": "2026-02-13",
+    "cash": 3295.0,
+    "m3": 3325.0,
+    "stock": 102225.0
+   },
+   {
+    "d": "2026-02-16",
+    "cash": 3256.0,
+    "m3": 3295.0,
+    "stock": 102175.0
+   },
+   {
+    "d": "2026-02-17",
+    "cash": 3250.0,
+    "m3": 3281.5,
+    "stock": 102025.0
+   },
+   {
+    "d": "2026-02-18",
+    "cash": 3277.0,
+    "m3": 3307.0,
+    "stock": 102000.0
+   },
+   {
+    "d": "2026-02-19",
+    "cash": 3292.0,
+    "m3": 3324.0,
+    "stock": 102000.0
+   },
+   {
+    "d": "2026-02-20",
+    "cash": 3309.0,
+    "m3": 3343.5,
+    "stock": 101575.0
+   },
+   {
+    "d": "2026-02-23",
+    "cash": 3324.0,
+    "m3": 3354.0,
+    "stock": 101550.0
+   },
+   {
+    "d": "2026-02-24",
+    "cash": 3351.0,
+    "m3": 3383.5,
+    "stock": 101250.0
+   },
+   {
+    "d": "2026-02-25",
+    "cash": 3352.0,
+    "m3": 3382.0,
+    "stock": 99825.0
+   },
+   {
+    "d": "2026-02-26",
+    "cash": 3342.0,
+    "m3": 3369.0,
+    "stock": 98400.0
+   },
+   {
+    "d": "2026-02-27",
+    "cash": 3327.0,
+    "m3": 3348.5,
+    "stock": 97350.0
+   },
+   {
+    "d": "2026-03-02",
+    "cash": 3354.0,
+    "m3": 3368.0,
+    "stock": 96775.0
+   },
+   {
+    "d": "2026-03-03",
+    "cash": 3287.0,
+    "m3": 3302.0,
+    "stock": 95375.0
+   },
+   {
+    "d": "2026-03-04",
+    "cash": 3282.0,
+    "m3": 3304.0,
+    "stock": 95250.0
+   },
+   {
+    "d": "2026-03-05",
+    "cash": 3267.0,
+    "m3": 3288.0,
+    "stock": 95000.0
+   },
+   {
+    "d": "2026-03-06",
+    "cash": 3238.0,
+    "m3": 3263.0,
+    "stock": 94975.0
+   },
+   {
+    "d": "2026-03-09",
+    "cash": 3320.0,
+    "m3": 3348.0,
+    "stock": 94800.0
+   },
+   {
+    "d": "2026-03-10",
+    "cash": 3334.0,
+    "m3": 3366.0,
+    "stock": 98950.0
+   },
+   {
+    "d": "2026-03-11",
+    "cash": 3268.0,
+    "m3": 3305.0,
+    "stock": 98900.0
+   },
+   {
+    "d": "2026-03-12",
+    "cash": 3264.0,
+    "m3": 3315.0,
+    "stock": 98750.0
+   },
+   {
+    "d": "2026-03-13",
+    "cash": 3270.0,
+    "m3": 3309.0,
+    "stock": 97900.0
+   },
+   {
+    "d": "2026-03-16",
+    "cash": 3240.0,
+    "m3": 3285.0,
+    "stock": 97500.0
+   },
+   {
+    "d": "2026-03-17",
+    "cash": 3189.0,
+    "m3": 3227.0,
+    "stock": 118375.0
+   },
+   {
+    "d": "2026-03-18",
+    "cash": 3124.0,
+    "m3": 3165.5,
+    "stock": 118025.0
+   },
+   {
+    "d": "2026-03-19",
+    "cash": 3010.0,
+    "m3": 3037.0,
+    "stock": 117850.0
+   },
+   {
+    "d": "2026-03-20",
+    "cash": 3065.5,
+    "m3": 3098.0,
+    "stock": 117675.0
+   },
+   {
+    "d": "2026-03-23",
+    "cash": 3040.0,
+    "m3": 3069.0,
+    "stock": 117175.0
+   },
+   {
+    "d": "2026-03-24",
+    "cash": 3037.0,
+    "m3": 3055.0,
+    "stock": 117100.0
+   },
+   {
+    "d": "2026-03-25",
+    "cash": 3047.0,
+    "m3": 3060.0,
+    "stock": 116475.0
+   },
+   {
+    "d": "2026-03-26",
+    "cash": 3077.0,
+    "m3": 3092.0,
+    "stock": 115650.0
+   },
+   {
+    "d": "2026-03-27",
+    "cash": 3075.0,
+    "m3": 3084.0,
+    "stock": 115375.0
+   },
+   {
+    "d": "2026-03-30",
+    "cash": 3161.0,
+    "m3": 3159.0,
+    "stock": 115275.0
+   },
+   {
+    "d": "2026-03-31",
+    "cash": 3184.5,
+    "m3": 3186.0,
+    "stock": 114500.0
+   },
+   {
+    "d": "2026-04-01",
+    "cash": 3237.0,
+    "m3": 3241.0,
+    "stock": 114225.0
+   },
+   {
+    "d": "2026-04-02",
+    "cash": 3235.0,
+    "m3": 3236.0,
+    "stock": 113950.0
+   },
+   {
+    "d": "2026-04-07",
+    "cash": 3320.0,
+    "m3": 3323.0,
+    "stock": 113925.0
+   },
+   {
+    "d": "2026-04-08",
+    "cash": 3295.0,
+    "m3": 3309.0,
+    "stock": 112325.0
+   },
+   {
+    "d": "2026-04-09",
+    "cash": 3256.0,
+    "m3": 3285.0,
+    "stock": 112050.0
+   },
+   {
+    "d": "2026-04-10",
+    "cash": 3297.0,
+    "m3": 3313.0,
+    "stock": 111925.0
+   },
+   {
+    "d": "2026-04-13",
+    "cash": 3304.5,
+    "m3": 3315.0,
+    "stock": 111775.0
+   },
+   {
+    "d": "2026-04-14",
+    "cash": 3300.0,
+    "m3": 3324.0,
+    "stock": 115925.0
+   },
+   {
+    "d": "2026-04-15",
+    "cash": 3362.0,
+    "m3": 3384.0,
+    "stock": 116475.0
+   },
+   {
+    "d": "2026-04-16",
+    "cash": 3415.0,
+    "m3": 3425.0,
+    "stock": 114750.0
+   },
+   {
+    "d": "2026-04-17",
+    "cash": 3439.0,
+    "m3": 3447.5,
+    "stock": 112825.0
+   },
+   {
+    "d": "2026-04-20",
+    "cash": 3430.0,
+    "m3": 3438.0,
+    "stock": 111000.0
+   },
+   {
+    "d": "2026-04-21",
+    "cash": 3438.0,
+    "m3": 3448.0,
+    "stock": 107525.0
+   },
+   {
+    "d": "2026-04-22",
+    "cash": 3468.0,
+    "m3": 3468.0,
+    "stock": 105850.0
+   },
+   {
+    "d": "2026-04-23",
+    "cash": 3446.0,
+    "m3": 3449.0,
+    "stock": 104300.0
+   },
+   {
+    "d": "2026-04-24",
+    "cash": 3485.0,
+    "m3": 3474.0,
+    "stock": 102825.0
+   },
+   {
+    "d": "2026-04-27",
+    "cash": 3444.5,
+    "m3": 3435.0,
+    "stock": 101025.0
+   },
+   {
+    "d": "2026-04-28",
+    "cash": 3365.0,
+    "m3": 3362.0,
+    "stock": 98225.0
+   },
+   {
+    "d": "2026-04-29",
+    "cash": 3331.0,
+    "m3": 3333.0,
+    "stock": 101125.0
+   },
+   {
+    "d": "2026-04-30",
+    "cash": 3363.0,
+    "m3": 3367.0,
+    "stock": 98650.0
+   },
+   {
+    "d": "2026-05-01",
+    "cash": 3349.0,
+    "m3": 3343.0,
+    "stock": 96250.0
+   },
+   {
+    "d": "2026-05-05",
+    "cash": 3348.0,
+    "m3": 3360.0,
+    "stock": 96250.0
+   },
+   {
+    "d": "2026-05-06",
+    "cash": 3402.0,
+    "m3": 3420.0,
+    "stock": 94800.0
+   },
+   {
+    "d": "2026-05-07",
+    "cash": 3425.0,
+    "m3": 3433.0,
+    "stock": 94425.0
+   },
+   {
+    "d": "2026-05-08",
+    "cash": 3417.0,
+    "m3": 3429.0,
+    "stock": 110600.0
+   },
+   {
+    "d": "2026-05-11",
+    "cash": 3442.0,
+    "m3": 3455.0,
+    "stock": 110300.0
+   },
+   {
+    "d": "2026-05-12",
+    "cash": 3498.0,
+    "m3": 3503.0,
+    "stock": 111425.0
+   },
+   {
+    "d": "2026-05-13",
+    "cash": 3517.0,
+    "m3": 3537.0,
+    "stock": 110275.0
+   },
+   {
+    "d": "2026-05-14",
+    "cash": 3596.0,
+    "m3": 3617.0,
+    "stock": 110875.0
+   },
+   {
+    "d": "2026-05-15",
+    "cash": 3527.0,
+    "m3": 3542.0,
+    "stock": 110750.0
+   },
+   {
+    "d": "2026-05-18",
+    "cash": 3529.0,
+    "m3": 3539.0,
+    "stock": 109925.0
+   },
+   {
+    "d": "2026-05-19",
+    "cash": 3517.0,
+    "m3": 3527.5,
+    "stock": 112500.0
+   },
+   {
+    "d": "2026-05-20",
+    "cash": 3519.0,
+    "m3": 3530.0,
+    "stock": 112050.0
+   },
+   {
+    "d": "2026-05-21",
+    "cash": 3527.5,
+    "m3": 3534.0,
+    "stock": 111250.0
+   },
+   {
+    "d": "2026-05-22",
+    "cash": 3544.5,
+    "m3": 3548.0,
+    "stock": 111025.0
+   },
+   {
+    "d": "2026-05-26",
+    "cash": 3567.0,
+    "m3": 3578.0,
+    "stock": 109950.0
+   },
+   {
+    "d": "2026-05-27",
+    "cash": 3516.0,
+    "m3": 3537.0,
+    "stock": 108400.0
+   },
+   {
+    "d": "2026-05-28",
+    "cash": 3486.0,
+    "m3": 3504.0,
+    "stock": 108325.0
+   },
+   {
+    "d": "2026-05-29",
+    "cash": 3549.0,
+    "m3": 3556.0,
+    "stock": 113800.0
+   },
+   {
+    "d": "2026-06-01",
+    "cash": 3555.0,
+    "m3": 3577.0,
+    "stock": 113300.0
+   },
+   {
+    "d": "2026-06-02",
+    "cash": 3612.0,
+    "m3": 3628.0,
+    "stock": 113300.0
+   },
+   {
+    "d": "2026-06-03",
+    "cash": 3624.5,
+    "m3": 3639.5,
+    "stock": 112525.0
+   },
+   {
+    "d": "2026-06-04",
+    "cash": 3564.0,
+    "m3": 3583.5,
+    "stock": 111900.0
+   },
+   {
+    "d": "2026-06-05",
+    "cash": 3575.0,
+    "m3": 3594.5,
+    "stock": 110950.0
+   },
+   {
+    "d": "2026-06-08",
+    "cash": 3519.0,
+    "m3": 3534.0,
+    "stock": 110650.0
+   },
+   {
+    "d": "2026-06-09",
+    "cash": 3576.0,
+    "m3": 3588.0,
+    "stock": 110400.0
+   },
+   {
+    "d": "2026-06-10",
+    "cash": 3486.0,
+    "m3": 3500.0,
+    "stock": 109575.0
+   },
+   {
+    "d": "2026-06-11",
+    "cash": 3468.0,
+    "m3": 3483.5,
+    "stock": 109475.0
+   },
+   {
+    "d": "2026-06-12",
+    "cash": 3557.0,
+    "m3": 3562.0,
+    "stock": 107750.0
+   },
+   {
+    "d": "2026-06-15",
+    "cash": 3562.0,
+    "m3": 3582.0,
+    "stock": 107150.0
+   },
+   {
+    "d": "2026-06-16",
+    "cash": 3550.0,
+    "m3": 3571.0,
+    "stock": 124550.0
+   },
+   {
+    "d": "2026-06-17",
+    "cash": 3592.0,
+    "m3": 3607.0,
+    "stock": 122375.0
+   },
+   {
+    "d": "2026-06-18",
+    "cash": 3565.0,
+    "m3": 3577.0,
+    "stock": 120900.0
+   },
+   {
+    "d": "2026-06-19",
+    "cash": 3584.5,
+    "m3": 3590.0,
+    "stock": 123775.0
+   },
+   {
+    "d": "2026-06-22",
+    "cash": 3612.5,
+    "m3": 3612.0,
+    "stock": 123450.0
+   },
+   {
+    "d": "2026-06-23",
+    "cash": 3503.0,
+    "m3": 3500.0,
+    "stock": 123150.0
+   },
+   {
+    "d": "2026-06-24",
+    "cash": 3437.0,
+    "m3": 3428.0,
+    "stock": 122825.0
+   },
+   {
+    "d": "2026-06-25",
+    "cash": 3432.0,
+    "m3": 3425.0,
+    "stock": 122400.0
+   },
+   {
+    "d": "2026-06-26",
+    "cash": 3460.0,
+    "m3": 3447.0,
+    "stock": 121300.0
+   },
+   {
+    "d": "2026-06-29",
+    "cash": 3491.0,
+    "m3": 3479.0,
+    "stock": 120525.0
+   },
+   {
+    "d": "2026-06-30",
+    "cash": 3565.5,
+    "m3": 3546.0,
+    "stock": 119825.0
+   },
+   {
+    "d": "2026-07-01",
+    "cash": 3529.0,
+    "m3": 3512.0,
+    "stock": 119200.0
+   },
+   {
+    "d": "2026-07-02",
+    "cash": 3475.0,
+    "m3": 3465.0,
+    "stock": 118950.0
+   },
+   {
+    "d": "2026-07-03",
+    "cash": 3546.0,
+    "m3": 3532.0,
+    "stock": 118675.0
+   },
+   {
+    "d": "2026-07-06",
+    "cash": 3599.0,
+    "m3": 3582.0,
+    "stock": 118425.0
+   },
+   {
+    "d": "2026-07-07",
+    "cash": 3560.0,
+    "m3": 3562.0,
+    "stock": 116350.0
+   },
+   {
+    "d": "2026-07-08",
+    "cash": 3529.0,
+    "m3": 3537.0,
+    "stock": 115925.0
+   },
+   {
+    "d": "2026-07-09",
+    "cash": 3622.0,
+    "m3": 3615.0,
+    "stock": 115525.0
+   },
+   {
+    "d": "2026-07-10",
+    "cash": 3602.0,
+    "m3": 3588.0,
+    "stock": 114800.0
+   },
+   {
+    "d": "2026-07-13",
+    "cash": 3571.0,
+    "m3": 3565.0,
+    "stock": 114275.0
+   },
+   {
+    "d": "2026-07-14",
+    "cash": 3589.5,
+    "m3": 3587.0,
+    "stock": 113450.0
+   },
+   {
+    "d": "2026-07-15",
+    "cash": 3553.5,
+    "m3": 3550.0,
+    "stock": 112450.0
+   },
+   {
+    "d": "2026-07-16",
+    "cash": 3591.0,
+    "m3": 3576.5,
+    "stock": 111875.0
+   },
+   {
+    "d": "2026-07-17",
+    "cash": 3549.0,
+    "m3": 3529.0,
+    "stock": 111725.0
+   },
+   {
+    "d": "2026-07-20",
+    "cash": 3575.0,
+    "m3": 3545.5,
+    "stock": 109150.0
+   },
+   {
+    "d": "2026-07-21",
+    "cash": 3591.0,
+    "m3": 3566.0,
+    "stock": 108500.0
+   },
+   {
+    "d": "2026-07-22",
+    "cash": 3614.0,
+    "m3": 3583.0,
+    "stock": 107650.0
+   },
+   {
+    "d": "2026-07-23",
+    "cash": 3653.0,
+    "m3": 3611.0,
+    "stock": 106075.0
+   },
+   {
+    "d": "2026-07-24",
+    "cash": 3633.0,
+    "m3": 3592.0,
+    "stock": 105800.0
+   },
+   {
+    "d": "2026-07-27",
+    "cash": 3685.5,
+    "m3": 3621.0,
+    "stock": 103725.0
+   },
+   {
+    "d": "2026-07-28",
+    "cash": 3631.5,
+    "m3": 3576.0,
+    "stock": 102500.0
+   },
+   {
+    "d": "2026-07-29",
+    "cash": 3639.0,
+    "m3": 3579.0,
+    "stock": 101800.0
+   },
+   {
+    "d": "2026-07-30",
+    "cash": 3662.0,
+    "m3": 3601.0,
+    "stock": 100700.0
+   },
+   {
+    "d": "2026-07-31",
+    "cash": 3710.5,
+    "m3": 3631.0,
+    "stock": 99800.0
+   },
+   {
+    "d": "2026-08-03",
+    "cash": 3751.0,
+    "m3": 3678.0,
+    "stock": 99825.0
+   },
+   {
+    "d": "2026-08-04",
+    "cash": 3730.0,
+    "m3": 3672.5,
+    "stock": 98650.0
+   },
+   {
+    "d": "2026-08-05",
+    "cash": 3737.0,
+    "m3": 3693.0,
+    "stock": 98450.0
+   },
+   {
+    "d": "2026-08-06",
+    "cash": 3857.0,
+    "m3": 3797.0,
+    "stock": 97475.0
+   },
+   {
+    "d": "2026-08-07",
+    "cash": 3785.0,
+    "m3": 3732.0,
+    "stock": 97075.0
+   },
+   {
+    "d": "2026-08-10",
+    "cash": 3786.0,
+    "m3": 3721.0,
+    "stock": 97125.0
+   },
+   {
+    "d": "2026-08-11",
+    "cash": 3822.0,
+    "m3": 3741.0,
+    "stock": 97075.0
+   },
+   {
+    "d": "2026-08-12",
+    "cash": 3852.0,
+    "m3": 3780.0,
+    "stock": 95350.0
+   },
+   {
+    "d": "2026-08-13",
+    "cash": 3806.0,
+    "m3": 3727.5,
+    "stock": 92550.0
+   },
+   {
+    "d": "2026-08-14",
+    "cash": 3875.0,
+    "m3": 3763.5,
+    "stock": 88000.0
+   },
+   {
+    "d": "2026-08-17",
+    "cash": 3855.0,
+    "m3": 3768.0,
+    "stock": 86825.0
+   },
+   {
+    "d": "2026-08-18",
+    "cash": 3795.0,
+    "m3": 3724.0,
+    "stock": 86525.0
+   },
+   {
+    "d": "2026-08-19",
+    "cash": 3750.0,
+    "m3": 3652.0,
+    "stock": 95050.0
+   },
+   {
+    "d": "2026-08-20",
+    "cash": 3865.5,
+    "m3": 3743.0,
+    "stock": 94400.0
+   },
+   {
+    "d": "2026-08-21",
+    "cash": 3980.0,
+    "m3": 3824.0,
+    "stock": 93125.0
+   },
+   {
+    "d": "2026-08-24",
+    "cash": 3985.0,
+    "m3": 3840.0,
+    "stock": 93250.0
+   },
+   {
+    "d": "2026-08-25",
+    "cash": 3987.0,
+    "m3": 3853.0,
+    "stock": 95050.0
+   },
+   {
+    "d": "2026-08-26",
+    "cash": 4107.0,
+    "m3": 3933.0,
+    "stock": 97325.0
+   },
+   {
+    "d": "2026-08-27",
+    "cash": 4107.0,
+    "m3": 3890.0,
+    "stock": 97875.0
+   },
+   {
+    "d": "2026-08-28",
+    "cash": 4070.0,
+    "m3": 3930.0,
+    "stock": 97950.0
+   },
+   {
+    "d": "2026-09-01",
+    "cash": 4115.0,
+    "m3": 3937.0,
+    "stock": 99125.0
+   },
+   {
+    "d": "2026-09-02",
+    "cash": 4000.0,
+    "m3": 3877.0,
+    "stock": 100525.0
+   },
+   {
+    "d": "2026-09-03",
+    "cash": 3995.5,
+    "m3": 3868.0,
+    "stock": 110500.0
+   }
+  ]
+ },
+ "fx": {
+  "pair": "USD/INR",
+  "value": 95.5614,
+  "as_of": "2026-08-28",
+  "age_days": 9.6,
+  "source": "FBIL via frankfurter.dev (unofficial mirror of the official benchmark)"
+ },
+ "hrc": {
+  "median": 59650.0,
+  "n_rows": 60,
+  "source": "Tata Nexarc public India steel price page",
+  "note": "median of 60 listed HRC rows; indicative trade price, not a contract price",
+  "rows": [
+   {
+    "product": "HR Coil",
+    "grade": "E250 A",
+    "thickness_mm": "1.6",
+    "width_mm": 1250,
+    "price_inr_per_t": 57800,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Mumbai"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E250 A",
+    "thickness_mm": "1.8",
+    "width_mm": 1250,
+    "price_inr_per_t": 56800,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Mumbai"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E250 A",
+    "thickness_mm": "2.0",
+    "width_mm": 1250,
+    "price_inr_per_t": 56550,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Mumbai"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E250 A",
+    "thickness_mm": "2.1 - 2.9",
+    "width_mm": 1250,
+    "price_inr_per_t": 55550,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Mumbai"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E250 A",
+    "thickness_mm": "3 - 12",
+    "width_mm": 1250,
+    "price_inr_per_t": 54800,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Mumbai"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E350 A",
+    "thickness_mm": "1.6",
+    "width_mm": 1250,
+    "price_inr_per_t": 61300,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Mumbai"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E350 A",
+    "thickness_mm": "1.8",
+    "width_mm": 1250,
+    "price_inr_per_t": 60300,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Mumbai"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E350 A",
+    "thickness_mm": "2.0",
+    "width_mm": 1250,
+    "price_inr_per_t": 60050,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Mumbai"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E350 A",
+    "thickness_mm": "2.1 - 2.9",
+    "width_mm": 1250,
+    "price_inr_per_t": 59050,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Mumbai"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E350 A",
+    "thickness_mm": "3 - 12",
+    "width_mm": 1250,
+    "price_inr_per_t": 58300,
+    "period": "Sep-26",
+    "brand": "JSW",
+    "city": "Pune"
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E250 A",
+    "thickness_mm": "1.6",
+    "width_mm": 1250,
+    "price_inr_per_t": 58950,
+    "period": "Sep-26",
+    "brand": "",
+    "city": ""
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E250 A",
+    "thickness_mm": "1.8",
+    "width_mm": 1250,
+    "price_inr_per_t": 57950,
+    "period": "Sep-26",
+    "brand": "",
+    "city": ""
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E250 A",
+    "thickness_mm": "2.0",
+    "width_mm": 1250,
+    "price_inr_per_t": 57700,
+    "period": "Sep-26",
+    "brand": "",
+    "city": ""
+   },
+   {
+    "product": "HR Coil",
+    "grade": "E250 A",
+    "thickness_mm": "2.1 - 2.9",
+    "width_mm": 1250,
+    "price_inr_per_t": 56700,
+    "period": "Sep-26",
+    "brand": "",
+    "city": ""
+   }
+  ]
+ },
+ "stale_control": {
+  "label": "COMEX zinc (ZNC=F)",
+  "value": 4193.5,
+  "age_days": 16.9,
+  "error_pct": 4.96
+ },
+ "forecast": {
+  "series": "ZINC.LME.CASH",
+  "spot": 3995.5,
+  "horizon_days": 30,
+  "p10": 3817.67,
+  "p50": 4196.57,
+  "p90": 4607.98,
+  "prob_up": 0.748,
+  "prob_up_gt_3pct": 0.607,
+  "prob_down_gt_3pct": 0.139,
+  "ann_vol_pct": 23.52,
+  "n_observations": 170,
+  "method": "stationary block bootstrap (block=5d) on log returns",
+  "calibration": {
+   "walk_forward_windows": 80,
+   "nominal_coverage": 0.8,
+   "empirical_coverage": 0.912,
+   "mean_band_width_pct_of_spot": 21.67,
+   "verdict": "UNDERCONFIDENT \u2014 band too wide, forecast is uninformative"
+  },
+  "warnings": [
+   "Only 170 observations (~8 months). The tails of this distribution are extrapolation, not evidence. Treat P10/P90 as indicative, not as risk limits."
+  ]
+ },
+ "coverage": {
+  "material_id": "HRC-E250A-2.0",
+  "plant": "PLANT-PUNE-1",
+  "usable_stock_t": 430.0,
+  "in_transit_t": 210.0,
+  "open_po_t": 360.0,
+  "safety_stock_t": 160.0,
+  "demand_next_30d_t": 561.5,
+  "firm_demand_t": 425.9,
+  "weekly_burn_t": 129.2,
+  "coverage_weeks": 6.5,
+  "net_requirement_t": 0.0,
+  "is_mock": true,
+  "warnings": [
+   "MOCK ERP DATA \u2014 every internal figure here is synthetic. No recommendation derived from it is actionable.",
+   "45 t blocked (quality hold) excluded from coverage.",
+   "60 t consignment stock excluded \u2014 supplier-owned.",
+   "136 t of 30-day demand is FORECAST, not firm."
+  ]
+ },
+ "suppliers": [
+  {
+   "supplier_id": "SUP-DOM-01",
+   "name": "Domestic Mill A",
+   "country": "IND",
+   "approved_materials": [
+    "HRC-E250A-2.0"
+   ],
+   "lead_time_days_p50": 12,
+   "lead_time_days_p90": 21,
+   "otif_pct": 96.5,
+   "reject_rate_pct": 0.3,
+   "annual_capacity_t": 40000
+  },
+  {
+   "supplier_id": "SUP-IMP-KR1",
+   "name": "Korean Mill B",
+   "country": "KOR",
+   "approved_materials": [
+    "HRC-E250A-2.0"
+   ],
+   "lead_time_days_p50": 42,
+   "lead_time_days_p90": 63,
+   "otif_pct": 91.0,
+   "reject_rate_pct": 0.6,
+   "annual_capacity_t": 120000
+  },
+  {
+   "supplier_id": "SUP-IMP-JP1",
+   "name": "Japanese Mill C",
+   "country": "JPN",
+   "approved_materials": [
+    "HRC-E250A-2.0"
+   ],
+   "lead_time_days_p50": 45,
+   "lead_time_days_p90": 70,
+   "otif_pct": 94.0,
+   "reject_rate_pct": 0.2,
+   "annual_capacity_t": 90000
+  }
+ ],
+ "contract": {
+  "contract_id": "CTR-2026-114",
+  "supplier_id": "SUP-DOM-01",
+  "material_id": "HRC-E250A-2.0",
+  "pricing_basis": "INDIA_HRC_MONTHLY_AVG + premium",
+  "premium_per_t": 1150.0,
+  "currency": "INR",
+  "credit_days": 30,
+  "volume_flex_pct": 0.05,
+  "index_reset": "monthly",
+  "min_order_t": 100.0,
+  "valid_to": "2027-03-31"
+ },
+ "sourcing": [
+  {
+   "origin": "JPN",
+   "name": "Japan",
+   "tonnes": 1342877.499144,
+   "fob": 591.22,
+   "duty": 11.5,
+   "freight": 42.0,
+   "landed": 706.78,
+   "lpi": 3.9,
+   "basis": "WITS/TRAINS preferential",
+   "decision_grade": false,
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5,
+     "to": "2027-04-20"
+    }
+   ]
+  },
+  {
+   "origin": "VNM",
+   "name": "Viet Nam",
+   "tonnes": 472106.31,
+   "fob": 570.88,
+   "duty": 19.0,
+   "freight": 34.0,
+   "landed": 720.57,
+   "lpi": 3.3,
+   "basis": "WITS/TRAINS MFN",
+   "decision_grade": true,
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5,
+     "to": "2027-04-20"
+    }
+   ]
+  },
+  {
+   "origin": "KOR",
+   "name": "Korea, Rep.",
+   "tonnes": 1502167.794,
+   "fob": 677.12,
+   "duty": 11.5,
+   "freight": 42.0,
+   "landed": 802.67,
+   "lpi": 3.8,
+   "basis": "WITS/TRAINS preferential",
+   "decision_grade": false,
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5,
+     "to": "2027-04-20"
+    }
+   ]
+  },
+  {
+   "origin": "CHN",
+   "name": "China",
+   "tonnes": 937832.615924,
+   "fob": 644.92,
+   "duty": 19.0,
+   "freight": 42.0,
+   "landed": 818.3,
+   "lpi": 3.7,
+   "basis": "WITS/TRAINS MFN",
+   "decision_grade": true,
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5,
+     "to": "2027-04-20"
+    }
+   ]
+  },
+  {
+   "origin": "IDN",
+   "name": "Indonesia",
+   "tonnes": 4274.517,
+   "fob": 691.13,
+   "duty": 19.0,
+   "freight": 34.0,
+   "landed": 863.83,
+   "lpi": 3,
+   "basis": "WITS/TRAINS MFN",
+   "decision_grade": true,
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5,
+     "to": "2027-04-20"
+    }
+   ]
+  },
+  {
+   "origin": "FRA",
+   "name": "France",
+   "tonnes": 59299.264,
+   "fob": 1138.27,
+   "duty": 19.0,
+   "freight": 62.0,
+   "landed": 1429.84,
+   "lpi": 3.9,
+   "basis": "WITS/TRAINS MFN",
+   "decision_grade": true,
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5,
+     "to": "2027-04-20"
+    }
+   ]
+  },
+  {
+   "origin": "BEL",
+   "name": "Belgium",
+   "tonnes": 2158.408,
+   "fob": 1148.62,
+   "duty": 19.0,
+   "freight": 62.0,
+   "landed": 1442.18,
+   "lpi": 4,
+   "basis": "WITS/TRAINS MFN",
+   "decision_grade": true,
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5,
+     "to": "2027-04-20"
+    }
+   ]
+  },
+  {
+   "origin": "DEU",
+   "name": "Germany",
+   "tonnes": 18762.592,
+   "fob": 1410.24,
+   "duty": 19.0,
+   "freight": 62.0,
+   "landed": 1753.86,
+   "lpi": 4.1,
+   "basis": "WITS/TRAINS MFN",
+   "decision_grade": true,
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5,
+     "to": "2027-04-20"
+    }
+   ]
+  }
+ ],
+ "duties": [
+  {
+   "origin": "JPN",
+   "rate": 0.0,
+   "total": 11.5,
+   "source": "WITS/TRAINS preferential",
+   "year": 2021,
+   "stale": 5,
+   "decision_grade": false,
+   "notes": [
+    "WITS/TRAINS MFN applied, 2023. (Unverified local override on file says 7.5% \u2014 reconcile.)",
+    "PREFERENTIAL rate applies (WITS/TRAINS bilateral record, 2021). Preference margin vs MFN: 7.50 pp. Requires a valid certificate of origin to claim."
+   ],
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5
+    }
+   ]
+  },
+  {
+   "origin": "KOR",
+   "rate": 0.0,
+   "total": 11.5,
+   "source": "WITS/TRAINS preferential",
+   "year": 2021,
+   "stale": 5,
+   "decision_grade": false,
+   "notes": [
+    "WITS/TRAINS MFN applied, 2023. (Unverified local override on file says 7.5% \u2014 reconcile.)",
+    "PREFERENTIAL rate applies (WITS/TRAINS bilateral record, 2021). Preference margin vs MFN: 7.50 pp. Requires a valid certificate of origin to claim."
+   ],
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5
+    }
+   ]
+  },
+  {
+   "origin": "CHN",
+   "rate": 7.5,
+   "total": 19.0,
+   "source": "WITS/TRAINS MFN",
+   "year": 2023,
+   "stale": 3,
+   "decision_grade": true,
+   "notes": [
+    "WITS/TRAINS MFN applied, 2023. (Unverified local override on file says 7.5% \u2014 reconcile.)",
+    "No preferential record found in WITS -> MFN applies (no trade agreement, or the agreement excludes this line)."
+   ],
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5
+    }
+   ]
+  },
+  {
+   "origin": "VNM",
+   "rate": 7.5,
+   "total": 19.0,
+   "source": "WITS/TRAINS MFN",
+   "year": 2023,
+   "stale": 3,
+   "decision_grade": true,
+   "notes": [
+    "WITS/TRAINS MFN applied, 2023. (Unverified local override on file says 7.5% \u2014 reconcile.)",
+    "No preferential record found in WITS -> MFN applies (no trade agreement, or the agreement excludes this line)."
+   ],
+   "surcharges": [
+    {
+     "kind": "safeguard",
+     "pct": 11.5
+    }
+   ]
+  }
+ ],
+ "recommendation": {
+  "recommended_commit_now_pct": 100,
+  "recommended_tonnes_now": 200.0,
+  "recommended_tonnes_deferred": 0.0,
+  "confidence": "low",
+  "options": [
+   {
+    "commit_now_pct": 0,
+    "tonnes_now": 0.0,
+    "tonnes_deferred": 200.0,
+    "expected_cost_inr": 12789357.0,
+    "cvar95_inr": 14805391.0,
+    "objective": 17971244.0,
+    "expected_stockout_cost_inr": 223214.0
+   },
+   {
+    "commit_now_pct": 25,
+    "tonnes_now": 50.0,
+    "tonnes_deferred": 150.0,
+    "expected_cost_inr": 12608837.0,
+    "cvar95_inr": 14120863.0,
+    "objective": 17551139.0,
+    "expected_stockout_cost_inr": 167411.0
+   },
+   {
+    "commit_now_pct": 50,
+    "tonnes_now": 100.0,
+    "tonnes_deferred": 100.0,
+    "expected_cost_inr": 12428317.0,
+    "cvar95_inr": 13436334.0,
+    "objective": 17131034.0,
+    "expected_stockout_cost_inr": 111607.0
+   },
+   {
+    "commit_now_pct": 75,
+    "tonnes_now": 150.0,
+    "tonnes_deferred": 50.0,
+    "expected_cost_inr": 12247797.0,
+    "cvar95_inr": 12751805.0,
+    "objective": 16710929.0,
+    "expected_stockout_cost_inr": 55804.0
+   },
+   {
+    "commit_now_pct": 100,
+    "tonnes_now": 200.0,
+    "tonnes_deferred": 0.0,
+    "expected_cost_inr": 12067277.0,
+    "cvar95_inr": 12067277.0,
+    "objective": 16290824.0,
+    "expected_stockout_cost_inr": 0.0
+   }
+  ],
+  "prob_price_rises": 0.748,
+  "prob_rise_gt_3pct": 0.607,
+  "prob_fall_gt_3pct": 0.139,
+  "expected_regret_of_waiting_inr": 722080.0,
+  "expected_regret_of_buying_all_inr": 0.0,
+  "coverage_weeks_now": 6.5,
+  "coverage_weeks_if_deferred": 2.2,
+  "policy_min_coverage_weeks": 4.0,
+  "coverage_policy_breached_if_deferred": true,
+  "binding_constraint": "production coverage policy"
+ },
+ "negotiation": {
+  "supplier": "Domestic Mill A",
+  "spend": 437760000.0,
+  "price": 60800.0,
+  "benchmark": 59650.0,
+  "premium": 1150.0,
+  "premium_pct": 1.9279128248113997,
+  "batna": "Japan (import)",
+  "batna_cost": 67540.886292,
+  "batna_credible": true,
+  "share_of_wallet": 18.0,
+  "levers": [
+   {
+    "name": "Credit terms 30d -> 60d",
+    "value": 3238224.6575342463,
+    "basis": "30 extra days x 9.0% WACC on Rs 437,760,000",
+    "certainty": "high",
+    "their_cost": "low",
+    "ask": "Move to 60-day payment terms on the annual volume."
+   },
+   {
+    "name": "Seller absorbs demurrage from documentary delay",
+    "value": null,
+    "basis": "price from your own demurrage claim history \u2014 no market proxy exists",
+    "certainty": "needs-internal-data",
+    "their_cost": "low",
+    "ask": "Seller bears demurrage where the cause is late or incorrect documentation."
+   },
+   {
+    "name": "Volume flexibility +/-10%",
+    "value": 4118446.08,
+    "basis": "optionality on 10% of spend at 23.5% vol, haircut to 40% of intrinsic",
+    "certainty": "medium",
+    "their_cost": "medium",
+    "ask": "Widen the volume band to +/-10% without price penalty."
+   }
+  ],
+  "points": [
+   "You are paying Rs 1,150/t (+1.9%) ABOVE the current market benchmark. On 7,200 t/yr that is Rs 8,280,000. Open with this.",
+   "No cheaper credible alternative found (Japan (import) is Rs 6,741/t more expensive). Your leverage is weak on price; concentrate entirely on terms.",
+   "RECONCILE THESE TWO: you are above the DOMESTIC index but the IMPORT alternative is still dearer. So the Rs 1,150/t premium is real but not a walk-away threat. Use it to justify a terms package, not a price ultimatum \u2014 and be ready for them to point out the same thing."
+  ],
+  "warnings": [
+   "Coverage figures are MOCK ERP data. Do not take this brief into a real negotiation until the ERP feed is live."
+  ]
+ },
+ "basis": {
+  "commodity": "ZINC_SHG",
+  "available": true,
+  "exchanges_compared": [
+   "LME",
+   "MCX"
+  ],
+  "lme_cash_usd_t": 3995.5,
+  "lme_3m_usd_t": 3868.0,
+  "lme_curve_spread_cash_minus_3m": 127.5,
+  "lme_curve_state": "BACKWARDATION",
+  "lme_warehouse_stock_t": 110500.0,
+  "lme_observed_at": "2026-09-03",
+  "mcx_spot_inr_kg": 418.5,
+  "mcx_spot_inr_t": 418500.0,
+  "mcx_observed_at": "2026-09-04",
+  "mcx_age_days": 2.6,
+  "landed_lme_parity_inr_kg": 430.13,
+  "landed_lme_parity_inr_t": 430133.0,
+  "basis_inr_kg": -11.63,
+  "basis_spread_pct": -2.7,
+  "verdict": "TOO_CLOSE_TO_CALL",
+  "verdict_reason": "Basis of -2.7% is inside the +/-4% error band of the freight estimate and the unmodelled physical premium. Not a sourcing signal. Get a forwarder quote and a supplier premium before acting on it.",
+  "assumptions": {
+   "ocean_freight_usd_t": 45.0,
+   "duty_pct": 10.5,
+   "port_inland_inr_t": 3000.0,
+   "physical_premium": "NOT MODELLED"
+  },
+  "audit_trail": "LME cash $3,995.50/t (as of 2026-09-03) lands at Rs 430.13/kg incl 10.5% duty. MCX front-month Rs 418.50/kg (as of 2026-09-04). Basis -2.70%. Basis of -2.7% is inside the +/-4% error band of the freight estimate and the unmodelled physical premium. Not a sourcing signal. Get a forwarder quote and a supplier premium before acting on it."
+ },
+ "provenance": [
+  {
+   "item": "LME zinc cash / 3M / stock",
+   "status": "live",
+   "cost": "free",
+   "source": "westmetall.com (republished LME settlement)"
+  },
+  {
+   "item": "India HR Coil by brand/city/grade",
+   "status": "live",
+   "cost": "free",
+   "source": "Tata Nexarc"
+  },
+  {
+   "item": "USD/INR reference rate",
+   "status": "live",
+   "cost": "free",
+   "source": "FBIL via frankfurter.dev"
+  },
+  {
+   "item": "Import flows by partner country",
+   "status": "live",
+   "cost": "free",
+   "source": "UN Comtrade (preview endpoint, no key)"
+  },
+  {
+   "item": "MFN + FTA preferential tariffs",
+   "status": "live",
+   "cost": "free",
+   "source": "WITS / UNCTAD TRAINS"
+  },
+  {
+   "item": "Logistics performance",
+   "status": "live",
+   "cost": "free",
+   "source": "World Bank LPI"
+  },
+  {
+   "item": "Safeguard / AIDC surcharges",
+   "status": "manual",
+   "cost": "human",
+   "source": "DGTR / CBIC \u2014 hand-maintained, India only"
+  },
+  {
+   "item": "Ocean freight",
+   "status": "estimate",
+   "cost": "n/a",
+   "source": "region-pair table \u2014 no free API prices arbitrary lanes"
+  },
+  {
+   "item": "Intraday ticks",
+   "status": "simulated",
+   "cost": "Rs 0-500/mo live",
+   "source": "Angel One SmartAPI / Kite \u2014 needs a broker account"
+  },
+  {
+   "item": "Inventory, demand, open POs, suppliers",
+   "status": "mock",
+   "cost": "ERP integration",
+   "source": "MockERP \u2014 synthetic"
+  }
+ ]
+}

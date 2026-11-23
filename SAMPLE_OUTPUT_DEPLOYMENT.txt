@@ -1,0 +1,160 @@
+
+================================================================================================
+  PROCUREMENT DECISION RUN — destination India (IND), HS 720810, material HRC-E250A-2.0
+================================================================================================
+
+================================================================================================
+  1. LIVE MARKET DATA
+================================================================================================
+  USD/INR (FBIL)               95.5614   2026-08-28  age 8.1d
+  LME zinc cash           $   3,995.50/t  2026-09-03
+  LME zinc 3-month        $   3,868.00/t  curve +127.50 (BACKWARDATION)
+  LME zinc stock               110,500 t
+  India HRC (Nexarc)      Rs     59,650/t  median of 60 rows
+
+================================================================================================
+  2. REAL-TIME LAYER — intraday event detection
+================================================================================================
+  Why real-time exists in this system: NOT to shave the average price
+  (zinc's daily move is ~0.5-2%; the monthly move is 5%+), but to catch a
+  same-day move large enough to change today's decision.
+
+  [06:00] SLIDE        -2.97%  MCX:ZINC moved -2.97% in 30m (412.01 -> 399.79); day -4.39%. Consider pulling a planned purchase forward.
+
+  375 ticks, 1 alert(s). Session 418.10 -> 398.98 (-4.57%)
+  Ticks are SIMULATED. Live feed = Angel One SmartAPI (free) or Kite (Rs 500/mo);
+  both need a funded broker account. LME real-time is NOT purchasable at PoC scale.
+
+================================================================================================
+  3. ERP POSITION — the input that actually decides the recommendation
+================================================================================================
+  Usable stock                 430.0 t   (blocked and consignment EXCLUDED)
+  In transit                   210.0 t
+  Open POs                     360.0 t
+  Safety stock floor           160.0 t
+  Demand next 30d              561.5 t   (firm 425.9 t)
+  Weekly burn                  129.2 t
+  COVERAGE                      6.50 weeks
+  Net requirement                0.0 t
+   ! MOCK ERP DATA — every internal figure here is synthetic. No recommendation derived from it is actionable.
+   ! 45 t blocked (quality hold) excluded from coverage.
+   ! 60 t consignment stock excluded — supplier-owned.
+   ! 136 t of 30-day demand is FORECAST, not firm.
+
+================================================================================================
+  4. CHEAPEST SOURCE COUNTRY for India — destination as a parameter
+================================================================================================
+
+CHEAPEST SOURCE COUNTRIES  —  destination India (IND), HS 720810, trade year 2024
+============================================================================================================
+  origin             proven t   FOB $/t   duty%  frt $/t  LANDED $/t   LPI  basis
+  --------------------------------------------------------------------------------------------------------
+  Japan             1,342,877       591    11.5       42         707   3.9  WITS/TRAINS preferential  [indicative]
+       + safeguard 11.5% in force to 2027-04-20
+  Viet Nam            472,106       571    19.0       34         721   3.3  WITS/TRAINS MFN
+       + safeguard 11.5% in force to 2027-04-20
+  Korea, Rep.       1,502,168       677    11.5       42         803   3.8  WITS/TRAINS preferential  [indicative]
+       + safeguard 11.5% in force to 2027-04-20
+  China               937,833       645    19.0       42         818   3.7  WITS/TRAINS MFN
+       + safeguard 11.5% in force to 2027-04-20
+  Indonesia             4,275       691    19.0       34         864   3.0  WITS/TRAINS MFN
+       + safeguard 11.5% in force to 2027-04-20
+  France               59,299     1,138    19.0       62       1,430   3.9  WITS/TRAINS MFN
+       + safeguard 11.5% in force to 2027-04-20
+  Belgium               2,158     1,149    19.0       62       1,442   4.0  WITS/TRAINS MFN
+       + safeguard 11.5% in force to 2027-04-20
+  Germany              18,763     1,410    19.0       62       1,754   4.1  WITS/TRAINS MFN
+       + safeguard 11.5% in force to 2027-04-20
+
+  Spread across ranked origins: $1,047/t (148.1% of the cheapest)
+
+  CAVEATS — read before acting:
+   - FOB is a Comtrade unit-value average across all grades in the HS line.
+     It is a screening signal. A real price comes from an RFQ.
+   - Freight is a region-pair ESTIMATE. No free API prices arbitrary
+     country pairs. Replace with forwarder quotes.
+   - Preferential duty requires a valid certificate of origin.
+   - This ranks COUNTRIES. No public dataset names an exporter.
+
+================================================================================================
+  5. DUTY DETAIL for the leading origins
+================================================================================================
+  IND <- JPN HS720810: 0.00%  (WITS/TRAINS preferential, 2021, 5y stale)  [NOT DECISION-GRADE]
+      + safeguard 11.5%  (to 2027-04-20)
+      = 11.50% total ad valorem
+  IND <- KOR HS720810: 0.00%  (WITS/TRAINS preferential, 2021, 5y stale)  [NOT DECISION-GRADE]
+      + safeguard 11.5%  (to 2027-04-20)
+      = 11.50% total ad valorem
+  IND <- CHN HS720810: 7.50%  (WITS/TRAINS MFN, 2023, 3y stale)
+      + safeguard 11.5%  (to 2027-04-20)
+      = 19.00% total ad valorem
+  IND <- VNM HS720810: 7.50%  (WITS/TRAINS MFN, 2023, 3y stale)
+      + safeguard 11.5%  (to 2027-04-20)
+      = 19.00% total ad valorem
+
+================================================================================================
+  6. PROBABILISTIC FORECAST + RECOMMENDATION
+================================================================================================
+  Zinc P10/P50/P90 (30d)  $3,817.67 / $4,196.57 / $4,607.98
+  P(up) 74.8%   ann vol 23.5%   n=170
+  Calibration             UNDERCONFIDENT — band too wide, forecast is uninformative (empirical 0.912 vs 0.80 nominal)
+
+  RECOMMENDATION          commit 100% = 200 t now, defer 0 t
+  Confidence              LOW
+  Binding constraint      production coverage policy
+  Regret of waiting       Rs 722,080
+
+================================================================================================
+  7. VENDOR NEGOTIATION BRIEF
+================================================================================================
+NEGOTIATION BRIEF — Domestic Mill A (SUP-DOM-01)
+==============================================================================
+  Material              HRC-E250A-2.0
+  Annual volume         7,200 t
+  Annual spend          Rs 437,760,000
+  Current price         Rs 60,800/t
+  Market benchmark      Rs 59,650/t   (+1.9%)
+  Best alternative      Japan (import) at Rs 67,541/t  [CREDIBLE]
+  Share of their capacity  ~18.0%
+
+  POSITION
+   - You are paying Rs 1,150/t (+1.9%) ABOVE the current market benchmark. On 7,200 t/yr that is Rs 8,280,000. Open with this.
+   - No cheaper credible alternative found (Japan (import) is Rs 6,741/t more expensive). Your leverage is weak on price; concentrate entirely on terms.
+   - RECONCILE THESE TWO: you are above the DOMESTIC index but the IMPORT alternative is still dearer. So the Rs 1,150/t premium is real but not a walk-away threat. Use it to justify a terms package, not a price ultimatum — and be ready for them to point out the same thing.
+
+  ASK IN THIS ORDER (cheapest for them first — protects the relationship)
+   1. Credit terms 30d -> 60d
+      worth Rs 3,238,225/yr  |  their cost: low  |  certainty: high
+      say: "Move to 60-day payment terms on the annual volume."
+      basis: 30 extra days x 9.0% WACC on Rs 437,760,000
+   2. Seller absorbs demurrage from documentary delay
+      worth unpriced  |  their cost: low  |  certainty: needs-internal-data
+      say: "Seller bears demurrage where the cause is late or incorrect documentation."
+      basis: price from your own demurrage claim history — no market proxy exists
+   3. Volume flexibility +/-10%
+      worth Rs 4,118,446/yr  |  their cost: medium  |  certainty: medium
+      say: "Widen the volume band to +/-10% without price penalty."
+      basis: optionality on 10% of spend at 23.5% vol, haircut to 40% of intrinsic
+
+  Total priced value on the table: Rs 7,356,671/yr (1.68% of spend)
+
+  WARNINGS
+   ! Coverage figures are MOCK ERP data. Do not take this brief into a real negotiation until the ERP feed is live.
+
+  This brief prices levers from YOUR side only. It does not predict
+  what the supplier will accept — no such data exists (see R-11).
+
+================================================================================================
+  8. WHAT IN THIS RUN IS REAL
+================================================================================================
+  REAL, live, free        LME zinc cash/3M/stock · India HRC by brand/city ·
+                          FBIL USD/INR · UN Comtrade flows · WITS MFN and
+                          preferential tariffs · World Bank LPI
+  SIMULATED               intraday ticks (needs a broker account)
+  MOCK                    all ERP figures — inventory, demand, POs, suppliers
+  ESTIMATED               ocean freight (no free API prices arbitrary lanes)
+  NOT DECISION-GRADE      any duty flagged above; preferential rates are 2021
+
+  The ERP layer is the one that decides the answer, and it is the one
+  that is mocked. That is the honest state of the PoC.
+

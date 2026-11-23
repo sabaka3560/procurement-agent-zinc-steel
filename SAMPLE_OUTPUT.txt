@@ -1,0 +1,137 @@
+
+==============================================================================
+  1. LIVE MARKET DATA  (free sources, zero API keys)
+==============================================================================
+  USD/INR (FBIL, India official) :      95.5614   as of 2026-08-28  [age 8.1d]
+  USD/INR (ECB cross-check)      :      94.4900   as of 2026-09-04
+  -> benchmark spread            :         1.13%   (MATERIAL — pick one and document it)
+
+  LME Zinc cash                  : $   3,995.50/t   as of 2026-09-03
+  LME Zinc 3-month               : $   3,868.00/t
+  LME Zinc warehouse stock       :      110,500 t
+  -> curve (cash - 3M)           : $     127.50/t   BACKWARDATION (spot scarcity — deferring purchases carries real risk)
+
+  India HR Coil (Tata Nexarc)    : Rs     59,650/t   median of 60 listed rows
+       JSW   Mumbai  E250 A         1.6 mm   Rs  57,800/t
+       JSW   Mumbai  E250 A         1.8 mm   Rs  56,800/t
+       JSW   Mumbai  E250 A         2.0 mm   Rs  56,550/t
+
+  [NEGATIVE CONTROL] COMEX zinc  : $   4,050.00/t   age 15.4 days -> STALE
+  -> error vs real LME cash      :        1.36%   This is why 'just use a free API' fails for zinc.
+
+==============================================================================
+  2. LANDED COST  —  import vs domestic, same specification
+==============================================================================
+  IMPORT  (HS 7208, FOB $545/t, 45d lead time)
+    CIF                          :        Rs 56,153/t
+    BCD @ 7.5%                   :         Rs 4,211/t
+    Safeguard @ 11.5%            :         Rs 6,458/t
+    SWS @ 10% of BCD             :           Rs 421/t
+    Total duty                   :        Rs 11,090/t   (19.75% of CIF)
+    Port/CHA + inland            :         Rs 3,000/t
+    Finance (45d @ 9%)           :           Rs 779/t
+    LANDED                       :        Rs 71,374/t
+    (IGST Rs 12,104/t recoverable — excluded from cost, but locks working capital)
+
+  DOMESTIC (Tata Nexarc median, 12d lead time)
+    Ex-works                     :        Rs 59,650/t
+    Inland freight               :           Rs 900/t
+    Finance (12d @ 9%)           :           Rs 179/t
+    LANDED                       :        Rs 60,850/t
+
+  -> DOMESTIC cheaper by Rs 10,524/t (17.3%)
+
+  !! DUTY REGIME NOT VERIFIED — the agent must NOT present this as a
+     confident recommendation. Safeguard 11.5% ad valorem for 21-Apr-2026 to 20-Apr-2027 (year 2 of a 12%/11.5%/11% step-down) on flat steel HS 7208-7212, 7225-7226. BCD UNRESOLVED: secondary sources split between 7.5% and 15%. MUST be pinned against the CBIC First Schedule before use.
+
+==============================================================================
+  3. PROBABILISTIC FORECAST  —  LME zinc, 30 days
+==============================================================================
+  Spot                           : $   3,995.50/t
+  P10 / P50 / P90 (30d)          : $   3,817.67  $ 4,196.57  $ 4,607.98
+  P(price up)                    :       74.8%
+  P(up more than 3%)             :       60.7%
+  P(down more than 3%)           :       13.9%
+  Annualised volatility          :        23.5%
+  Observations                   :         170
+  Method                         : stationary block bootstrap (block=5d) on log returns
+
+  CALIBRATION BACKTEST (the number that decides if any of this is real)
+    walk_forward_windows             80
+    nominal_coverage                 0.8
+    empirical_coverage               0.912
+    mean_band_width_pct_of_spot      21.67
+    verdict                          UNDERCONFIDENT — band too wide, forecast is uninformative
+    !! Only 170 observations (~8 months). The tails of this distribution are extrapolation, not evidence. Treat P10/P90 as indicative, not as risk limits.
+
+==============================================================================
+  4. RECOMMENDATION  —  risk-aware, over a coarse action grid
+==============================================================================
+  Requirement                    : 600 t over the next 30 days
+  Coverage on hand               : 5.5 weeks -> 1.2 weeks if fully deferred (policy min 4.0)
+  Binding constraint             : production coverage policy
+
+   commit     t now   t later          E[cost]           CVaR95        objective
+  ----------------------------------------------------------------------------
+       0%         0       600       39,501,628       45,671,429       55,486,628
+      25%       150       450       38,858,789       43,486,140       54,078,938
+      50%       300       300       38,215,950       41,300,851       52,671,248
+      75%       450       150       37,573,112       39,115,562       51,263,558
+     100%       600         0       36,930,273       36,930,273       49,855,868  <-- recommended
+
+  RECOMMENDATION: commit 100% = 600 t now, defer 0 t
+  Confidence                     : LOW
+  Expected regret of waiting     : Rs 2,571,355
+  Expected regret of buying all  : Rs 0
+
+==============================================================================
+  5. NEGOTIATION ECONOMICS  —  arithmetic, not a learned model
+==============================================================================
+  Volume flexibility +/-10%
+      value/yr : Rs 4,121,851
+      basis    : optionality on the flexible tranche, valued at 40% of naive intrinsic
+      certainty: medium — depends on your ability to actually exercise it
+
+  Quarterly -> monthly index reset
+      value/yr : Rs 3,864,235
+      basis    : reduced mark-to-market drift between resets
+      certainty: low — sign depends on trend direction; this is risk reduction, not saving
+
+  Credit terms 30d -> 60d
+      value/yr : Rs 3,240,902
+      basis    : 30 extra days x 9.0% cost of capital on Rs 438,121,872 spend
+      certainty: high — pure arithmetic
+
+  Seller absorbs demurrage from documentary delay
+      value/yr : needs internal data
+      basis    : price from your own historical demurrage claims — no market proxy exists
+      certainty: requires internal data
+
+
+==============================================================================
+  6. SOURCE COUNTRY SCREEN  —  UN Comtrade, free, no key
+==============================================================================
+  India HRC (HS 7208) imports 2024 — top partners by value
+  partner                   USD value         tonnes        $/t
+  --------------------------------------------------------------
+  Rep. of Korea         1,017,150,305      1,502,168        677
+  Japan                   793,931,354      1,342,877        591
+  China                   604,830,564        937,833        645
+  Viet Nam                269,517,243        472,106        571
+  M49:251                  67,498,546         59,299      1,138
+  M49:40                   47,177,189         26,871      1,756
+  Germany                  26,459,830         18,763      1,410
+  Indonesia                 2,954,243          4,275        691
+  Belgium                   2,479,196          2,158      1,149
+
+  NOTE: this screens COUNTRIES only. DGCI&S does not publish importer/
+  exporter identity, so no dataset here can name a vendor. Vendor
+  discovery is an RFQ and qualification process, not a data pull.
+
+==============================================================================
+  DONE
+==============================================================================
+  Every figure above came from a live endpoint or a deterministic
+  function in engine.py. No LLM produced any number on this page.
+  That separation is the whole architecture — see Deliverable 04.
+

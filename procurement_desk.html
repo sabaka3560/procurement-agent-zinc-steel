@@ -1,0 +1,440 @@
+<title>Metals Procurement Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#0E1418; --ink-2:#3A464F; --ink-3:#6B7A85;
+  --ground:#EDF0F2; --surface:#FFFFFF; --surface-2:#F5F7F9;
+  --line:#D3DBE1; --line-2:#E4EAEE;
+  --accent:#0072B2; --accent-soft:#E1EFF8;
+  --c-fob:#0072B2; --c-frt:#CC79A7; --c-duty:#D55E00;
+  --good:#1E7A4C; --warn:#A8620A; --crit:#B3261E;
+  --good-bg:#E3F2EA; --warn-bg:#FBEEDD; --crit-bg:#FBE7E5;
+  --shadow:0 1px 2px rgba(14,20,24,.06),0 4px 14px rgba(14,20,24,.05);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --cond:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ink:#E4EAEE; --ink-2:#A9B6C0; --ink-3:#7C8A95;
+  --ground:#11161A; --surface:#181E23; --surface-2:#1E262C;
+  --line:#2C363E; --line-2:#232B32;
+  --accent:#3391D0; --accent-soft:#132632;
+  --c-fob:#3391D0; --c-frt:#BC6C97; --c-duty:#DA6E1E;
+  --good:#4FB483; --warn:#D69433; --crit:#E5776B;
+  --good-bg:#12241B; --warn-bg:#241C0F; --crit-bg:#2A1614;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --ink:#E4EAEE; --ink-2:#A9B6C0; --ink-3:#7C8A95;
+  --ground:#11161A; --surface:#181E23; --surface-2:#1E262C;
+  --line:#2C363E; --line-2:#232B32;
+  --accent:#3391D0; --accent-soft:#132632;
+  --c-fob:#3391D0; --c-frt:#BC6C97; --c-duty:#DA6E1E;
+  --good:#4FB483; --warn:#D69433; --crit:#E5776B;
+  --good-bg:#12241B; --warn-bg:#241C0F; --crit-bg:#2A1614;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 56px}
+h1,h2,h3{margin:0;font-family:var(--cond);font-weight:600;text-wrap:balance}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ============ 1. PINNED VERDICT (BLUF) ============
+   Sticky, and it snaps to a compact strip on scroll — the SAP Fiori
+   dynamic-page pattern. A reader who never scrolls can still act. */
+.verdict{position:sticky;top:0;z-index:30;background:var(--surface);
+  border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.v-in{max-width:1180px;margin:0 auto;padding:16px 20px}
+.v-top{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.v-top b{color:var(--ink-2);font-weight:500}
+.v-main{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;margin-top:10px}
+.v-num{font-family:var(--mono);font-size:44px;font-weight:600;line-height:.95;
+  letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.v-num small{font-size:15px;font-weight:500;color:var(--ink-2);margin-left:5px}
+.v-lab{font-family:var(--cond);font-size:10px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.v-why{flex:1;min-width:280px;color:var(--ink-2);font-size:13.5px;max-width:56ch}
+.v-kpis{display:flex;gap:26px;flex-wrap:wrap}
+.v-k{display:flex;flex-direction:column;gap:2px}
+.v-k .n{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums}
+.v-acts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;align-items:center}
+button{font-family:var(--cond);font-size:12px;font-weight:600;letter-spacing:.05em;
+  text-transform:uppercase;border-radius:3px;padding:8px 14px;cursor:pointer;
+  border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2)}
+button:hover{color:var(--ink);border-color:var(--ink-3)}
+button.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+button.pri:hover{filter:brightness(1.08);color:#fff}
+/* snapped state */
+.verdict.snap .v-main{margin-top:6px}
+.verdict.snap .v-num{font-size:26px}
+.verdict.snap .v-why,.verdict.snap .v-acts{display:none}
+.verdict.snap .v-in{padding:9px 20px}
+
+/* ============ 2. EVIDENCE — collapsed, one line each ============ */
+.ev{background:var(--surface);border:1px solid var(--line);border-radius:5px;
+  margin-top:14px;overflow:hidden}
+.ev>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;
+  gap:14px;align-items:baseline}
+.ev>summary::-webkit-details-marker{display:none}
+.ev>summary:hover{background:var(--surface-2)}
+.ev-t{font-family:var(--cond);font-size:12px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-2);flex:none;width:150px}
+.ev-c{flex:1;font-size:13.5px;min-width:200px}
+.ev-c b{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.ev-x{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none}
+.ev[open] .ev-x::after{content:"− close"}
+.ev:not([open]) .ev-x::after{content:"+ open"}
+.ev-body{padding:2px 18px 18px;border-top:1px solid var(--line-2)}
+
+/* ============ chips / callouts ============ */
+.chip{font-family:var(--cond);font-size:9.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:2.5px 6px;border-radius:2px;white-space:nowrap}
+.c-live{background:var(--good-bg);color:var(--good)}
+.c-mock{background:var(--crit-bg);color:var(--crit)}
+.c-est{background:var(--warn-bg);color:var(--warn)}
+.c-neu{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--line)}
+.call{border-radius:4px;padding:11px 13px;font-size:13px;line-height:1.55;
+  border:1px solid;margin-top:12px}
+.call.w{background:var(--warn-bg);border-color:var(--warn)}
+.call.c{background:var(--crit-bg);border-color:var(--crit)}
+.call.g{background:var(--good-bg);border-color:var(--good)}
+.call b{font-family:var(--cond);letter-spacing:.02em}
+
+/* ============ tables — sticky head + sticky first col ============ */
+.tw{overflow:auto;max-height:none;margin:0 -18px;padding:0 18px}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+th{font-family:var(--cond);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);text-align:left;padding:6px 10px 7px 0;font-weight:600;
+  border-bottom:1px solid var(--line);white-space:nowrap;
+  position:sticky;top:0;background:var(--surface);z-index:2}
+td{padding:7px 10px 7px 0;border-bottom:1px solid var(--line-2);vertical-align:middle}
+th:first-child,td:first-child{position:sticky;left:0;background:var(--surface);z-index:1}
+th:first-child{z-index:3}
+tbody tr:hover td{background:var(--surface-2)}
+tbody tr:hover td:first-child{background:var(--surface-2)}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+tr.best td,tr.best td:first-child{background:var(--accent-soft)}
+.rank{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  border:1px solid var(--line);border-radius:2px;padding:1px 5px;margin-right:7px}
+.tag{font-family:var(--cond);font-size:9px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;background:var(--accent);color:#fff;padding:2px 5px;
+  border-radius:2px;margin-left:6px}
+.delta{color:var(--ink-3);font-size:12px}
+
+/* ============ misc ============ */
+.kv{display:flex;justify-content:space-between;gap:14px;padding:5px 0;
+  border-bottom:1px dotted var(--line-2);font-size:13px}
+.kv:last-child{border-bottom:0}
+.kv dt{color:var(--ink-2)} .kv dd{margin:0;font-family:var(--mono);
+  font-variant-numeric:tabular-nums;font-weight:500}
+dl{margin:0}
+.grid2{display:grid;gap:0 26px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.gl{stroke:var(--line-2);stroke-width:1}
+.ax{fill:var(--ink-3);font-family:var(--mono);font-size:10px}
+.dl{fill:var(--ink);font-family:var(--mono);font-size:11px;font-weight:500}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:11px;font-size:12px;color:var(--ink-2)}
+.legend span{display:flex;align-items:center;gap:6px}
+.swatch{width:9px;height:9px;border-radius:2px;display:inline-block}
+.runway{height:26px;border-radius:3px;overflow:hidden;display:flex;
+  border:1px solid var(--line);background:var(--surface-2)}
+.runway i{display:block;height:100%}
+.lev{display:grid;grid-template-columns:24px 1fr auto;gap:11px;padding:10px 0;
+  border-bottom:1px solid var(--line-2);align-items:start}
+.lev:last-child{border-bottom:0}
+.lev-n{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  border:1px solid var(--line);border-radius:3px;text-align:center;padding:1px 0}
+.lev-v{font-family:var(--mono);font-size:13.5px;font-weight:600;text-align:right;
+  white-space:nowrap;font-variant-numeric:tabular-nums}
+.foot{margin-top:20px;padding-top:14px;border-top:1px solid var(--line);
+  color:var(--ink-3);font-size:12px;line-height:1.6}
+
+/* ============ PRINT — the PAR attachment ============
+   Without these the forwarded PDF carries chrome nobody wants in an
+   approval pack. Evidence sections are forced open; controls disappear. */
+@media print{
+  body{background:#fff;color:#000;font-size:10.5pt}
+  .verdict{position:static;box-shadow:none;border-bottom:2px solid #000}
+  .verdict.snap .v-why,.verdict.snap .v-acts{display:block}
+  .verdict.snap .v-num{font-size:32px}
+  .v-acts,button,.ev-x{display:none!important}
+  .ev{border:1px solid #999;break-inside:avoid;margin-top:10px}
+  .ev>summary{padding-bottom:6px}
+  .ev-body{display:block!important}
+  details:not([open])>.ev-body{display:block!important}
+  .tw{overflow:visible;max-height:none}
+  th{position:static} td:first-child,th:first-child{position:static}
+  .call{break-inside:avoid}
+  a[href]::after{content:""}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="verdict" id="verdict"><div class="v-in" id="v-in"></div></header>
+
+<div class="wrap">
+  <div id="evidence"></div>
+  <details class="ev" id="audit">
+    <summary><span class="ev-t">Audit trail</span>
+      <span class="ev-c">Every source, its timestamp, and what kind of number it is</span>
+      <span class="ev-x"></span></summary>
+    <div class="ev-body" id="audit-body"></div>
+  </details>
+  <p class="foot" id="foot"></p>
+</div>
+
+<script id="payload" type="application/json">{"captured_at":"2026-09-06T13:24:28+00:00","destination":{"iso3":"IND","name":"India","currency":"INR","tier":"FULL","fx_source":"FBIL (India's official reference rate) via frankfurter","domestic_benchmark":"Tata Nexarc \u2014 HRC by brand/city/grade/thickness, free","missing":[]},"material":"HRC-E250A-2.0","plant":"PLANT-PUNE-1","hs6":"720810","zinc":{"cash":3995.5,"m3":3868.0,"stock":110500.0,"as_of":"2026-09-03","age_days":3.6,"source":"LME via westmetall.com (free republication of official settlement)","history":[{"d":"2026-01-02","cash":3106.0,"m3":3130.5,"stock":106325.0},{"d":"2026-01-05","cash":3128.0,"m3":3170.5,"stock":105850.0},{"d":"2026-01-06","cash":3206.5,"m3":3242.0,"stock":105775.0},{"d":"2026-01-07","cash":3165.0,"m3":3208.0,"stock":105500.0},{"d":"2026-01-08","cash":3107.0,"m3":3152.0,"stock":108000.0},{"d":"2026-01-09","cash":3101.5,"m3":3144.0,"stock":107450.0},{"d":"2026-01-12","cash":3150.0,"m3":3195.0,"stock":106800.0},{"d":"2026-01-13","cash":3259.5,"m3":3256.0,"stock":106900.0},{"d":"2026-01-14","cash":3237.5,"m3":3250.0,"stock":106725.0},{"d":"2026-01-15","cash":3288.5,"m3":3308.0,"stock":106700.0},{"d":"2026-01-16","cash":3201.5,"m3":3242.0,"stock":106525.0},{"d":"2026-01-19","cash":3184.0,"m3":3217.0,"stock":105050.0},{"d":"2026-01-20","cash":3153.0,"m3":3195.5,"stock":112300.0},{"d":"2026-01-21","cash":3152.5,"m3":3202.0,"stock":111850.0},{"d":"2026-01-22","cash":3150.5,"m3":3192.0,"stock":111700.0},{"d":"2026-01-23","cash":3221.0,"m3":3262.0,"stock":111500.0},{"d":"2026-01-26","cash":3329.0,"m3":3367.0,"stock":111325.0},{"d":"2026-01-27","cash":3293.0,"m3":3331.0,"stock":110550.0},{"d":"2026-01-28","cash":3359.0,"m3":3392.5,"stock":110375.0},{"d":"2026-01-29","cash":3487.0,"m3":3515.0,"stock":109750.0},{"d":"2026-01-30","cash":3343.5,"m3":3372.0,"stock":110000.0},{"d":"2026-02-02","cash":3372.0,"m3":3360.0,"stock":109100.0},{"d":"2026-02-03","cash":3290.0,"m3":3322.0,"stock":108975.0},{"d":"2026-02-04","cash":3333.5,"m3":3357.0,"stock":108200.0},{"d":"2026-02-05","cash":3255.0,"m3":3278.0,"stock":107800.0},{"d":"2026-02-06","cash":3290.0,"m3":3306.5,"stock":107600.0},{"d":"2026-02-09","cash":3325.5,"m3":3348.0,"stock":106925.0},{"d":"2026-02-10","cash":3342.0,"m3":3367.0,"stock":106750.0},{"d":"2026-02-11","cash":3437.0,"m3":3447.0,"stock":105250.0},{"d":"2026-02-12","cash":3396.0,"m3":3418.0,"stock":103500.0},{"d":"2026-02-13","cash":3295.0,"m3":3325.0,"stock":102225.0},{"d":"2026-02-16","cash":3256.0,"m3":3295.0,"stock":102175.0},{"d":"2026-02-17","cash":3250.0,"m3":3281.5,"stock":102025.0},{"d":"2026-02-18","cash":3277.0,"m3":3307.0,"stock":102000.0},{"d":"2026-02-19","cash":3292.0,"m3":3324.0,"stock":102000.0},{"d":"2026-02-20","cash":3309.0,"m3":3343.5,"stock":101575.0},{"d":"2026-02-23","cash":3324.0,"m3":3354.0,"stock":101550.0},{"d":"2026-02-24","cash":3351.0,"m3":3383.5,"stock":101250.0},{"d":"2026-02-25","cash":3352.0,"m3":3382.0,"stock":99825.0},{"d":"2026-02-26","cash":3342.0,"m3":3369.0,"stock":98400.0},{"d":"2026-02-27","cash":3327.0,"m3":3348.5,"stock":97350.0},{"d":"2026-03-02","cash":3354.0,"m3":3368.0,"stock":96775.0},{"d":"2026-03-03","cash":3287.0,"m3":3302.0,"stock":95375.0},{"d":"2026-03-04","cash":3282.0,"m3":3304.0,"stock":95250.0},{"d":"2026-03-05","cash":3267.0,"m3":3288.0,"stock":95000.0},{"d":"2026-03-06","cash":3238.0,"m3":3263.0,"stock":94975.0},{"d":"2026-03-09","cash":3320.0,"m3":3348.0,"stock":94800.0},{"d":"2026-03-10","cash":3334.0,"m3":3366.0,"stock":98950.0},{"d":"2026-03-11","cash":3268.0,"m3":3305.0,"stock":98900.0},{"d":"2026-03-12","cash":3264.0,"m3":3315.0,"stock":98750.0},{"d":"2026-03-13","cash":3270.0,"m3":3309.0,"stock":97900.0},{"d":"2026-03-16","cash":3240.0,"m3":3285.0,"stock":97500.0},{"d":"2026-03-17","cash":3189.0,"m3":3227.0,"stock":118375.0},{"d":"2026-03-18","cash":3124.0,"m3":3165.5,"stock":118025.0},{"d":"2026-03-19","cash":3010.0,"m3":3037.0,"stock":117850.0},{"d":"2026-03-20","cash":3065.5,"m3":3098.0,"stock":117675.0},{"d":"2026-03-23","cash":3040.0,"m3":3069.0,"stock":117175.0},{"d":"2026-03-24","cash":3037.0,"m3":3055.0,"stock":117100.0},{"d":"2026-03-25","cash":3047.0,"m3":3060.0,"stock":116475.0},{"d":"2026-03-26","cash":3077.0,"m3":3092.0,"stock":115650.0},{"d":"2026-03-27","cash":3075.0,"m3":3084.0,"stock":115375.0},{"d":"2026-03-30","cash":3161.0,"m3":3159.0,"stock":115275.0},{"d":"2026-03-31","cash":3184.5,"m3":3186.0,"stock":114500.0},{"d":"2026-04-01","cash":3237.0,"m3":3241.0,"stock":114225.0},{"d":"2026-04-02","cash":3235.0,"m3":3236.0,"stock":113950.0},{"d":"2026-04-07","cash":3320.0,"m3":3323.0,"stock":113925.0},{"d":"2026-04-08","cash":3295.0,"m3":3309.0,"stock":112325.0},{"d":"2026-04-09","cash":3256.0,"m3":3285.0,"stock":112050.0},{"d":"2026-04-10","cash":3297.0,"m3":3313.0,"stock":111925.0},{"d":"2026-04-13","cash":3304.5,"m3":3315.0,"stock":111775.0},{"d":"2026-04-14","cash":3300.0,"m3":3324.0,"stock":115925.0},{"d":"2026-04-15","cash":3362.0,"m3":3384.0,"stock":116475.0},{"d":"2026-04-16","cash":3415.0,"m3":3425.0,"stock":114750.0},{"d":"2026-04-17","cash":3439.0,"m3":3447.5,"stock":112825.0},{"d":"2026-04-20","cash":3430.0,"m3":3438.0,"stock":111000.0},{"d":"2026-04-21","cash":3438.0,"m3":3448.0,"stock":107525.0},{"d":"2026-04-22","cash":3468.0,"m3":3468.0,"stock":105850.0},{"d":"2026-04-23","cash":3446.0,"m3":3449.0,"stock":104300.0},{"d":"2026-04-24","cash":3485.0,"m3":3474.0,"stock":102825.0},{"d":"2026-04-27","cash":3444.5,"m3":3435.0,"stock":101025.0},{"d":"2026-04-28","cash":3365.0,"m3":3362.0,"stock":98225.0},{"d":"2026-04-29","cash":3331.0,"m3":3333.0,"stock":101125.0},{"d":"2026-04-30","cash":3363.0,"m3":3367.0,"stock":98650.0},{"d":"2026-05-01","cash":3349.0,"m3":3343.0,"stock":96250.0},{"d":"2026-05-05","cash":3348.0,"m3":3360.0,"stock":96250.0},{"d":"2026-05-06","cash":3402.0,"m3":3420.0,"stock":94800.0},{"d":"2026-05-07","cash":3425.0,"m3":3433.0,"stock":94425.0},{"d":"2026-05-08","cash":3417.0,"m3":3429.0,"stock":110600.0},{"d":"2026-05-11","cash":3442.0,"m3":3455.0,"stock":110300.0},{"d":"2026-05-12","cash":3498.0,"m3":3503.0,"stock":111425.0},{"d":"2026-05-13","cash":3517.0,"m3":3537.0,"stock":110275.0},{"d":"2026-05-14","cash":3596.0,"m3":3617.0,"stock":110875.0},{"d":"2026-05-15","cash":3527.0,"m3":3542.0,"stock":110750.0},{"d":"2026-05-18","cash":3529.0,"m3":3539.0,"stock":109925.0},{"d":"2026-05-19","cash":3517.0,"m3":3527.5,"stock":112500.0},{"d":"2026-05-20","cash":3519.0,"m3":3530.0,"stock":112050.0},{"d":"2026-05-21","cash":3527.5,"m3":3534.0,"stock":111250.0},{"d":"2026-05-22","cash":3544.5,"m3":3548.0,"stock":111025.0},{"d":"2026-05-26","cash":3567.0,"m3":3578.0,"stock":109950.0},{"d":"2026-05-27","cash":3516.0,"m3":3537.0,"stock":108400.0},{"d":"2026-05-28","cash":3486.0,"m3":3504.0,"stock":108325.0},{"d":"2026-05-29","cash":3549.0,"m3":3556.0,"stock":113800.0},{"d":"2026-06-01","cash":3555.0,"m3":3577.0,"stock":113300.0},{"d":"2026-06-02","cash":3612.0,"m3":3628.0,"stock":113300.0},{"d":"2026-06-03","cash":3624.5,"m3":3639.5,"stock":112525.0},{"d":"2026-06-04","cash":3564.0,"m3":3583.5,"stock":111900.0},{"d":"2026-06-05","cash":3575.0,"m3":3594.5,"stock":110950.0},{"d":"2026-06-08","cash":3519.0,"m3":3534.0,"stock":110650.0},{"d":"2026-06-09","cash":3576.0,"m3":3588.0,"stock":110400.0},{"d":"2026-06-10","cash":3486.0,"m3":3500.0,"stock":109575.0},{"d":"2026-06-11","cash":3468.0,"m3":3483.5,"stock":109475.0},{"d":"2026-06-12","cash":3557.0,"m3":3562.0,"stock":107750.0},{"d":"2026-06-15","cash":3562.0,"m3":3582.0,"stock":107150.0},{"d":"2026-06-16","cash":3550.0,"m3":3571.0,"stock":124550.0},{"d":"2026-06-17","cash":3592.0,"m3":3607.0,"stock":122375.0},{"d":"2026-06-18","cash":3565.0,"m3":3577.0,"stock":120900.0},{"d":"2026-06-19","cash":3584.5,"m3":3590.0,"stock":123775.0},{"d":"2026-06-22","cash":3612.5,"m3":3612.0,"stock":123450.0},{"d":"2026-06-23","cash":3503.0,"m3":3500.0,"stock":123150.0},{"d":"2026-06-24","cash":3437.0,"m3":3428.0,"stock":122825.0},{"d":"2026-06-25","cash":3432.0,"m3":3425.0,"stock":122400.0},{"d":"2026-06-26","cash":3460.0,"m3":3447.0,"stock":121300.0},{"d":"2026-06-29","cash":3491.0,"m3":3479.0,"stock":120525.0},{"d":"2026-06-30","cash":3565.5,"m3":3546.0,"stock":119825.0},{"d":"2026-07-01","cash":3529.0,"m3":3512.0,"stock":119200.0},{"d":"2026-07-02","cash":3475.0,"m3":3465.0,"stock":118950.0},{"d":"2026-07-03","cash":3546.0,"m3":3532.0,"stock":118675.0},{"d":"2026-07-06","cash":3599.0,"m3":3582.0,"stock":118425.0},{"d":"2026-07-07","cash":3560.0,"m3":3562.0,"stock":116350.0},{"d":"2026-07-08","cash":3529.0,"m3":3537.0,"stock":115925.0},{"d":"2026-07-09","cash":3622.0,"m3":3615.0,"stock":115525.0},{"d":"2026-07-10","cash":3602.0,"m3":3588.0,"stock":114800.0},{"d":"2026-07-13","cash":3571.0,"m3":3565.0,"stock":114275.0},{"d":"2026-07-14","cash":3589.5,"m3":3587.0,"stock":113450.0},{"d":"2026-07-15","cash":3553.5,"m3":3550.0,"stock":112450.0},{"d":"2026-07-16","cash":3591.0,"m3":3576.5,"stock":111875.0},{"d":"2026-07-17","cash":3549.0,"m3":3529.0,"stock":111725.0},{"d":"2026-07-20","cash":3575.0,"m3":3545.5,"stock":109150.0},{"d":"2026-07-21","cash":3591.0,"m3":3566.0,"stock":108500.0},{"d":"2026-07-22","cash":3614.0,"m3":3583.0,"stock":107650.0},{"d":"2026-07-23","cash":3653.0,"m3":3611.0,"stock":106075.0},{"d":"2026-07-24","cash":3633.0,"m3":3592.0,"stock":105800.0},{"d":"2026-07-27","cash":3685.5,"m3":3621.0,"stock":103725.0},{"d":"2026-07-28","cash":3631.5,"m3":3576.0,"stock":102500.0},{"d":"2026-07-29","cash":3639.0,"m3":3579.0,"stock":101800.0},{"d":"2026-07-30","cash":3662.0,"m3":3601.0,"stock":100700.0},{"d":"2026-07-31","cash":3710.5,"m3":3631.0,"stock":99800.0},{"d":"2026-08-03","cash":3751.0,"m3":3678.0,"stock":99825.0},{"d":"2026-08-04","cash":3730.0,"m3":3672.5,"stock":98650.0},{"d":"2026-08-05","cash":3737.0,"m3":3693.0,"stock":98450.0},{"d":"2026-08-06","cash":3857.0,"m3":3797.0,"stock":97475.0},{"d":"2026-08-07","cash":3785.0,"m3":3732.0,"stock":97075.0},{"d":"2026-08-10","cash":3786.0,"m3":3721.0,"stock":97125.0},{"d":"2026-08-11","cash":3822.0,"m3":3741.0,"stock":97075.0},{"d":"2026-08-12","cash":3852.0,"m3":3780.0,"stock":95350.0},{"d":"2026-08-13","cash":3806.0,"m3":3727.5,"stock":92550.0},{"d":"2026-08-14","cash":3875.0,"m3":3763.5,"stock":88000.0},{"d":"2026-08-17","cash":3855.0,"m3":3768.0,"stock":86825.0},{"d":"2026-08-18","cash":3795.0,"m3":3724.0,"stock":86525.0},{"d":"2026-08-19","cash":3750.0,"m3":3652.0,"stock":95050.0},{"d":"2026-08-20","cash":3865.5,"m3":3743.0,"stock":94400.0},{"d":"2026-08-21","cash":3980.0,"m3":3824.0,"stock":93125.0},{"d":"2026-08-24","cash":3985.0,"m3":3840.0,"stock":93250.0},{"d":"2026-08-25","cash":3987.0,"m3":3853.0,"stock":95050.0},{"d":"2026-08-26","cash":4107.0,"m3":3933.0,"stock":97325.0},{"d":"2026-08-27","cash":4107.0,"m3":3890.0,"stock":97875.0},{"d":"2026-08-28","cash":4070.0,"m3":3930.0,"stock":97950.0},{"d":"2026-09-01","cash":4115.0,"m3":3937.0,"stock":99125.0},{"d":"2026-09-02","cash":4000.0,"m3":3877.0,"stock":100525.0},{"d":"2026-09-03","cash":3995.5,"m3":3868.0,"stock":110500.0}]},"fx":{"pair":"USD/INR","value":95.5614,"as_of":"2026-08-28","age_days":9.6,"source":"FBIL via frankfurter.dev (unofficial mirror of the official benchmark)"},"hrc":{"median":59650.0,"n_rows":60,"source":"Tata Nexarc public India steel price page","note":"median of 60 listed HRC rows; indicative trade price, not a contract price","rows":[{"product":"HR Coil","grade":"E250 A","thickness_mm":"1.6","width_mm":1250,"price_inr_per_t":57800,"period":"Sep-26","brand":"JSW","city":"Mumbai"},{"product":"HR Coil","grade":"E250 A","thickness_mm":"1.8","width_mm":1250,"price_inr_per_t":56800,"period":"Sep-26","brand":"JSW","city":"Mumbai"},{"product":"HR Coil","grade":"E250 A","thickness_mm":"2.0","width_mm":1250,"price_inr_per_t":56550,"period":"Sep-26","brand":"JSW","city":"Mumbai"},{"product":"HR Coil","grade":"E250 A","thickness_mm":"2.1 - 2.9","width_mm":1250,"price_inr_per_t":55550,"period":"Sep-26","brand":"JSW","city":"Mumbai"},{"product":"HR Coil","grade":"E250 A","thickness_mm":"3 - 12","width_mm":1250,"price_inr_per_t":54800,"period":"Sep-26","brand":"JSW","city":"Mumbai"},{"product":"HR Coil","grade":"E350 A","thickness_mm":"1.6","width_mm":1250,"price_inr_per_t":61300,"period":"Sep-26","brand":"JSW","city":"Mumbai"},{"product":"HR Coil","grade":"E350 A","thickness_mm":"1.8","width_mm":1250,"price_inr_per_t":60300,"period":"Sep-26","brand":"JSW","city":"Mumbai"},{"product":"HR Coil","grade":"E350 A","thickness_mm":"2.0","width_mm":1250,"price_inr_per_t":60050,"period":"Sep-26","brand":"JSW","city":"Mumbai"},{"product":"HR Coil","grade":"E350 A","thickness_mm":"2.1 - 2.9","width_mm":1250,"price_inr_per_t":59050,"period":"Sep-26","brand":"JSW","city":"Mumbai"},{"product":"HR Coil","grade":"E350 A","thickness_mm":"3 - 12","width_mm":1250,"price_inr_per_t":58300,"period":"Sep-26","brand":"JSW","city":"Pune"},{"product":"HR Coil","grade":"E250 A","thickness_mm":"1.6","width_mm":1250,"price_inr_per_t":58950,"period":"Sep-26","brand":"","city":""},{"product":"HR Coil","grade":"E250 A","thickness_mm":"1.8","width_mm":1250,"price_inr_per_t":57950,"period":"Sep-26","brand":"","city":""},{"product":"HR Coil","grade":"E250 A","thickness_mm":"2.0","width_mm":1250,"price_inr_per_t":57700,"period":"Sep-26","brand":"","city":""},{"product":"HR Coil","grade":"E250 A","thickness_mm":"2.1 - 2.9","width_mm":1250,"price_inr_per_t":56700,"period":"Sep-26","brand":"","city":""}]},"stale_control":{"label":"COMEX zinc (ZNC=F)","value":4193.5,"age_days":16.9,"error_pct":4.96},"forecast":{"series":"ZINC.LME.CASH","spot":3995.5,"horizon_days":30,"p10":3817.67,"p50":4196.57,"p90":4607.98,"prob_up":0.748,"prob_up_gt_3pct":0.607,"prob_down_gt_3pct":0.139,"ann_vol_pct":23.52,"n_observations":170,"method":"stationary block bootstrap (block=5d) on log returns","calibration":{"walk_forward_windows":80,"nominal_coverage":0.8,"empirical_coverage":0.912,"mean_band_width_pct_of_spot":21.67,"verdict":"UNDERCONFIDENT \u2014 band too wide, forecast is uninformative"},"warnings":["Only 170 observations (~8 months). The tails of this distribution are extrapolation, not evidence. Treat P10/P90 as indicative, not as risk limits."]},"coverage":{"material_id":"HRC-E250A-2.0","plant":"PLANT-PUNE-1","usable_stock_t":430.0,"in_transit_t":210.0,"open_po_t":360.0,"safety_stock_t":160.0,"demand_next_30d_t":561.5,"firm_demand_t":425.9,"weekly_burn_t":129.2,"coverage_weeks":6.5,"net_requirement_t":0.0,"is_mock":true,"warnings":["MOCK ERP DATA \u2014 every internal figure here is synthetic. No recommendation derived from it is actionable.","45 t blocked (quality hold) excluded from coverage.","60 t consignment stock excluded \u2014 supplier-owned.","136 t of 30-day demand is FORECAST, not firm."]},"suppliers":[{"supplier_id":"SUP-DOM-01","name":"Domestic Mill A","country":"IND","approved_materials":["HRC-E250A-2.0"],"lead_time_days_p50":12,"lead_time_days_p90":21,"otif_pct":96.5,"reject_rate_pct":0.3,"annual_capacity_t":40000},{"supplier_id":"SUP-IMP-KR1","name":"Korean Mill B","country":"KOR","approved_materials":["HRC-E250A-2.0"],"lead_time_days_p50":42,"lead_time_days_p90":63,"otif_pct":91.0,"reject_rate_pct":0.6,"annual_capacity_t":120000},{"supplier_id":"SUP-IMP-JP1","name":"Japanese Mill C","country":"JPN","approved_materials":["HRC-E250A-2.0"],"lead_time_days_p50":45,"lead_time_days_p90":70,"otif_pct":94.0,"reject_rate_pct":0.2,"annual_capacity_t":90000}],"contract":{"contract_id":"CTR-2026-114","supplier_id":"SUP-DOM-01","material_id":"HRC-E250A-2.0","pricing_basis":"INDIA_HRC_MONTHLY_AVG + premium","premium_per_t":1150.0,"currency":"INR","credit_days":30,"volume_flex_pct":0.05,"index_reset":"monthly","min_order_t":100.0,"valid_to":"2027-03-31"},"sourcing":[{"origin":"JPN","name":"Japan","tonnes":1342877.499144,"fob":591.22,"duty":11.5,"freight":42.0,"landed":706.78,"lpi":3.9,"basis":"WITS/TRAINS preferential","decision_grade":false,"surcharges":[{"kind":"safeguard","pct":11.5,"to":"2027-04-20"}]},{"origin":"VNM","name":"Viet Nam","tonnes":472106.31,"fob":570.88,"duty":19.0,"freight":34.0,"landed":720.57,"lpi":3.3,"basis":"WITS/TRAINS MFN","decision_grade":true,"surcharges":[{"kind":"safeguard","pct":11.5,"to":"2027-04-20"}]},{"origin":"KOR","name":"Korea, Rep.","tonnes":1502167.794,"fob":677.12,"duty":11.5,"freight":42.0,"landed":802.67,"lpi":3.8,"basis":"WITS/TRAINS preferential","decision_grade":false,"surcharges":[{"kind":"safeguard","pct":11.5,"to":"2027-04-20"}]},{"origin":"CHN","name":"China","tonnes":937832.615924,"fob":644.92,"duty":19.0,"freight":42.0,"landed":818.3,"lpi":3.7,"basis":"WITS/TRAINS MFN","decision_grade":true,"surcharges":[{"kind":"safeguard","pct":11.5,"to":"2027-04-20"}]},{"origin":"IDN","name":"Indonesia","tonnes":4274.517,"fob":691.13,"duty":19.0,"freight":34.0,"landed":863.83,"lpi":3,"basis":"WITS/TRAINS MFN","decision_grade":true,"surcharges":[{"kind":"safeguard","pct":11.5,"to":"2027-04-20"}]},{"origin":"FRA","name":"France","tonnes":59299.264,"fob":1138.27,"duty":19.0,"freight":62.0,"landed":1429.84,"lpi":3.9,"basis":"WITS/TRAINS MFN","decision_grade":true,"surcharges":[{"kind":"safeguard","pct":11.5,"to":"2027-04-20"}]},{"origin":"BEL","name":"Belgium","tonnes":2158.408,"fob":1148.62,"duty":19.0,"freight":62.0,"landed":1442.18,"lpi":4,"basis":"WITS/TRAINS MFN","decision_grade":true,"surcharges":[{"kind":"safeguard","pct":11.5,"to":"2027-04-20"}]},{"origin":"DEU","name":"Germany","tonnes":18762.592,"fob":1410.24,"duty":19.0,"freight":62.0,"landed":1753.86,"lpi":4.1,"basis":"WITS/TRAINS MFN","decision_grade":true,"surcharges":[{"kind":"safeguard","pct":11.5,"to":"2027-04-20"}]}],"duties":[{"origin":"JPN","rate":0.0,"total":11.5,"source":"WITS/TRAINS preferential","year":2021,"stale":5,"decision_grade":false,"notes":["WITS/TRAINS MFN applied, 2023. (Unverified local override on file says 7.5% \u2014 reconcile.)","PREFERENTIAL rate applies (WITS/TRAINS bilateral record, 2021). Preference margin vs MFN: 7.50 pp. Requires a valid certificate of origin to claim."],"surcharges":[{"kind":"safeguard","pct":11.5}]},{"origin":"KOR","rate":0.0,"total":11.5,"source":"WITS/TRAINS preferential","year":2021,"stale":5,"decision_grade":false,"notes":["WITS/TRAINS MFN applied, 2023. (Unverified local override on file says 7.5% \u2014 reconcile.)","PREFERENTIAL rate applies (WITS/TRAINS bilateral record, 2021). Preference margin vs MFN: 7.50 pp. Requires a valid certificate of origin to claim."],"surcharges":[{"kind":"safeguard","pct":11.5}]},{"origin":"CHN","rate":7.5,"total":19.0,"source":"WITS/TRAINS MFN","year":2023,"stale":3,"decision_grade":true,"notes":["WITS/TRAINS MFN applied, 2023. (Unverified local override on file says 7.5% \u2014 reconcile.)","No preferential record found in WITS -> MFN applies (no trade agreement, or the agreement excludes this line)."],"surcharges":[{"kind":"safeguard","pct":11.5}]},{"origin":"VNM","rate":7.5,"total":19.0,"source":"WITS/TRAINS MFN","year":2023,"stale":3,"decision_grade":true,"notes":["WITS/TRAINS MFN applied, 2023. (Unverified local override on file says 7.5% \u2014 reconcile.)","No preferential record found in WITS -> MFN applies (no trade agreement, or the agreement excludes this line)."],"surcharges":[{"kind":"safeguard","pct":11.5}]}],"recommendation":{"recommended_commit_now_pct":100,"recommended_tonnes_now":200.0,"recommended_tonnes_deferred":0.0,"confidence":"low","options":[{"commit_now_pct":0,"tonnes_now":0.0,"tonnes_deferred":200.0,"expected_cost_inr":12789357.0,"cvar95_inr":14805391.0,"objective":17971244.0,"expected_stockout_cost_inr":223214.0},{"commit_now_pct":25,"tonnes_now":50.0,"tonnes_deferred":150.0,"expected_cost_inr":12608837.0,"cvar95_inr":14120863.0,"objective":17551139.0,"expected_stockout_cost_inr":167411.0},{"commit_now_pct":50,"tonnes_now":100.0,"tonnes_deferred":100.0,"expected_cost_inr":12428317.0,"cvar95_inr":13436334.0,"objective":17131034.0,"expected_stockout_cost_inr":111607.0},{"commit_now_pct":75,"tonnes_now":150.0,"tonnes_deferred":50.0,"expected_cost_inr":12247797.0,"cvar95_inr":12751805.0,"objective":16710929.0,"expected_stockout_cost_inr":55804.0},{"commit_now_pct":100,"tonnes_now":200.0,"tonnes_deferred":0.0,"expected_cost_inr":12067277.0,"cvar95_inr":12067277.0,"objective":16290824.0,"expected_stockout_cost_inr":0.0}],"prob_price_rises":0.748,"prob_rise_gt_3pct":0.607,"prob_fall_gt_3pct":0.139,"expected_regret_of_waiting_inr":722080.0,"expected_regret_of_buying_all_inr":0.0,"coverage_weeks_now":6.5,"coverage_weeks_if_deferred":2.2,"policy_min_coverage_weeks":4.0,"coverage_policy_breached_if_deferred":true,"binding_constraint":"production coverage policy"},"negotiation":{"supplier":"Domestic Mill A","spend":437760000.0,"price":60800.0,"benchmark":59650.0,"premium":1150.0,"premium_pct":1.9279128248113997,"batna":"Japan (import)","batna_cost":67540.886292,"batna_credible":true,"share_of_wallet":18.0,"levers":[{"name":"Credit terms 30d -> 60d","value":3238224.6575342463,"basis":"30 extra days x 9.0% WACC on Rs 437,760,000","certainty":"high","their_cost":"low","ask":"Move to 60-day payment terms on the annual volume."},{"name":"Seller absorbs demurrage from documentary delay","value":null,"basis":"price from your own demurrage claim history \u2014 no market proxy exists","certainty":"needs-internal-data","their_cost":"low","ask":"Seller bears demurrage where the cause is late or incorrect documentation."},{"name":"Volume flexibility +/-10%","value":4118446.08,"basis":"optionality on 10% of spend at 23.5% vol, haircut to 40% of intrinsic","certainty":"medium","their_cost":"medium","ask":"Widen the volume band to +/-10% without price penalty."}],"points":["You are paying Rs 1,150/t (+1.9%) ABOVE the current market benchmark. On 7,200 t/yr that is Rs 8,280,000. Open with this.","No cheaper credible alternative found (Japan (import) is Rs 6,741/t more expensive). Your leverage is weak on price; concentrate entirely on terms.","RECONCILE THESE TWO: you are above the DOMESTIC index but the IMPORT alternative is still dearer. So the Rs 1,150/t premium is real but not a walk-away threat. Use it to justify a terms package, not a price ultimatum \u2014 and be ready for them to point out the same thing."],"warnings":["Coverage figures are MOCK ERP data. Do not take this brief into a real negotiation until the ERP feed is live."]},"basis":{"commodity":"ZINC_SHG","available":true,"exchanges_compared":["LME","MCX"],"lme_cash_usd_t":3995.5,"lme_3m_usd_t":3868.0,"lme_curve_spread_cash_minus_3m":127.5,"lme_curve_state":"BACKWARDATION","lme_warehouse_stock_t":110500.0,"lme_observed_at":"2026-09-03","mcx_spot_inr_kg":418.5,"mcx_spot_inr_t":418500.0,"mcx_observed_at":"2026-09-04","mcx_age_days":2.6,"landed_lme_parity_inr_kg":430.13,"landed_lme_parity_inr_t":430133.0,"basis_inr_kg":-11.63,"basis_spread_pct":-2.7,"verdict":"TOO_CLOSE_TO_CALL","verdict_reason":"Basis of -2.7% is inside the +/-4% error band of the freight estimate and the unmodelled physical premium. Not a sourcing signal. Get a forwarder quote and a supplier premium before acting on it.","assumptions":{"ocean_freight_usd_t":45.0,"duty_pct":10.5,"port_inland_inr_t":3000.0,"physical_premium":"NOT MODELLED"},"audit_trail":"LME cash $3,995.50/t (as of 2026-09-03) lands at Rs 430.13/kg incl 10.5% duty. MCX front-month Rs 418.50/kg (as of 2026-09-04). Basis -2.70%. Basis of -2.7% is inside the +/-4% error band of the freight estimate and the unmodelled physical premium. Not a sourcing signal. Get a forwarder quote and a supplier premium before acting on it."},"provenance":[{"item":"LME zinc cash / 3M / stock","status":"live","cost":"free","source":"westmetall.com (republished LME settlement)"},{"item":"India HR Coil by brand/city/grade","status":"live","cost":"free","source":"Tata Nexarc"},{"item":"USD/INR reference rate","status":"live","cost":"free","source":"FBIL via frankfurter.dev"},{"item":"Import flows by partner country","status":"live","cost":"free","source":"UN Comtrade (preview endpoint, no key)"},{"item":"MFN + FTA preferential tariffs","status":"live","cost":"free","source":"WITS / UNCTAD TRAINS"},{"item":"Logistics performance","status":"live","cost":"free","source":"World Bank LPI"},{"item":"Safeguard / AIDC surcharges","status":"manual","cost":"human","source":"DGTR / CBIC \u2014 hand-maintained, India only"},{"item":"Ocean freight","status":"estimate","cost":"n/a","source":"region-pair table \u2014 no free API prices arbitrary lanes"},{"item":"Intraday ticks","status":"simulated","cost":"Rs 0-500/mo live","source":"Angel One SmartAPI / Kite \u2014 needs a broker account"},{"item":"Inventory, demand, open POs, suppliers","status":"mock","cost":"ERP integration","source":"MockERP \u2014 synthetic"}]}</script>
+<script>
+const D = JSON.parse(document.getElementById('payload').textContent);
+const $ = id => document.getElementById(id);
+const money = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const usd = n => '$' + n.toLocaleString('en-US',{maximumFractionDigits:0});
+const t1 = n => n.toLocaleString('en-IN',{maximumFractionDigits:1});
+const R = D.recommendation, F = D.forecast, C = D.coverage, Z = D.zinc,
+      S = D.sourcing, N = D.negotiation, B = D.basis || {};
+
+/* ---------- 1. PINNED VERDICT ---------- */
+$('v-in').innerHTML = `
+  <div class="v-top">
+    <b>${D.material}</b> · ${D.plant} · ${D.destination.name} (tier ${D.destination.tier})
+    · HS ${D.hs6}
+    <span style="flex:1"></span>
+    <span>Snapshot ${D.captured_at.replace('T',' ').replace('+00:00',' UTC')}</span>
+  </div>
+  <div class="v-main">
+    <div>
+      <div class="v-lab">Recommended action · 30 days</div>
+      <div class="v-num">${R.recommended_commit_now_pct}%<small>commit now</small></div>
+    </div>
+    <div class="v-kpis">
+      <div class="v-k"><span class="v-lab">Tonnes now</span><span class="n">${t1(R.recommended_tonnes_now)} t</span></div>
+      <div class="v-k"><span class="v-lab">Coverage</span><span class="n">${C.coverage_weeks} wk</span></div>
+      <div class="v-k"><span class="v-lab">P(price rises)</span><span class="n">${(R.prob_price_rises*100).toFixed(0)}%</span></div>
+      <div class="v-k"><span class="v-lab">Regret of waiting</span><span class="n">${money(R.expected_regret_of_waiting_inr)}</span></div>
+      <div class="v-k"><span class="v-lab">Confidence</span><span class="n" style="color:var(--crit)">${R.confidence.toUpperCase()}</span></div>
+    </div>
+    <div class="v-why">Binding constraint is <b>${R.binding_constraint}</b>, not price.
+      Coverage falls to ${R.coverage_weeks_if_deferred} wk against a
+      ${R.policy_min_coverage_weeks} wk policy floor if fully deferred.
+      <b style="color:var(--crit)">Inventory figures are mock</b> — this recommendation
+      is not yet actionable.</div>
+  </div>
+  <div class="v-acts">
+    <button class="pri" type="button" onclick="openAll()">Expand all evidence</button>
+    <button type="button" onclick="window.print()">Print for approval pack</button>
+    <button type="button" onclick="toggleTheme()">Theme</button>
+    <span style="font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:4px">
+      Evidence below is collapsed by design — open only what you want to check.</span>
+  </div>`;
+
+/* snap the header once the reader scrolls past it */
+const vEl = $('verdict');
+addEventListener('scroll', () => vEl.classList.toggle('snap', scrollY > 90), {passive:true});
+function openAll(){ document.querySelectorAll('details.ev').forEach(d => d.open = true); }
+function toggleTheme(){
+  const r = document.documentElement;
+  const dark = r.getAttribute('data-theme')==='dark' ||
+    (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme:dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light':'dark'); drawAll();
+}
+const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+/* ---------- 2. EVIDENCE, collapsed ---------- */
+const best = S[0], worst = S[S.length-1];
+const parts = [['Usable stock',C.usable_stock_t,'var(--c-fob)'],
+               ['In transit',C.in_transit_t,'var(--c-frt)'],
+               ['Open POs',C.open_po_t,'var(--c-duty)']];
+const supply = parts.reduce((a,p)=>a+p[1],0);
+const basisLine = B.available
+  ? `Basis <b>${B.basis_spread_pct > 0 ? '+' : ''}${B.basis_spread_pct}%</b> — <b>${B.verdict}</b>`
+  : `Unavailable — ${B.reason || 'no verdict offered'}`;
+
+function ev(id,title,concl,body){ return `
+  <details class="ev" id="${id}"><summary>
+    <span class="ev-t">${title}</span><span class="ev-c">${concl}</span>
+    <span class="ev-x"></span></summary>
+    <div class="ev-body">${body}</div></details>`; }
+
+$('evidence').innerHTML =
+ev('e-cov','Coverage',
+   `<b>${C.coverage_weeks} wk</b> on hand · <b>${t1(C.demand_next_30d_t)} t</b> demand in 30d ·
+    binding constraint <b>${R.binding_constraint}</b>`,
+   `<div class="runway">${parts.map(p=>`<i style="width:${p[1]/supply*100}%;background:${p[2]}"></i>`).join('')}</div>
+    <div class="legend">${parts.map(p=>`<span><i class="swatch" style="background:${p[2]}"></i>${p[0]} <b class="num">${t1(p[1])} t</b></span>`).join('')}
+      <span style="color:var(--ink-3)">Excluded: blocked 45 t · consignment 60 t</span></div>
+    <div class="grid2" style="margin-top:12px">
+      <dl><div class="kv"><dt>Weekly burn</dt><dd>${t1(C.weekly_burn_t)} t</dd></div>
+          <div class="kv"><dt>Safety floor</dt><dd>${t1(C.safety_stock_t)} t</dd></div></dl>
+      <dl><div class="kv"><dt>Demand 30d</dt><dd>${t1(C.demand_next_30d_t)} t</dd></div>
+          <div class="kv"><dt>of which firm</dt><dd>${t1(C.firm_demand_t)} t</dd></div></dl>
+      <dl><div class="kv"><dt>Net requirement</dt><dd>${t1(C.net_requirement_t)} t</dd></div>
+          <div class="kv"><dt>Coverage if deferred</dt><dd>${R.coverage_weeks_if_deferred} wk</dd></div></dl>
+    </div>
+    <div class="call c"><b>Every figure here is synthetic.</b> It is also what produced the
+      recommendation — the binding constraint is coverage, not price. Connecting the ERP is
+      what makes this a procurement agent rather than a market dashboard.</div>`)
++
+ev('e-src','Sourcing',
+   `<b>${best.name}</b> cheapest at <b>${usd(best.landed)}/t</b> landed ·
+    ${S.length} origins ranked · spread <b>${usd(worst.landed-best.landed)}/t</b>`,
+   `<div id="chart-src"></div>
+    <div class="legend">
+      <span><i class="swatch" style="background:var(--c-fob)"></i>FOB</span>
+      <span><i class="swatch" style="background:var(--c-frt)"></i>Freight</span>
+      <span><i class="swatch" style="background:var(--c-duty)"></i>Duty</span></div>
+    <div class="tw" style="margin-top:12px"><table>
+      <thead><tr><th>Origin</th><th class="n">Proven t</th><th class="n">FOB</th>
+        <th class="n">Duty</th><th class="n">Landed</th><th class="n">vs best</th>
+        <th class="n">LPI</th><th>Tariff basis</th></tr></thead>
+      <tbody>${S.map((r,i)=>{
+        const d = (r.landed-best.landed)/best.landed*100;
+        return `<tr class="${i===0?'best':''}">
+        <td><span class="rank">${i+1}</span><b>${r.name}</b>${i===0?'<span class="tag">Best value</span>':''}</td>
+        <td class="n">${Math.round(r.tonnes).toLocaleString('en-US')}</td>
+        <td class="n">${usd(r.fob)}</td><td class="n">${r.duty.toFixed(1)}%</td>
+        <td class="n"><b>${usd(r.landed)}</b></td>
+        <td class="n delta">${i===0?'—':'+'+d.toFixed(1)+'%'}</td>
+        <td class="n">${r.lpi ?? '—'}</td>
+        <td style="color:var(--ink-2);font-size:12px">${r.basis.replace('WITS/TRAINS ','')}</td></tr>`;}).join('')}
+      </tbody></table></div>
+    <div class="call g"><b>${best.name} wins on both legs.</b> Lowest FOB and a 0% preferential
+      rate, while origins without an agreement pay MFN plus the 11.5% DGTR safeguard in force
+      to ${(S.find(x=>x.surcharges.length)||{surcharges:[{}]}).surcharges[0].to}.
+      A preferential rate needs a valid certificate of origin — this reports the rate, it
+      cannot certify eligibility.</div>`)
++
+ev('e-mkt','Market',
+   `LME zinc <b>${usd(Z.cash)}/t</b> · ${Z.cash>Z.m3?'backwardation':'contango'}
+    <b>${usd(Math.abs(Z.cash-Z.m3))}</b> · ${basisLine}`,
+   `<div class="grid2" style="margin-bottom:10px">
+      <dl><div class="kv"><dt>Cash</dt><dd>${usd(Z.cash)}/t</dd></div>
+          <div class="kv"><dt>3-month</dt><dd>${usd(Z.m3)}/t</dd></div></dl>
+      <dl><div class="kv"><dt>Curve</dt><dd>${Z.cash>Z.m3?'+':''}${usd(Z.cash-Z.m3).replace('$','')}</dd></div>
+          <div class="kv"><dt>Warehouse stock</dt><dd>${Z.stock.toLocaleString('en-US')} t</dd></div></dl>
+      ${B.available?`<dl><div class="kv"><dt>MCX front-month</dt><dd>₹${B.mcx_spot_inr_kg}/kg</dd></div>
+          <div class="kv"><dt>Import parity</dt><dd>₹${B.landed_lme_parity_inr_kg}/kg</dd></div></dl>`:''}
+    </div>
+    <div id="chart-zinc"></div>
+    <div class="legend">
+      <span><svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="var(--c-fob)" stroke-width="2"/></svg>Cash settlement</span>
+      <span><svg width="22" height="10" aria-hidden="true"><rect x="1" y="1" width="20" height="8" fill="var(--c-fob)" opacity=".18"/></svg>P10–P90, 30d</span>
+      <span style="color:var(--ink-3)">${Z.source} · ${Z.as_of}</span></div>
+    ${B.available?`<div class="call ${B.verdict==='TOO_CLOSE_TO_CALL'?'w':'g'}">
+      <b>${B.verdict.replace(/_/g,' ')}.</b> ${B.verdict_reason}</div>`:''}
+    <div class="call c"><b>Forecast calibration: ${F.calibration.verdict}.</b>
+      Over ${F.calibration.walk_forward_windows} rolling windows the stated 80% band covered
+      <b>${(F.calibration.empirical_coverage*100).toFixed(1)}%</b> of outcomes and spans
+      <b>±${(F.calibration.mean_band_width_pct_of_spot/2).toFixed(1)}%</b> of spot. Too wide
+      to trade on. Shown because it reports its own limits, not because it is actionable.</div>`)
++
+ev('e-neg','Negotiation',
+   `<b>${N.supplier}</b> · <b>${N.premium_pct>0?'+':''}${N.premium_pct.toFixed(1)}%</b> vs benchmark ·
+    <b>${money(N.levers.filter(l=>l.value).reduce((a,l)=>a+l.value,0))}/yr</b> on the table`,
+   `<div class="grid2" style="margin-bottom:10px">
+      <dl><div class="kv"><dt>Annual spend</dt><dd>${money(N.spend)}</dd></div>
+          <div class="kv"><dt>Contract price</dt><dd>${money(N.price)}/t</dd></div></dl>
+      <dl><div class="kv"><dt>Benchmark</dt><dd>${money(N.benchmark)}/t</dd></div>
+          <div class="kv"><dt>Share of capacity</dt><dd>${N.share_of_wallet.toFixed(0)}%</dd></div></dl>
+    </div>
+    <div style="font-family:var(--cond);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px">Ask in this order — cheapest for them first</div>
+    ${N.levers.map((l,i)=>`<div class="lev"><div class="lev-n">${i+1}</div>
+      <div><div style="font-weight:600;font-size:13px">${l.name}</div>
+        <div style="color:var(--ink-2);font-size:12px;margin-top:2px">Their cost: ${l.their_cost} · certainty: ${l.certainty}</div>
+        <div style="color:var(--ink-2);font-size:12.5px;margin-top:4px;font-style:italic">“${l.ask}”</div></div>
+      <div class="lev-v">${l.value?money(l.value)+'<span style="font-size:10px;color:var(--ink-3)">/yr</span>':'<span style="color:var(--ink-3);font-size:12px">unpriced</span>'}</div>
+    </div>`).join('')}
+    <div class="call w"><b>The demurrage lever is deliberately unpriced.</b> It needs your own
+      claim history and no market proxy exists, so the system leaves it blank rather than
+      inventing a number. It also cannot predict what the supplier will accept — no dataset
+      of rejected offers exists.</div>`);
+
+/* ---------- audit trail (level 2) ---------- */
+const chipFor = s => s==='live'?'c-live':s==='mock'?'c-mock':
+  (['estimate','simulated','manual'].includes(s)?'c-est':'c-neu');
+$('audit-body').innerHTML = `
+  <div class="tw"><table>
+    <thead><tr><th>Input</th><th>Status</th><th>Cost</th><th>Source</th></tr></thead>
+    <tbody>${D.provenance.map(p=>`<tr><td>${p.item}</td>
+      <td><span class="chip ${chipFor(p.status)}">${p.status}</span></td>
+      <td class="num" style="font-size:12px">${p.cost}</td>
+      <td style="color:var(--ink-2);font-size:12.5px">${p.source}</td></tr>`).join('')}
+    </tbody></table></div>
+  <div class="call c"><b>${D.stale_control.label} is a deliberate negative control.</b>
+    It reports ${usd(D.stale_control.value)}/t — confident-looking, last traded
+    <b>${D.stale_control.age_days.toFixed(0)} days ago</b>, and
+    <b>${D.stale_control.error_pct}% wrong</b>. Every observation here carries its own
+    timestamp and flags itself stale past three days.</div>
+  ${B.available && B.assumptions ? `<div class="call w"><b>Assumptions behind the basis.</b>
+    Freight ${usd(B.assumptions.ocean_freight_usd_t)}/t (estimate), duty
+    ${B.assumptions.duty_pct}%, port+inland ${money(B.assumptions.port_inland_inr_t)}/t,
+    physical premium ${B.assumptions.physical_premium}. A basis inside ±4% sits within
+    these assumptions and returns no verdict.</div>`:''}`;
+
+$('foot').innerHTML = `Destination <b>${D.destination.name}</b> is tier
+  <b>${D.destination.tier}</b>. ${D.destination.missing?.length ?
+  'Cannot: '+D.destination.missing.join('; ')+'.' :
+  'Full free data stack — the only destination for which that is true.'}
+  Country ranking and tariff resolution work anywhere; the domestic benchmark does not.
+  Snapshot, not a live feed.`;
+
+/* ---------- charts ---------- */
+function drawSrc(){
+  const el=$('chart-src'); if(!el||!el.offsetParent) return;
+  const rows=S.slice(0,6), W=560, rowH=29, m={t:6,r:76,b:18,l:92};
+  const Hh=m.t+rows.length*rowH+m.b, iw=W-m.l-m.r;
+  const max=Math.max(...rows.map(r=>r.landed))*1.04, X=v=>(v/max)*iw;
+  const cF=cssv('--c-fob'),cR=cssv('--c-frt'),cD=cssv('--c-duty');
+  let b='';
+  rows.forEach((r,i)=>{
+    const y=m.t+i*rowH+5,h=17,duty=r.landed-r.fob-r.freight;
+    let x=m.l;
+    [[r.fob,cF,'FOB'],[r.freight,cR,'Freight'],[duty,cD,'Duty']].forEach(([v,c,lab],k)=>{
+      b+=`<rect x="${x.toFixed(1)}" y="${y}" width="${Math.max(0,X(v)-(k<2?2:0)).toFixed(1)}" height="${h}" fill="${c}"${k===2?' rx="3"':''}><title>${r.name} — ${lab} ${usd(v)}/t</title></rect>`;
+      x+=X(v);
+    });
+    b+=`<text class="ax" x="${m.l-8}" y="${y+13}" text-anchor="end" style="font-size:11px;fill:var(--ink)">${r.name}</text>`;
+    b+=`<text class="dl" x="${(m.l+X(r.landed)+7).toFixed(1)}" y="${y+13}">${usd(r.landed)}</text>`;
+  });
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${Hh}" role="img" aria-label="Landed cost per tonne by source country, split into FOB, freight and duty">${b}<text class="ax" x="${m.l}" y="${Hh-3}">0</text><text class="ax" x="${m.l+iw}" y="${Hh-3}" text-anchor="end">${usd(max)}/t</text></svg>`;
+}
+function drawZinc(){
+  const el=$('chart-zinc'); if(!el||!el.offsetParent) return;
+  const H=Z.history, W=660, Hh=210, m={t:12,r:58,b:22,l:52};
+  const iw=W-m.l-m.r, ih=Hh-m.t-m.b, nH=H.length, nF=F.horizon_days;
+  const vals=H.map(d=>d.cash).concat([F.p10,F.p90]);
+  let lo=Math.min(...vals),hi=Math.max(...vals); const pad=(hi-lo)*.08; lo-=pad; hi+=pad;
+  const X=i=>m.l+(i/(nH+nF-1))*iw, Y=v=>m.t+ih-((v-lo)/(hi-lo))*ih;
+  const acc=cssv('--c-fob'), l2=cssv('--line-2');
+  let g='';
+  for(let i=0;i<=4;i++){ const v=lo+(hi-lo)*i/4, y=Y(v);
+    g+=`<line class="gl" x1="${m.l}" y1="${y.toFixed(1)}" x2="${m.l+iw}" y2="${y.toFixed(1)}"/>`;
+    g+=`<text class="ax" x="${m.l-8}" y="${(y+3.5).toFixed(1)}" text-anchor="end">${Math.round(v).toLocaleString('en-US')}</text>`; }
+  const path=H.map((d,i)=>`${i?'L':'M'}${X(i).toFixed(1)},${Y(d.cash).toFixed(1)}`).join('');
+  const last=nH-1, ex=X(nH+nF-1);
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${Hh}" role="img" aria-label="LME zinc cash over ${nH} days with a 30-day forecast band from ${usd(F.p10)} to ${usd(F.p90)} per tonne">
+    ${g}<path d="M${X(last).toFixed(1)},${Y(Z.cash).toFixed(1)} L${ex.toFixed(1)},${Y(F.p90).toFixed(1)} L${ex.toFixed(1)},${Y(F.p10).toFixed(1)} Z" fill="${acc}" opacity=".18"/>
+    <path d="M${X(last).toFixed(1)},${Y(Z.cash).toFixed(1)} L${ex.toFixed(1)},${Y(F.p50).toFixed(1)}" fill="none" stroke="${acc}" stroke-width="1.5" stroke-dasharray="4 3" opacity=".75"/>
+    <path d="${path}" fill="none" stroke="${acc}" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="${X(last).toFixed(1)}" y1="${m.t}" x2="${X(last).toFixed(1)}" y2="${m.t+ih}" stroke="${l2}" stroke-dasharray="2 3"/>
+    <circle cx="${X(last).toFixed(1)}" cy="${Y(Z.cash).toFixed(1)}" r="3.5" fill="${acc}"/>
+    <text class="dl" x="${(ex+6).toFixed(1)}" y="${(Y(F.p90)+4).toFixed(1)}">${usd(F.p90)}</text>
+    <text class="dl" x="${(ex+6).toFixed(1)}" y="${(Y(F.p50)+4).toFixed(1)}">${usd(F.p50)}</text>
+    <text class="dl" x="${(ex+6).toFixed(1)}" y="${(Y(F.p10)+4).toFixed(1)}">${usd(F.p10)}</text>
+    <text class="ax" x="${m.l}" y="${Hh-4}">${H[0].d}</text>
+    <text class="ax" x="${m.l+iw}" y="${Hh-4}" text-anchor="end">+30d</text></svg>`;
+}
+function drawAll(){ drawSrc(); drawZinc(); }
+document.querySelectorAll('details.ev').forEach(d =>
+  d.addEventListener('toggle', () => { if(d.open) drawAll(); }));
+addEventListener('beforeprint', () => { openAll(); drawAll(); });
+addEventListener('resize', drawAll);
+matchMedia('(prefers-color-scheme:dark)').addEventListener('change', drawAll);
+drawAll();
+</script>

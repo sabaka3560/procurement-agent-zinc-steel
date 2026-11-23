@@ -1,0 +1,127 @@
+// Uses isolated synthetic fixture :8878, never the real market server.
+const assert=require('node:assert/strict');
+const path=require('node:path');
+const os=require('node:os');
+const {chromium}=require(process.argv[2] || 'playwright');
+(async()=>{
+ const browser=await chromium.launch({headless:true,channel:'msedge'});
+ try {
+  const page=await browser.newPage({viewport:{width:1440,height:1100},reducedMotion:'reduce'});
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  let requests=0;page.on('request',r=>{if(r.url().endsWith('/api/procurement/recommend'))requests++;});
+  await page.goto(process.argv[3] || 'http://127.0.0.1:8878');
+  if(process.argv[3]) {
+   await page.waitForFunction(()=>document.querySelectorAll('#preferred option').length>10);
+   assert.doesNotMatch(await page.locator('#feed').innerText(),/Unavailable/);
+   assert.match(await page.locator('#feed').innerText(),/Stale/);
+   await page.click('#demo-button');
+   await page.waitForSelector('#results:not([hidden])',{timeout:240000});
+   assert.match(await page.locator('#decision').innerText(),/Hindustan Zinc/);
+   assert.match(await page.locator('#decision').innerText(),/DEMO INVENTORY/);
+   await page.screenshot({path:path.join(os.tmpdir(),'decision-live-desktop.png'),fullPage:true});
+   assert.deepEqual(errors,[]);
+   console.log('PASS: real server market slots populated, stale FX disclosed, live-source inventory demo rendered; screenshot decision-live-desktop.png');
+   return;
+  }
+  await page.waitForFunction(()=>document.querySelectorAll('#preferred option').length>10);
+  assert.match(await page.locator('#feed').innerText(),/3,000/);
+  assert.doesNotMatch(await page.locator('#feed').innerText(),/Unavailable/);
+  await page.screenshot({path:path.join(os.tmpdir(),'decision-desktop-inputs.png'),fullPage:true});
+  await page.click('#demo-button');
+  await page.waitForSelector('#progress-market[data-state="done"]');
+  assert.equal(await page.locator('#request-status').isVisible(),true);
+  assert.equal(await page.locator('#progress-countries').getAttribute('data-state'),'running');
+  assert.match(await page.locator('#request-status').innerText(),/historical|Historical/);
+  assert.match(await page.locator('#request-elapsed').innerText(),/elapsed/);
+  await page.screenshot({path:path.join(os.tmpdir(),'decision-progress.png'),fullPage:true});
+  await page.waitForSelector('#results:not([hidden])');
+  assert.match(await page.locator('#decision').innerText(),/DEMO INVENTORY/);
+  assert.match(await page.locator('#decision').innerText(),/450 t → 90 t/);
+  assert.match(await page.locator('#decision').innerText(),/Hindustan Zinc/);
+  assert.equal(await page.locator('#timing-table tbody tr').count(),4);
+  assert.equal(await page.locator('#country-table tbody tr').count(),3);
+  assert.match(await page.locator('#supplier-content').innerText(),/No current discount verified/);
+  assert.equal(await page.locator('#timing-table .source-jump').count(),4);
+  await page.locator('#timing-table .source-jump').nth(1).click();
+  assert.equal(await page.locator('#prediction-sources').getAttribute('open'),'');
+  assert.match(await page.locator('#source-model').innerText(),/8,000/);
+  assert.match(await page.locator('#source-history a').getAttribute('href'),/westmetall/);
+  await page.locator('#prediction-sources > summary').click();
+  await page.screenshot({path:path.join(os.tmpdir(),'decision-desktop-results.png'),fullPage:true});
+  await page.click('#input-panel > summary');
+  await page.selectOption('#material','STEEL_HRC');
+  assert.equal(await page.locator('#results').isVisible(),false);
+  await page.fill('#stock','2000');
+  await page.click('#analyze-button');
+  await page.waitForSelector('#results:not([hidden])');
+  await page.locator('.country-tab').filter({hasText:'India'}).click();
+  assert.equal(await page.locator('.supplier-table tbody tr').count(),3);
+  assert.match(await page.locator('#supplier-content').innerText(),/Domestic Mill A/);
+  await page.selectOption('#supplier-country','SGP');
+  assert.ok(await page.locator('.supplier-table tbody tr').count()>=4);
+  assert.match(await page.locator('#supplier-content').innerText(),/Indo-Asia/);
+  assert.match(await page.locator('#supplier-content').innerText(),/acceptance of this order is NOT confirmed/);
+  await page.selectOption('#supplier-country','FIN');
+  assert.ok(await page.locator('.supplier-table tbody tr').count()>=3);
+  assert.match(await page.locator('#supplier-content').innerText(),/SSAB/);
+  await page.locator('summary').filter({hasText:'Worldwide reported country / area rates'}).click();
+  assert.match(await page.locator('#worldwide-rates').innerText(),/Argentina/);
+  assert.match(await page.locator('#worldwide-rates').innerText(),/Outside current tariff registry/);
+  await page.locator('summary').filter({hasText:'Worldwide reported country / area rates'}).click();
+  await page.locator('.country-tab').filter({hasText:'Japan'}).click();
+  assert.equal(await page.locator('.supplier-table tbody tr').count(),3);
+  // Preference outside top-three is retained without duplication.
+  await page.click('#input-panel > summary');
+  await page.selectOption('#preferred','ESP');
+  await page.click('#analyze-button');
+  await page.waitForSelector('#results:not([hidden])');
+  assert.equal(await page.locator('#country-table tbody tr').count(),4);
+  assert.match(await page.locator('#country-table').innerText(),/Spain/);
+  await page.locator('.country-tab').filter({hasText:'Spain'}).click();
+  assert.equal(await page.locator('.supplier-table tbody tr').count(),3);
+  assert.match(await page.locator('#supplier-content').innerText(),/ArcelorMittal/);
+  await page.click('#input-panel > summary');
+  await page.selectOption('#material','ZINC_SHG');
+  await page.click('#analyze-button');
+  await page.waitForSelector('#results:not([hidden])');
+  await page.locator('.country-tab').filter({hasText:'Spain'}).click();
+  assert.equal(await page.locator('.supplier-table tbody tr').count(),3);
+  await page.selectOption('#supplier-country','ESP');
+  assert.match(await page.locator('#supplier-content').innerText(),/Asturiana de Zinc/);
+  await page.selectOption('#supplier-country','FIN');
+  assert.equal(await page.locator('.supplier-table tbody tr').count(),1);
+  assert.match(await page.locator('#supplier-content').innerText(),/Boliden Kokkola/);
+  await page.selectOption('#supplier-country','SGP');
+  assert.equal(await page.locator('.supplier-table tbody tr').count(),2);
+  assert.match(await page.locator('#supplier-content').innerText(),/G-Steelmet/);
+  // Automatic input monitoring triggers once after a breach; no order endpoint.
+  await page.click('#input-panel > summary');
+  await page.check('#auto-review');
+  const before=requests;
+  await page.fill('#stock','90');
+  await page.waitForSelector('#results:not([hidden])');
+  assert.equal(requests,before+1);
+  assert.match(await page.locator('#decision').innerText(),/MANUAL SAMPLE INPUTS/);
+  // Failure clears prior advice and keeps retry available.
+  await page.click('#input-panel > summary');
+  await page.uncheck('#auto-review');
+  await page.route('**/api/procurement/recommend',route=>route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({message:'TEST SOURCE OUTAGE'})}));
+  await page.click('#analyze-button');
+  await page.waitForSelector('#error:not([hidden])');
+  assert.match(await page.locator('#error').innerText(),/TEST SOURCE OUTAGE/);
+  assert.equal(await page.locator('#results').isVisible(),false);
+  await page.unroute('**/api/procurement/recommend');
+  for(const width of [390,768,1024]) {
+   await page.setViewportSize({width,height:900});
+   await page.evaluate(()=>document.getElementById('input-panel').open=true);
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`Input overflow at ${width}`);
+   await page.click('#demo-button');
+   await page.waitForSelector('#results:not([hidden])');
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`Result overflow at ${width}`);
+   if(width===390)await page.screenshot({path:path.join(os.tmpdir(),'decision-mobile.png'),fullPage:true});
+  }
+  assert.deepEqual(errors,[]);
+  console.log('PASS: canonical real-feed slots, inventory demo isolation, timing rows, countries + preference, 3 suppliers per researched steel country, discount disclosure, auto trigger, error recovery, and 390/768/1024 responsive layouts.');
+  console.log('Screenshots in '+os.tmpdir()+' / decision-*.png');
+ } finally {await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

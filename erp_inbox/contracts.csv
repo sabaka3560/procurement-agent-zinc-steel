@@ -1,0 +1,2 @@
+contract_id,supplier_id,material_id,pricing_basis,premium_per_t,currency,credit_days,volume_flex_pct,index_reset,min_order_t,valid_to
+CTR-2026-114,SUP-DOM-01,HRC-E250A-2.0,INDIA_HRC_MONTHLY_AVG + premium,1150.0,INR,30,0.05,monthly,100.0,2027-03-31

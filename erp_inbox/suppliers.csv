@@ -1,0 +1,3 @@
+supplier_id,name,country,approved_materials,lead_time_days_p50,lead_time_days_p90,otif_pct,reject_rate_pct,annual_capacity_t
+SUP-DOM-01,Domestic Mill A (Mumbai),IND,HRC-E250A-2.0;ZINC-SHG-INGOT,12,20,96.5,0.3,120000.0
+SUP-DOM-02,Domestic Mill B (Pune),IND,HRC-E250A-2.0,14,22,95.0,0.4,95000.0

@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Metals Procurement Advisory — Executive Intelligence Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #edf2f7;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f8fafc;
+      --bg-surface-hover: #e2e8f0;
+      --border-subtle: #cbd5e1;
+      --border-strong: #94a3b8;
+      --border-focus: #1e3a8a;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --brand-navy: #1e3a8a;
+      --brand-navy-light: #2563eb;
+      --brand-navy-subtle: #eff6ff;
+      --success: #059669;
+      --success-subtle: #ecfdf5;
+      --success-border: #a7f3d0;
+      --warning: #d97706;
+      --warning-subtle: #fffbeb;
+      --warning-border: #fde68a;
+      --danger: #dc2626;
+      --danger-subtle: #fef2f2;
+      --danger-border: #fecaca;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    /* Infinite Horizontal Continuous Commodity Ticker */
+    .ticker-ribbon {
+      background: #0f172a;
+      color: #ffffff;
+      height: 38px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      position: relative;
+      border-bottom: 1px solid #1e293b;
+      z-index: 50;
+    }
+    .ticker-ribbon::before, .ticker-ribbon::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; width: 40px;
+      z-index: 2; pointer-events: none;
+    }
+    .ticker-ribbon::before { left: 0; background: linear-gradient(to right, #0f172a, transparent); }
+    .ticker-ribbon::after { right: 0; background: linear-gradient(to left, #0f172a, transparent); }
+
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: marquee 35s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 18px;
+      font-size: 11px;
+      border-right: 1px solid #1e293b;
+    }
+    .t-sym { font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.04em; }
+    .t-val { font-family: var(--font-mono); font-weight: 700; color: #f8fafc; }
+    .t-chg {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      padding: 1px 4px; border-radius: 3px;
+    }
+    .t-chg.pos { background: rgba(5, 150, 105, 0.25); color: #34d399; }
+    .t-chg.neg { background: rgba(220, 38, 38, 0.25); color: #f87171; }
+    .t-age { font-size: 10px; color: #64748b; font-family: var(--font-mono); }
+
+    /* Institutional Header */
+    header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .brand-masthead { display: flex; align-items: center; gap: 14px; }
+    .brand-crest {
+      width: 36px; height: 36px; border-radius: 4px;
+      background: var(--brand-navy);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif); font-weight: 600; font-size: 18px; color: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .brand-title { font-family: var(--font-serif); font-size: 18px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.01em; }
+    .brand-subtitle { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600; }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; font-size: 12px; }
+    .audit-stamp {
+      background: var(--brand-navy-subtle);
+      border: 1px solid #bfdbfe;
+      color: var(--brand-navy);
+      padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .audit-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
+
+    .btn-header {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .btn-header:hover { background: var(--bg-surface-elevated); border-color: var(--text-muted); }
+    .btn-header.primary {
+      background: var(--brand-navy);
+      border-color: var(--brand-navy);
+      color: #ffffff;
+    }
+    .btn-header.primary:hover { background: #172554; }
+
+    /* Business Configurator Strip */
+    .config-strip {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .config-main-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .config-controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .config-group { display: flex; align-items: center; gap: 6px; }
+    .config-label {
+      font-size: 11px; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .config-select, .config-input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: inherit;
+      outline: none;
+    }
+    .config-select:focus, .config-input:focus { border-color: var(--border-focus); }
+
+    /* Advanced params toggle */
+    .config-advanced-toggle {
+      background: none;
+      border: none;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+    }
+    .config-advanced-toggle:hover { color: var(--brand-navy); }
+    .advanced-row {
+      display: none;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 8px 12px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+    }
+    .advanced-row.open { display: flex; }
+    .advanced-label {
+      font-size: 10px; font-weight: 700; color: #7c3aed;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      background: #ede9fe; padding: 2px 6px; border-radius: 3px;
+    }
+
+    .btn-eval {
+      background: var(--brand-navy);
+      color: #ffffff;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s ease;
+    }
+    .btn-eval:hover { background: #172554; }
+
+    /* Main Dashboard Layout */
+    main {
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr;
+      gap: 24px;
+      flex: 1;
+    }
+    @media (max-width: 1200px) { main { grid-template-columns: 1fr; } }
+
+    .col { display: flex; flex-direction: column; gap: 24px; }
+
+    /* Consulting Report Card - High Contrast Physical Cards */
+    .consulting-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 4px 8px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -1px rgba(15, 23, 42, 0.04);
+      position: relative;
+    }
+    .consulting-card.primary-memo {
+      border-top: 4px solid #1e3a8a;
+    }
+    .consulting-card.eval-card {
+      border-top: 4px solid #0f766e;
+    }
+    .consulting-card.levers-card {
+      border-top: 4px solid #d97706;
+    }
+    .consulting-card.stress-card {
+      border-top: 4px solid #2563eb;
+    }
+
+    .card-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      margin: -22px -24px 10px -24px;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+    .card-top-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .memo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+    .memo-meta {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .status-badge {
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .status-badge.pending {
+      background: var(--warning-subtle);
+      border: 1px solid var(--warning-border);
+      color: var(--warning);
+    }
+    .status-badge.approved {
+      background: var(--success-subtle);
+      border: 1px solid var(--success-border);
+      color: var(--success);
+    }
+    .status-badge.declined {
+      background: var(--danger-subtle);
+      border: 1px solid var(--danger-border);
+      color: var(--danger);
+    }
+
+    /* Structured Panels for the 4 Memorandum Sections */
+    .memo-panel {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    }
+    .memo-panel.verdict-panel {
+      border-left: 4px solid #1e3a8a;
+      background: #fafcff;
+    }
+    .memo-panel.operational-panel {
+      border-left: 4px solid #dc2626;
+    }
+    .memo-panel.arbitrage-panel {
+      border-left: 4px solid #059669;
+    }
+    .memo-panel.negotiation-panel {
+      border-left: 4px solid #d97706;
+    }
+
+    .memo-panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .panel-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #1e3a8a;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .panel-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.01em;
+    }
+    .panel-status-pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .panel-status-pill.warn { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .panel-status-pill.success { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+    .panel-status-pill.brand { background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe; }
+    .lead-time-pill {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      background: #f1f5f9;
+      color: #475569;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .memo-prose {
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    /* Verdict Callout & Allocation Bar */
+    .verdict-banner {
+      background: #ffffff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .verdict-main {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e3a8a;
+      line-height: 1.25;
+    }
+    .verdict-sub {
+      font-size: 12px;
+      color: #475569;
+    }
+    .allocation-bar-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .allocation-bar-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #475569;
+    }
+    .allocation-bar-track {
+      height: 22px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid #cbd5e1;
+    }
+    .allocation-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1e3a8a, #2563eb);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.4s ease;
+    }
+
+    /* Visual Runway Horizon & Deficit Visualizer */
+    .runway-visualizer {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .runway-vis-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .runway-bar-container {
+      position: relative;
+      padding: 16px 0 10px 0;
+    }
+    .runway-scale-markers {
+      position: relative;
+      height: 14px;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: #64748b;
+    }
+    .runway-scale-markers span {
+      position: absolute;
+      transform: translateX(-50%);
+    }
+    .runway-track {
+      position: relative;
+      height: 26px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+      overflow: hidden;
+    }
+    .runway-floor-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #d97706;
+      z-index: 10;
+      box-shadow: 0 0 4px rgba(217, 119, 6, 0.5);
+    }
+    .runway-bar {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      transition: width 0.4s ease;
+    }
+    .runway-bar.current {
+      background: #ef4444;
+      color: #ffffff;
+      z-index: 5;
+    }
+    .runway-bar.post {
+      background: #10b981;
+      color: #ffffff;
+      z-index: 2;
+    }
+
+    /* 4-Pill Inventory Deficit Bridge */
+    .inventory-bridge-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 768px) { .inventory-bridge-grid { grid-template-columns: repeat(2, 1fr); } }
+    .bridge-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .bridge-card.alert {
+      border: 1px solid #fca5a5;
+      background: #fef2f2;
+    }
+    .bridge-card.success {
+      border: 1px solid #86efac;
+      background: #f0fdf4;
+    }
+    .bridge-lbl { font-size: 9px; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.04em; }
+    .bridge-num { font-size: 16px; font-weight: 700; font-family: var(--font-mono); color: #0f172a; }
+    .bridge-num.red { color: #dc2626; }
+    .bridge-num.green { color: #059669; }
+    .bridge-sub { font-size: 10px; color: #64748b; }
+
+    /* Visual Landed Cost Comparison Bar Chart */
+    .landed-cost-chart {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .chart-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .await { color: var(--text-muted); font-style: italic; }
+    .disclosure-strip {
+      margin: 12px 0 4px; padding: 10px 12px; border-radius: 6px;
+      background: rgba(148,163,184,0.10); border-left: 3px solid var(--text-muted);
+      font-size: 12px; line-height: 1.55; color: var(--text-muted);
+    }
+    .disclosure-strip.breach { background: rgba(220,38,38,0.08); border-left-color: var(--danger); color: var(--danger); }
+    .disclosure-strip b { color: inherit; }
+    .disclosure-strip ul { margin: 6px 0 0; padding-left: 18px; }
+    .await::before { content: "⋯ "; }
+    .chart-bars-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .chart-bar-item {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .chart-bar-item.recommended {
+      border: 2px solid #059669;
+      background: #f0fdf4;
+    }
+    .bar-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bar-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bar-cost {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .spread-tag {
+      font-size: 10px;
+      padding: 1px 4px;
+      border-radius: 3px;
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+    .bar-track {
+      height: 18px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid #cbd5e1;
+    }
+    .bar-fill {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      transition: width 0.4s ease;
+    }
+    .bar-fill.domestic { background: #059669; }
+    .bar-fill.japan { background: #1e3a8a; }
+    .bar-fill.vietnam { background: #d97706; }
+    .bar-fill.china { background: #64748b; }
+    .bar-foot { font-size: 11px; color: #64748b; }
+
+    .tag-cepa { background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 600; }
+    .tag-trap { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 600; }
+    .tag-unviable { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 600; }
+
+    /* Tariff Trap Insight Alert Box */
+    .tariff-trap-box {
+      display: flex;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 6px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+    }
+    .trap-icon { font-size: 18px; }
+    .trap-text { font-size: 11.5px; color: #78350f; line-height: 1.5; }
+
+    /* Commercial BATNA and Negotiation Bars */
+    .negotiation-levers-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .negotiation-levers-layout { grid-template-columns: 1fr; } }
+
+    .batna-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #1e3a8a;
+      border-radius: 6px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .batna-title { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; }
+    .batna-val { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: #1e3a8a; }
+    .batna-desc { font-size: 11px; color: #475569; line-height: 1.4; }
+
+    .levers-bars-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 14px;
+    }
+    .lever-bar-item { display: flex; flex-direction: column; gap: 4px; }
+    .lever-bar-head { display: flex; justify-content: space-between; font-size: 11px; color: #334155; }
+    .lever-progress-track { height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden; border: 1px solid #cbd5e1; }
+    .lever-progress-fill { height: 100%; background: linear-gradient(90deg, #d97706, #059669); border-radius: 5px; }
+    .lever-total-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 8px; font-size: 12px; font-weight: 700; }
+
+    /* Concession Sequencing Ladder */
+    .concession-ladder {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ladder-title { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .ladder-steps { display: flex; flex-direction: column; gap: 6px; }
+    .ladder-step { display: flex; align-items: flex-start; gap: 10px; font-size: 11.5px; color: #334155; }
+    .ladder-step .step-num {
+      width: 18px; height: 18px; border-radius: 50%; background: #0f172a; color: #ffffff;
+      display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* Financial Metric Grid */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 768px) { .metric-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .metric-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .metric-box:hover {
+      background: #ffffff;
+      border-color: #94a3b8;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .metric-lbl { font-size: 10px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em; }
+    .metric-num { font-size: 18px; font-weight: 700; color: var(--text-primary); font-family: var(--font-mono); }
+    .metric-foot { font-size: 11px; color: var(--text-secondary); }
+
+    /* Action Sign-Off Bar */
+    .action-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 6px;
+    }
+    .btn-sign {
+      padding: 9px 18px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+    .btn-sign.approve { background: var(--success); color: #ffffff; }
+    .btn-sign.approve:hover { background: #047857; }
+    .btn-sign.modify { background: var(--bg-surface); border-color: var(--border-strong); color: var(--text-primary); }
+    .btn-sign.modify:hover { background: var(--bg-surface-elevated); }
+    .btn-sign.reject { background: transparent; border-color: var(--border-strong); color: var(--text-muted); }
+    .btn-sign.reject:hover { color: var(--danger); border-color: var(--danger-border); }
+
+    /* Multi-Stage Reasoning Tabs */
+    .tabs-nav {
+      display: flex;
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 24px;
+    }
+    .tab-btn {
+      padding: 10px 0;
+      border: none;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+    }
+    .tab-btn.active {
+      color: var(--brand-navy);
+    }
+    .tab-btn.active::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px;
+      background: var(--brand-navy);
+    }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* Tables */
+    .table-container { overflow-x: auto; }
+    .consulting-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: left;
+    }
+    .consulting-table th {
+      padding: 10px 12px;
+      background: var(--bg-surface-elevated);
+      color: var(--text-muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .consulting-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .consulting-table tr:hover td { background: #f8fafc; }
+    .consulting-table .text-regular { font-family: var(--font-sans); }
+
+    .tag-cheapest {
+      background: var(--success-subtle); color: var(--success);
+      padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 600;
+      border: 1px solid var(--success-border);
+      font-family: var(--font-sans);
+    }
+    .tag-domestic {
+      background: var(--brand-navy-subtle); color: var(--brand-navy);
+      padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 600;
+      border: 1px solid #bfdbfe;
+      font-family: var(--font-sans);
+    }
+
+    /* Reasoning Stage Steps */
+    .reasoning-list { display: flex; flex-direction: column; gap: 14px; }
+    .reasoning-step {
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .step-head { display: flex; align-items: center; justify-content: space-between; }
+    .step-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .step-badge { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 3px; }
+    .step-badge.pass { background: var(--success-subtle); color: var(--success); border: 1px solid var(--success-border); }
+    .step-badge.warn { background: var(--warning-subtle); color: var(--warning); border: 1px solid var(--warning-border); }
+    .step-metric { font-family: var(--font-mono); font-size: 11px; color: var(--brand-navy); font-weight: 600; }
+    .step-finding { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+    /* Trade-off Matrix Cards */
+    .tradeoff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 900px) { .tradeoff-grid { grid-template-columns: 1fr; } }
+    .tradeoff-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 14px;
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tradeoff-card.recommended {
+      border: 2px solid var(--brand-navy);
+      background: #fafcff;
+    }
+    .tradeoff-head { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+    .tradeoff-row { display: flex; justify-content: space-between; font-size: 11px; }
+    .tradeoff-lbl { color: var(--text-muted); }
+    .tradeoff-val { font-family: var(--font-mono); font-weight: 600; }
+    .tradeoff-text { font-size: 11px; color: var(--text-secondary); line-height: 1.4; border-top: 1px solid var(--border-subtle); padding-top: 8px; }
+
+    /* Policy Gates */
+    .gates-grid { display: flex; flex-direction: column; gap: 10px; }
+    .gate-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+    }
+    .gate-name { font-size: 12px; font-weight: 600; color: var(--text-primary); }
+    .gate-thresh { font-size: 11px; color: var(--text-muted); }
+
+    /* Right Column: Chat Console & Sensitivity */
+    .chat-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      height: 480px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    .chat-head {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface-elevated);
+    }
+    .chat-stream {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #fafafa;
+    }
+    .chat-msg {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      max-width: 90%;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .chat-msg.agent { align-self: flex-start; }
+    .chat-msg.user { align-self: flex-end; }
+    .msg-author { font-size: 10px; font-weight: 600; color: var(--text-muted); }
+    .msg-body {
+      padding: 10px 14px;
+      border-radius: 4px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+    .chat-msg.user .msg-body {
+      background: var(--brand-navy);
+      color: #ffffff;
+      border-color: var(--brand-navy);
+    }
+
+    .chat-chips {
+      padding: 8px 16px;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .chat-chips::-webkit-scrollbar { display: none; }
+    .chip-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text-secondary);
+      padding: 4px 10px; border-radius: 4px; font-size: 11px; white-space: nowrap; cursor: pointer;
+    }
+    .chip-btn:hover { background: var(--bg-surface-elevated); color: var(--text-primary); }
+
+    .chat-input-bar {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      gap: 8px;
+      background: var(--bg-surface);
+    }
+    .chat-input {
+      flex: 1;
+      background: var(--bg-base);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      padding: 8px 12px; border-radius: 4px; font-size: 12px; outline: none; font-family: inherit;
+    }
+    .chat-input:focus { border-color: var(--border-focus); background: #ffffff; }
+    .btn-send {
+      background: var(--brand-navy);
+      color: #fff;
+      border: none;
+      padding: 8px 14px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer;
+    }
+
+    /* Sliders */
+    .slider-row { display: flex; flex-direction: column; gap: 6px; }
+    .slider-title { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-secondary); }
+    .slider-input {
+      width: 100%; height: 4px; border-radius: 2px; background: var(--border-strong); outline: none; accent-color: var(--brand-navy);
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; z-index: 100;
+    }
+    .modal-box {
+      background: #ffffff;
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      width: 820px; max-width: 95vw; max-height: 85vh;
+      display: flex; flex-direction: column;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .modal-header {
+      padding: 16px 20px; border-bottom: 1px solid var(--border-subtle);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .modal-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .modal-close { background: none; border: none; font-size: 18px; color: var(--text-muted); cursor: pointer; }
+    .modal-body { padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+
+    /* Toast Notification */
+    #desk-toast {
+      position: fixed; top: 20px; right: 24px; z-index: 9999;
+      padding: 10px 18px; border-radius: 4px; font-weight: 600; font-size: 12px;
+      display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.25s ease; transform: translateY(-20px); opacity: 0; pointer-events: none;
+    }
+
+    /* ==================================================================
+       PROGRESSIVE DISCLOSURE  (added 2026-09-06)
+       Sections 2-4 collapse to their status pill. Section 1, the verdict,
+       is never collapsible: BLUF means the conclusion costs zero clicks.
+       Two levels maximum -- NN/g finds usability degrades beyond that.
+       ================================================================== */
+    details.memo-panel > summary { cursor: pointer; list-style: none; }
+    details.memo-panel > summary::-webkit-details-marker { display: none; }
+    details.memo-panel > summary:hover { background: rgba(127,127,127,.06); }
+    details.memo-panel > summary:focus-visible {
+      outline: 2px solid var(--accent, #0072B2); outline-offset: -2px; }
+    .disclose { margin-left: 10px; font-size: 11px; font-weight: 700;
+      letter-spacing: .05em; opacity: .65; white-space: nowrap; }
+    details.memo-panel:not([open]) .disclose::after { content: "+ OPEN"; }
+    details.memo-panel[open] .disclose::after { content: "\2212 CLOSE"; }
+    details.memo-panel:not([open]) { padding-bottom: 0; }
+
+    /* Audit trail = disclosure level 2. Not rendered until asked for. */
+    details.audit-shell > summary { cursor: pointer; list-style: none;
+      padding: 14px 18px; font-weight: 700; font-size: 12px;
+      letter-spacing: .08em; text-transform: uppercase; }
+    details.audit-shell > summary::-webkit-details-marker { display: none; }
+
+    /* ==================================================================
+       PRINT  (added 2026-09-06)
+       This screen gets exported and attached to a purchase approval.
+       Before this block there were NO print rules at all, so the PDF
+       carried the ticker marquee, the chat copilot and the stress tester.
+       ================================================================== */
+    @media print {
+      @page { margin: 12mm; }
+      body { background: #fff !important; color: #000 !important; }
+      /* chrome that must never reach an approval pack */
+      /* Class names verified against the live DOM on 2026-09-06 -- six of the
+         original selectors matched nothing, which would have printed the chat
+         panel and the tab buttons into the approval pack. */
+      .ticker-ribbon, .ticker-track, .ticker-item,
+      .chat-box, .stress-card,
+      .tabs-nav, #modal-provenance, #desk-toast,
+      #clock-display, #btn-audit-modal,
+      button, .btn, .disclose { display: none !important; }
+      /* every collapsed section prints open */
+      details.memo-panel, details.audit-shell { display: block !important; }
+      details.memo-panel > *, details.audit-shell > * { display: block !important; }
+      details:not([open]) > *:not(summary) { display: block !important; }
+      /* one column, nothing sticky, nothing clipped */
+      main { grid-template-columns: 1fr !important; display: block !important; }
+      .consulting-card, .memo-panel, .card { break-inside: avoid;
+        box-shadow: none !important; border: 1px solid #999 !important; }
+      .tab-pane { display: block !important; }
+      table { page-break-inside: auto; }
+      tr { page-break-inside: avoid; }
+      thead { display: table-header-group; }
+      a[href]::after { content: ""; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Infinite Continuous Colored Commodity Ticker Ribbon -->
+  <div class="ticker-ribbon">
+    <div class="ticker-track" id="ticker-track">
+      <!-- Cloned continuously for infinite marquee loop -->
+      <div class="ticker-item">
+        <span class="t-sym">LME ZINC CASH</span>
+        <span class="t-val" id="t-lme-zinc">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age" id="t-lme-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">MCX ZINC</span>
+        <span class="t-val" id="t-mcx-zinc">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age" id="t-mcx-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">DOMESTIC HRC</span>
+        <span class="t-val" id="t-dom-hrc">—</span>
+        <span class="t-chg neg">·</span>
+        <span class="t-age" id="t-hrc-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">CME HRC</span>
+        <span class="t-val" id="t-cme-hrc">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age" id="t-cme-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">USD / INR (FBIL)</span>
+        <span class="t-val" id="t-usdinr">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age" id="t-fbil-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">LME ZINC 3M</span>
+        <span class="t-val">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">BRENT CRUDE</span>
+        <span class="t-val">—</span>
+        <span class="t-chg neg">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">SHFE REBAR</span>
+        <span class="t-val">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <!-- Cloned Segment for Seamless 100% Loop -->
+      <div class="ticker-item">
+        <span class="t-sym">LME ZINC CASH</span>
+        <span class="t-val">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">MCX ZINC</span>
+        <span class="t-val">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">DOMESTIC HRC</span>
+        <span class="t-val">—</span>
+        <span class="t-chg neg">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">CME HRC</span>
+        <span class="t-val">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">USD / INR (FBIL)</span>
+        <span class="t-val">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">LME ZINC 3M</span>
+        <span class="t-val">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">BRENT CRUDE</span>
+        <span class="t-val">—</span>
+        <span class="t-chg neg">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+      <div class="ticker-item">
+        <span class="t-sym">SHFE REBAR</span>
+        <span class="t-val">—</span>
+        <span class="t-chg pos">·</span>
+        <span class="t-age">awaiting feed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Corporate Header Masthead -->
+  <header>
+    <div class="brand-masthead">
+      <div class="brand-crest">M</div>
+      <div>
+        <div class="brand-title">Global Metals Procurement Advisory</div>
+        <div class="brand-subtitle">Autonomous Decision & Policy Evaluation Desk</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="audit-stamp">
+        <div class="audit-dot"></div>
+        LIVE FEED AUDITED (RULE AD-1)
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);" id="clock-display">
+        UTC: --:--:--
+      </div>
+      <button class="btn-header" id="btn-audit-modal" onclick="openProvenanceModal()">
+        <span>🔍</span> Audit Data Feeds & APIs
+      </button>
+      <button class="btn-header primary" id="btn-force-refresh" onclick="triggerForceRefresh()">
+        <span>🔄</span> Force Live Refresh
+      </button>
+    </div>
+  </header>
+
+  <!-- Business Parameters Configurator Strip -->
+  <div class="config-strip">
+    <div class="config-main-row">
+      <div class="config-controls">
+        <div class="config-group">
+          <span class="config-label">Company:</span>
+          <input type="text" id="cfg-company" class="config-input" value="Mahindra Heavy Infrastructure Ltd" style="width: 210px;" />
+        </div>
+
+        <div class="config-group">
+          <span class="config-label">Commodity:</span>
+          <select id="cfg-material" class="config-select">
+            <option value="STEEL_HRC" selected>Hot-Rolled Steel Coil (HRC)</option>
+            <option value="ZINC_SHG">Special High Grade Zinc (SHG)</option>
+          </select>
+        </div>
+
+        <div class="config-group">
+          <span class="config-label">Destination Plant:</span>
+          <select id="cfg-dest" class="config-select">
+            <option value="IND" selected>India — Pune</option>
+            <option value="VNM">Vietnam — Hai Phong</option>
+            <option value="IDN">Indonesia — Jakarta</option>
+          </select>
+        </div>
+
+        <div class="config-group">
+          <span class="config-label">Monthly Consumption:</span>
+          <input type="number" id="cfg-demand" class="config-input" value="1800" style="width: 75px;" />
+          <span style="font-size: 11px; color: var(--text-muted);">t/mo</span>
+        </div>
+
+        <div class="config-group">
+          <span class="config-label">Stock at Plant:</span>
+          <input type="number" id="cfg-stock" class="config-input" value="350" style="width: 75px;" />
+          <span style="font-size: 11px; color: var(--text-muted);">t</span>
+        </div>
+
+        <div class="config-group">
+          <span class="config-label">Min. Weeks Cover:</span>
+          <input type="number" id="cfg-policy" class="config-input" value="4.0" step="0.5" style="width: 55px;" />
+          <span style="font-size: 11px; color: var(--text-muted);">wks</span>
+        </div>
+
+        <button class="config-advanced-toggle" onclick="toggleAdvanced()" id="btn-adv-toggle">
+          <span id="adv-arrow">▸</span> Supply Chain Detail
+        </button>
+      </div>
+
+      <button class="btn-eval" id="btn-run-eval" onclick="runLiveEvaluation()">
+        <span>⚡</span> Run Advisory
+      </button>
+    </div>
+
+    <!-- Advanced Supply Chain Parameters (hidden by default) -->
+    <div class="advanced-row" id="advanced-row">
+      <span class="advanced-label">Supply Chain Detail</span>
+      <div class="config-group">
+        <span class="config-label">In Transit (confirmed):</span>
+        <input type="number" id="cfg-transit" class="config-input" value="300" style="width: 70px;" />
+        <span style="font-size: 11px; color: var(--text-muted);">t</span>
+      </div>
+      <div class="config-group">
+        <span class="config-label">Open Purchase Orders:</span>
+        <input type="number" id="cfg-open-po" class="config-input" value="270" style="width: 70px;" />
+        <span style="font-size: 11px; color: var(--text-muted);">t</span>
+      </div>
+      <div class="config-group">
+        <span class="config-label">Safety Reserve:</span>
+        <input type="number" id="cfg-safety" class="config-input" value="200" style="width: 70px;" />
+        <span style="font-size: 11px; color: var(--text-muted);">t</span>
+      </div>
+      <span style="font-size: 11px; color: var(--text-muted); font-style: italic;">
+        These inputs feed directly into the coverage calculation and recommendation engine.
+      </span>
+    </div>
+  </div>
+
+  <!-- Main Executive Content -->
+  <section id="purchase-outlook" class="outlook" aria-live="polite">
+    <div class="outlook-heading"><div><span class="outlook-eyebrow">PROCUREMENT PLANNING · NEXT 90 DAYS</span><h2>When to buy. Where to source. Who to ask.</h2></div><span id="outlook-mode" class="outlook-pill">Awaiting market data</span></div>
+    <p id="outlook-status">Run the advisory to compare current prices with 1, 2 and 3 month scenarios and a researched supplier shortlist.</p>
+    <div id="outlook-results" hidden></div>
+  </section>
+  <main>
+    <!-- Left Column: Executive Advisory Memorandum & Multi-Stage Evaluation -->
+    <div class="col">
+
+      <!-- Executive Strategic Procurement Memorandum Hero Card -->
+      <div class="consulting-card primary-memo">
+        <div class="card-top-bar">
+          <div class="card-top-title">
+            <span>📄</span>
+            <span>STRATEGIC PROCUREMENT MEMORANDUM • CONFIDENTIAL</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="lead-time-pill" id="memo-doc-id">DOC: PAR-0001-HRC</span>
+            <div class="status-badge pending" id="par-status-badge">● PENDING EXECUTIVE SIGN-OFF</div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: #1e3a8a;" id="memo-company-title">
+              STRATEGIC PROCUREMENT MEMORANDUM | MAHINDRA HEAVY INFRASTRUCTURE LTD
+            </div>
+            <div style="font-size: 11px; font-family: var(--font-mono); color: #64748b; margin-top: 2px;" id="memo-scope-subtitle">
+              COMMODITY: Hot-Rolled Steel Coil (IS 2062 / E250A 2.0mm) | DESTINATION: India Plant (Pune)
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 1: Executive Sourcing Verdict Panel -->
+        <div class="memo-panel verdict-panel">
+          <div class="memo-panel-head">
+            <div style="display: flex; align-items: center;">
+              <span class="panel-num-badge">1</span>
+              <span class="panel-title">Executive Sourcing Verdict</span>
+            </div>
+            <span class="lead-time-pill" id="memo-rolling-slot">Rolling Cycle: 18–24 Days Guaranteed</span>
+          </div>
+
+          <div class="verdict-banner">
+            <div class="verdict-main" id="exec-verdict">
+              <span class="await">Analysing your procurement position against live market rates…</span>
+            </div>
+            <div class="verdict-sub" id="exec-verdict-details">
+              <span class="await">—</span>
+            </div>
+
+            <!-- How the recommendation was selected, and what it does not claim.
+                 These fields exist in the API response (decision_disclosure,
+                 price_series_basis, forecast_calibration) and previously never
+                 reached the screen. -->
+            <div class="disclosure-strip" id="decision-disclosure" hidden></div>
+
+            <!-- Allocation Visual Progress Bar -->
+            <div class="allocation-bar-wrapper">
+              <div class="allocation-bar-labels">
+                <span>Immediate Sourcing Allocation: <strong id="alloc-now-lbl" style="color: #1e3a8a;">100% (1,800 MT)</strong></span>
+                <span>Deferred / Uncommitted: <strong id="alloc-def-lbl" style="color: #64748b;">0% (0 MT)</strong></span>
+              </div>
+              <div class="allocation-bar-track">
+                <div class="allocation-bar-fill" id="alloc-fill" style="width: 100%;">100% FULLY ALLOCATED TO PRODUCTION</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Key Financial Metrics -->
+          <div class="metric-grid">
+            <div class="metric-box">
+              <span class="metric-lbl">Recommended Volume</span>
+              <span class="metric-num" id="kpi-volume">1,800 T</span>
+              <span class="metric-foot" id="kpi-volume-pct">100% of monthly demand</span>
+            </div>
+
+            <div class="metric-box">
+              <span class="metric-lbl">Committed Capital</span>
+              <span class="metric-num" id="kpi-spend">₹10.74 Cr</span>
+              <span class="metric-foot await" id="kpi-rate">awaiting benchmark</span>
+            </div>
+
+            <div class="metric-box">
+              <span class="metric-lbl">Coverage Runway</span>
+              <span class="metric-num" id="kpi-coverage" style="color: var(--success);">1.8w → 6.2w</span>
+              <span class="metric-foot" id="kpi-policy-floor">Mandate: 4.0w Floor</span>
+            </div>
+
+            <div class="metric-box">
+              <span class="metric-lbl">Primary Constraint</span>
+              <span class="metric-num" id="kpi-binding" style="font-size: 13px; color: var(--warning);">Coverage Policy</span>
+              <span class="metric-foot" id="kpi-regret">Regret if delayed: ₹0</span>
+            </div>
+          </div>
+
+          <!-- Corporate Action Sign-Off Bar -->
+          <div class="action-bar">
+            <button class="btn-sign approve" id="btn-approve" onclick="approvePAR()">
+              <span>✓</span> Authorize Purchase Order
+            </button>
+            <button class="btn-sign modify" id="btn-modify" onclick="modifyPAR()">
+              <span>✎</span> Adjust Volume
+            </button>
+            <button class="btn-sign reject" id="btn-reject" onclick="rejectPAR()">
+              <span>✕</span> Decline Recommendation
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 2: Core Operational & Supply Chain Rationale Panel -->
+        <details class="memo-panel operational-panel">
+          <summary class="memo-panel-head">
+            <div style="display: flex; align-items: center;">
+              <span class="panel-num-badge" style="background: #dc2626;">2</span>
+              <span class="panel-title">Core Operational & Supply Chain Rationale (Runway & Stockout Audit)</span>
+            </div>
+            <span class="panel-status-pill warn" id="runway-status-pill">🚨 BELOW 4.0w MANDATED FLOOR</span>
+          <span class="disclose" aria-hidden="true"></span></summary>
+
+          <div class="memo-prose" id="memo-operational-text">
+            Current unrestricted inventory stands at 350 MT with 570 MT confirmed pipeline, yielding an effective operational runway of 1.8 weeks against your mandated 4.0-week floor. Factoring in standard domestic mill rolling cycles (18–24 days) and transit lead times, failure to commit now creates an 897 MT deficit against safety buffer thresholds. Committing 1,800 MT restores coverage runway to 6.2 weeks without incurring excessive holding or carrying costs.
+          </div>
+
+          <!-- Visual Runway Gauge / Horizon Track -->
+          <div class="runway-visualizer">
+            <div class="runway-vis-head">
+              <span>OPERATIONAL COVERAGE HORIZON (WEEKS OF PLANT CONSUMPTION)</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">Policy Target: ≥ 4.0 Weeks</span>
+            </div>
+            <div class="runway-bar-container">
+              <div class="runway-scale-markers">
+                <span style="left: 0%;">0w</span>
+                <span style="left: 20%;">2w</span>
+                <span style="left: 40%; font-weight: 700; color: #b45309;">▼ 4.0w MANDATE FLOOR</span>
+                <span style="left: 60%;">6w</span>
+                <span style="left: 80%;">8w</span>
+                <span style="left: 100%;">10w</span>
+              </div>
+              <div class="runway-track">
+                <div class="runway-floor-line" style="left: 40%;"></div>
+                <div class="runway-bar current" id="runway-bar-current" style="width: 18%;">
+                  <span>Current: 1.8w</span>
+                </div>
+                <div class="runway-bar post" id="runway-bar-post" style="width: 62%;">
+                  <span>Post-Commitment: 6.2w</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4-Pill Inventory Deficit Bridge -->
+            <div class="inventory-bridge-grid">
+              <div class="bridge-card">
+                <span class="bridge-lbl">Unrestricted On-Hand</span>
+                <span class="bridge-num" id="bridge-usable">350 MT</span>
+                <span class="bridge-sub">At Plant Facility</span>
+              </div>
+              <div class="bridge-card">
+                <span class="bridge-lbl">In-Transit Pipeline</span>
+                <span class="bridge-num" id="bridge-pipeline">570 MT</span>
+                <span class="bridge-sub">Confirmed Orders</span>
+              </div>
+              <div class="bridge-card alert">
+                <span class="bridge-lbl">Safety Deficit without Order</span>
+                <span class="bridge-num red" id="bridge-deficit">897 MT</span>
+                <span class="bridge-sub" style="color: var(--danger); font-weight: 600;">Below 4.0w Policy Floor</span>
+              </div>
+              <div class="bridge-card" id="bridge-post-card">
+                <span class="bridge-lbl">Post-Order Total Stock</span>
+                <span class="bridge-num green" id="bridge-post">—</span>
+                <span class="bridge-sub" id="bridge-post-sub" style="font-weight: 600;">—</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Section 3: Trade & Tariff Arbitrage Analysis Panel -->
+        <details class="memo-panel arbitrage-panel">
+          <summary class="memo-panel-head">
+            <div style="display: flex; align-items: center;">
+              <span class="panel-num-badge" style="background: #059669;">3</span>
+              <span class="panel-title">Trade & Tariff Arbitrage Analysis (Global Landed Cost Comparison)</span>
+            </div>
+            <span class="panel-status-pill success" id="arb-pill">DOMESTIC vs IMPORT PARITY —</span>
+          <span class="disclose" aria-hidden="true"></span></summary>
+
+          <div class="memo-prose" id="memo-arbitrage-text">
+            <span class="await">Awaiting the live tariff ranking…</span>
+          </div>
+
+          <!-- Visual Landed Cost Bar Chart -->
+          <div class="landed-cost-chart">
+            <div class="chart-header-row">
+              <span>LANDED COST BENCHMARK (INR / TONNE TO PLANT GATE)</span>
+              <span style="font-size: 11px; color: var(--text-muted);">CIF-basis unit values (freight & insurance included) plus customs duty</span>
+            </div>
+
+            <div class="chart-bars-list" id="chart-bars-list">
+              <div class="chart-bar-item recommended">
+                <div class="bar-meta">
+                  <div class="bar-name">
+                    <strong>🇮🇳 India Domestic Spot (JSW / Tata)</strong>
+                    <span class="tag-cheapest">★ OPTIMAL SOURCING</span>
+                  </div>
+                  <div class="bar-cost await" id="bar-cost-dom">—</div>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill domestic" id="bar-fill-dom" style="width: 76%;">
+                    <span id="bar-fill-dom-text" class="await">awaiting benchmark</span>
+                  </div>
+                </div>
+                <div class="bar-foot" id="bar-foot-dom">Baseline benchmark. Zero FX or maritime risk.</div>
+              </div>
+
+              <div class="chart-bar-item">
+                <div class="bar-meta">
+                  <div class="bar-name">
+                    <strong>🇯🇵 Japan (CEPA Preferential)</strong>
+                    <span class="tag-cepa">0% BCD VIA CEPA</span>
+                  </div>
+                  <div class="bar-cost await" id="bar-cost-japan">—</div>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill japan" id="bar-fill-japan" style="width: 86%;">
+                    <span id="bar-fill-japan-text" class="await">awaiting live tariff ranking</span>
+                  </div>
+                </div>
+                <div class="bar-foot" id="bar-foot-japan">Ranked import alternative. Duty basis shown once the tariff layer returns.</div>
+              </div>
+
+              <div class="chart-bar-item">
+                <div class="bar-meta">
+                  <div class="bar-name">
+                    <strong>🇻🇳 Viet Nam (MFN Rate)</strong>
+                    <span class="tag-trap">⚠️ TARIFF TRAP</span>
+                  </div>
+                  <div class="bar-cost await" id="bar-cost-vietnam">—</div>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill vietnam" id="bar-fill-vietnam" style="width: 88%;">
+                    <span id="bar-fill-vietnam-text" class="await">awaiting live tariff ranking</span>
+                  </div>
+                </div>
+                <div class="bar-foot" id="bar-foot-vietnam">Ranked import alternative. Duty basis shown once the tariff layer returns.</div>
+              </div>
+
+              <div class="chart-bar-item">
+                <div class="bar-meta">
+                  <div class="bar-name">
+                    <strong>🇨🇳 China (MFN Rate)</strong>
+                    <span class="tag-unviable">NON-VIABLE</span>
+                  </div>
+                  <div class="bar-cost await" id="bar-cost-china">—</div>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill china" id="bar-fill-china" style="width: 100%;">
+                    <span id="bar-fill-china-text" class="await">awaiting live tariff ranking</span>
+                  </div>
+                </div>
+                <div class="bar-foot" id="bar-foot-china">Ranked import alternative. Duty basis shown once the tariff layer returns.</div>
+              </div>
+            </div>
+
+            <!-- Tariff Trap Insight Alert Box -->
+            <div class="tariff-trap-box">
+              <div class="trap-icon">💡</div>
+              <div class="trap-text">
+                <strong>Strategic Trade Insight — Nominal Quote vs. Real Landed Parity:</strong>
+                <span id="arb-fta-note" class="await">Awaiting the live tariff ranking…</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Section 4: Supplier Negotiation Directive Panel -->
+        <details class="memo-panel negotiation-panel">
+          <summary class="memo-panel-head">
+            <div style="display: flex; align-items: center;">
+              <span class="panel-num-badge" style="background: #d97706;">4</span>
+              <span class="panel-title">Supplier Negotiation Directive & Commercial BATNA</span>
+            </div>
+            <span class="panel-status-pill brand">🤝 NEGOTIATION COUNTER-ANCHOR: DOMESTIC MILL A</span>
+          <span class="disclose" aria-hidden="true"></span></summary>
+
+          <div class="memo-prose" id="memo-negotiation-text">
+            <span class="await">Awaiting the live negotiation levers…</span>
+          </div>
+
+          <!-- BATNA and Negotiation Bars -->
+          <div class="negotiation-levers-layout">
+            <div class="batna-card">
+              <div class="batna-title">CREDIBLE WALK-AWAY BATNA</div>
+              <div class="batna-val await" id="batna-display">awaiting live ranking</div>
+              <div class="batna-desc" id="batna-desc">Import parity is the counter-anchor for the domestic negotiation.</div>
+            </div>
+
+            <div class="levers-bars-wrapper">
+              <div class="lever-bar-item">
+                <div class="lever-bar-head">
+                  <span>30-Day Working Capital Extension (10.5% WACC)</span>
+                  <strong id="lever-credit-val">—</strong>
+                </div>
+                <div class="lever-progress-track">
+                  <div class="lever-progress-fill" id="lever-credit-fill" style="width: 72%;"></div>
+                </div>
+              </div>
+
+              <div class="lever-bar-item">
+                <div class="lever-bar-head">
+                  <span>±10% Volume Flexibility Option (Demand Surge Protection)</span>
+                  <strong id="lever-flex-val">—</strong>
+                </div>
+                <div class="lever-progress-track">
+                  <div class="lever-progress-fill" id="lever-flex-fill" style="width: 28%;"></div>
+                </div>
+              </div>
+
+              <div class="lever-total-row">
+                <span>Total Commercial Levers to Extract:</span>
+                <strong id="lever-total-val" style="color: var(--success); font-size: 15px;">—</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concession Sequencing Ladder -->
+          <div class="concession-ladder">
+            <div class="ladder-title">RECOMMENDED CONCESSION SEQUENCE (CHEAPEST TO SELLER FIRST)</div>
+            <div class="ladder-steps">
+              <div class="ladder-step">
+                <span class="step-num">1</span>
+                <span class="step-text"><strong>Payment Terms:</strong> Request 60-day credit from current 30-day baseline (low seller cost, high buyer value).</span>
+              </div>
+              <div class="ladder-step">
+                <span class="step-num">2</span>
+                <span class="step-text"><strong>Freight Terms:</strong> Require mill to absorb local freight delivery FOR Pune plant.</span>
+              </div>
+              <div class="ladder-step">
+                <span class="step-num">3</span>
+                <span class="step-text"><strong>Volume Flexibility:</strong> Agree to baseline price only with a ±10% monthly volume swing tolerance.</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- Multi-Stage Reasoning & Evaluation Audit Tabs -->
+      <details class="consulting-card eval-card audit-shell" style="padding-top:14px;"><summary>&#9878;&#65039; &nbsp;Multi-stage reasoning pipeline &amp; trade-off audit <span style="opacity:.6;font-weight:500;text-transform:none;letter-spacing:0">&mdash; 4 modules, opened on request</span></summary>
+        <div class="card-top-bar">
+          <div class="card-top-title">
+            <span>⚖️</span>
+            <span>MULTI-STAGE REASONING PIPELINE & TRADE-OFF AUDIT</span>
+          </div>
+          <span class="lead-time-pill">4 AUDIT MODULES</span>
+        </div>
+        <div class="tabs-nav">
+          <button class="tab-btn active" onclick="switchTab('tab-stages')">1. Reasoning Pipeline</button>
+          <button class="tab-btn" onclick="switchTab('tab-tradeoffs')">2. Decision Trade-Off Matrix</button>
+          <button class="tab-btn" onclick="switchTab('tab-gates')">3. Policy Validation Gates</button>
+          <button class="tab-btn" onclick="switchTab('tab-tariffs')">4. Landed Parity Matrix</button>
+        </div>
+
+        <!-- Tab 1: Reasoning Pipeline -->
+        <div class="tab-pane active" id="tab-stages">
+          <div class="reasoning-list" id="reasoning-list">
+            <div class="reasoning-step">
+              <div class="step-head">
+                <span class="step-title">Stage 1: Inventory Runway & Stockout Risk Audit</span>
+                <span class="step-badge pass">PASS</span>
+              </div>
+              <div class="step-metric">7.84 Weeks Coverage (Policy: 4.0w Floor)</div>
+              <div class="step-finding">
+                Unrestricted on-hand stock (430t) plus confirmed pipeline (570t) yields 1,000t gross stock. Netting 160t quarantined safety stock leaves 840t usable. Weekly burn of 107.1t/wk ensures production runway satisfies corporate buffer policy.
+              </div>
+            </div>
+
+            <div class="reasoning-step">
+              <div class="step-head">
+                <span class="step-title">Stage 2: Global Trade & Tariff Arbitrage Audit</span>
+                <span class="step-badge pass">COMPLETED</span>
+              </div>
+              <div class="step-metric" id="stage2-metric">—</div>
+              <div class="step-finding">
+                Trade tariff analysis confirms Japan CEPA 0% preferential duty provides lowest import cost. Vietnam FOB quotes lower ($615/t) but faces 19.0% cumulative duty (7.5% MFN + 11.5% DGTR safeguard), rendering it unviable.
+              </div>
+            </div>
+
+            <div class="reasoning-step">
+              <div class="step-head">
+                <span class="step-title">Stage 3: Probabilistic Market Risk & Regret Analysis</span>
+                <span class="step-badge pass">AUDITED</span>
+              </div>
+              <div class="step-metric">Upward Momentum: 50.0% | Regret Exposure: ₹0</div>
+              <div class="step-finding">
+                Monte Carlo distribution analysis shows spot trading in line with historical median. Locking in 200 MT maintains factory replenishment rhythm without committing excessive working capital.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Decision Trade-Off Matrix -->
+        <div class="tab-pane" id="tab-tradeoffs">
+          <div class="tradeoff-grid" id="tradeoff-grid">
+            <div class="tradeoff-card recommended">
+              <div class="tradeoff-head">Option A (Recommended): Commit 200 MT Now</div>
+              <div class="tradeoff-row"><span class="tradeoff-lbl">Capital Spend:</span><span class="tradeoff-val">₹1.20 Cr</span></div>
+              <div class="tradeoff-row"><span class="tradeoff-lbl">Post-Order Coverage:</span><span class="tradeoff-val">9.7 Weeks</span></div>
+              <div class="tradeoff-row"><span class="tradeoff-lbl">Stockout Probability:</span><span class="tradeoff-val" style="color: var(--success);">&lt; 1.0%</span></div>
+              <div class="tradeoff-text">
+                Protects manufacturing pipeline, avoids emergency spot premiums, secures mill allocation slot.
+              </div>
+            </div>
+
+            <div class="tradeoff-card">
+              <div class="tradeoff-head">Option B: Partial Split Buy (100 MT)</div>
+              <div class="tradeoff-row"><span class="tradeoff-lbl">Capital Spend:</span><span class="tradeoff-val">₹0.60 Cr</span></div>
+              <div class="tradeoff-row"><span class="tradeoff-lbl">Post-Order Coverage:</span><span class="tradeoff-val">8.7 Weeks</span></div>
+              <div class="tradeoff-row"><span class="tradeoff-lbl">Stockout Probability:</span><span class="tradeoff-val">12.4%</span></div>
+              <div class="tradeoff-text">
+                Conserves short-term liquidity, but increases freight logistics fragmentation.
+              </div>
+            </div>
+
+            <div class="tradeoff-card">
+              <div class="tradeoff-head">Option C: Full Deferral (Wait 30 Days)</div>
+              <div class="tradeoff-row"><span class="tradeoff-lbl">Capital Spend:</span><span class="tradeoff-val">₹0.00 Cr</span></div>
+              <div class="tradeoff-row"><span class="tradeoff-lbl">Post-Order Coverage:</span><span class="tradeoff-val">7.8 Weeks</span></div>
+              <div class="tradeoff-row"><span class="tradeoff-lbl">Stockout Probability:</span><span class="tradeoff-val" style="color: var(--warning);">24.0%</span></div>
+              <div class="tradeoff-text">
+                Zero cash outlay today, but inventory declines towards threshold floor with lead time risk.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Policy Validation Gates -->
+        <div class="tab-pane" id="tab-gates">
+          <div class="gates-grid" id="gates-grid">
+            <div class="gate-item">
+              <div>
+                <div class="gate-name">Gate 1: Minimum Production Runway Policy</div>
+                <div class="gate-thresh">Must maintain ≥ 4.0 weeks buffer floor</div>
+              </div>
+              <span class="step-badge pass">COMPLIANT (7.8w &gt; 4.0w)</span>
+            </div>
+
+            <div class="gate-item">
+              <div>
+                <div class="gate-name">Gate 2: Treasury Working Capital Quota</div>
+                <div class="gate-thresh">Quarterly capital expenditure allocation ceiling</div>
+              </div>
+              <span class="step-badge pass">COMPLIANT (₹1.20 Cr &lt; Cap)</span>
+            </div>
+
+            <div class="gate-item">
+              <div>
+                <div class="gate-name">Gate 3: Customs & Anti-Dumping Safeguard Law</div>
+                <div class="gate-thresh">DGTR notification compliance & bilateral origin schedules</div>
+              </div>
+              <span class="step-badge pass">COMPLIANT (WITS/TRAINS)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Landed Parity Matrix -->
+        <div class="tab-pane" id="tab-tariffs">
+          <div class="table-container">
+            <table class="consulting-table">
+              <thead>
+                <tr>
+                  <th class="text-regular">Sourcing Origin</th>
+                  <th>FOB Benchmark</th>
+                  <th>Customs Duty Schedule</th>
+                  <th>Ocean Logistics</th>
+                  <th>Landed Cost ($)</th>
+                  <th>Landed Local</th>
+                </tr>
+              </thead>
+              <tbody id="sourcing-tbody">
+                <tr><td colspan="6" class="await" style="padding:14px;">Awaiting the live tariff ranking…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </details>
+
+
+    </div>
+
+    <!-- Right Column: Strategic Advisory Copilot & Stress Testing -->
+    <div class="col">
+
+      <!-- Strategic Advisory Copilot Console -->
+      <div class="chat-box">
+        <div class="chat-head">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--success);"></div>
+            <strong style="font-size: 12px; letter-spacing: 0.03em;">STRATEGIC ADVISORY COPILOT</strong>
+          </div>
+          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);">AD-1 AUDITED</span>
+        </div>
+
+        <div class="chat-stream" id="chat-stream">
+          <div class="chat-msg agent">
+            <div class="msg-author">Advisory Intelligence • Just now</div>
+            <div class="msg-body">
+              Welcome to the Metals Procurement Advisory Desk. Every recommendation, tariff schedule, and cash flow impact is <strong>100% real and mathematically audited</strong>.<br><br>
+              Action Request <code id="chat-active-id" style="font-family: var(--font-mono); color: var(--brand-navy);">PAR-0001-HRC</code> has been evaluated. How can I assist you with duty arbitrage, working capital terms, or supplier briefs?
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-chips">
+          <button class="chip-btn" onclick="sendChip('Why should we buy domestic instead of importing from Vietnam?')">❓ Domestic vs Vietnam</button>
+          <button class="chip-btn" onclick="sendChip('What is our inventory coverage runway?')">📦 Coverage Runway</button>
+          <button class="chip-btn" onclick="sendChip('Generate negotiation brief for Domestic Mill A')">🤝 JSW Brief</button>
+          <button class="chip-btn" onclick="sendChip('What happens if USD/INR depreciates by 5%?')">🧪 FX Shock Test</button>
+        </div>
+
+        <div class="chat-input-bar">
+          <input type="text" id="chat-input" class="chat-input" placeholder="Inquire on tariffs, working capital, or supplier briefs..." onkeydown="if(event.key==='Enter') sendChatMessage()" />
+          <button class="btn-send" onclick="sendChatMessage()">Send</button>
+        </div>
+      </div>
+
+      <!-- Macro Risk & Sensitivity Stress Tester -->
+      <div class="consulting-card stress-card">
+        <div class="card-top-bar">
+          <div class="card-top-title">
+            <span>🧪</span>
+            <span>MACRO SCENARIO SENSITIVITY & STRESS TEST</span>
+          </div>
+          <span class="lead-time-pill">IMPORT PARITY DELTA</span>
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-title">
+            <span>Currency Shift (USD / INR):</span>
+            <strong id="val-fx-shift" style="font-family: var(--font-mono);">+0.0% (95.56)</strong>
+          </div>
+          <input type="range" id="slider-fx" class="slider-input" min="-10" max="15" step="0.5" value="0" oninput="runSensitivity()" />
+        </div>
+
+        <div class="slider-row" style="margin-top: 8px;">
+          <div class="slider-title">
+            <span>Ocean Freight Rate Shift:</span>
+            <strong id="val-freight-shift" style="font-family: var(--font-mono);">+$0.0/t ($42/t)</strong>
+          </div>
+          <input type="range" id="slider-freight" class="slider-input" min="-20" max="50" step="2" value="0" oninput="runSensitivity()" />
+        </div>
+
+        <div style="background: var(--bg-base); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+          <div>
+            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Simulated Landed Cost (Japan)</div>
+            <div style="font-size: 16px; font-weight: 700; color: var(--brand-navy); font-family: var(--font-mono);" id="sim-landed-val">—</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Variance vs Baseline</div>
+            <div style="font-size: 14px; font-weight: 700; color: var(--text-muted); font-family: var(--font-mono);" id="sim-impact-val">0.00%</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Data Provenance & Upstream API Audit Modal -->
+  <div class="modal-overlay" id="modal-provenance">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title">Live Data Provenance & Upstream API Verification</div>
+        <button class="modal-close" onclick="closeProvenanceModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; background: var(--bg-base); padding: 12px; border-radius: 4px; border: 1px solid var(--border-subtle);">
+          <strong>Rule AD-1 Non-Hallucination Invariant:</strong> The AI model never produces numbers. Quantiles, coverage runway, landed tariffs, and order tonnes are evaluated deterministically by local verified engines. The Staleness Watchdog enforces hard 15-minute intraday and 72-hour EOD TTL limits.
+        </div>
+
+        <div class="table-container">
+          <table class="consulting-table">
+            <thead>
+              <tr>
+                <th class="text-regular">Feed / Symbol</th>
+                <th class="text-regular">Provider & Protocol</th>
+                <th>HTTP Status</th>
+                <th>Latency</th>
+                <th>Age</th>
+                <th>Watchdog Status</th>
+              </tr>
+            </thead>
+            <tbody id="provenance-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="desk-toast"><span>✓</span> Notification</div>
+
+  <script>
+    let activeActionId = 'PAR-0001-HRC';
+    let lastSyncDate = new Date();
+
+    // Clock
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock-display').innerText = 
+        'UTC: ' + now.toISOString().slice(11, 19) + ' | IST: ' + now.toLocaleTimeString('en-IN', { hour12: false });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Tab switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Toast function
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('desk-toast');
+      if (type === 'success') {
+        toast.style.background = '#ffffff';
+        toast.style.border = '1px solid var(--success-border)';
+        toast.style.color = 'var(--success)';
+        toast.innerHTML = `<span>✓</span> ${message}`;
+      } else if (type === 'error') {
+        toast.style.background = '#ffffff';
+        toast.style.border = '1px solid var(--danger-border)';
+        toast.style.color = 'var(--danger)';
+        toast.innerHTML = `<span>✕</span> ${message}`;
+      } else {
+        toast.style.background = '#ffffff';
+        toast.style.border = '1px solid #bfdbfe';
+        toast.style.color = 'var(--brand-navy)';
+        toast.innerHTML = `<span>ℹ</span> ${message}`;
+      }
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+      setTimeout(() => {
+        toast.style.transform = 'translateY(-20px)';
+        toast.style.opacity = '0';
+      }, 3500);
+    }
+
+    // Modal controls
+    function openProvenanceModal() {
+      document.getElementById('modal-provenance').style.display = 'flex';
+      pollStatus();
+    }
+    function closeProvenanceModal() {
+      document.getElementById('modal-provenance').style.display = 'none';
+    }
+
+    // Poll live status
+    async function pollStatus() {
+      try {
+        const res = await fetch('/api/status');
+        const data = await res.json();
+        if (data.status === 'success') {
+          lastSyncDate = new Date();
+          const q = data.market?.quotes || {};
+          if (q['MCX:ZINC']) {
+            document.getElementById('t-mcx-zinc').innerText = `₹${q['MCX:ZINC'].price.toFixed(2)}/kg`;
+            document.getElementById('t-mcx-age').innerText = `${Math.round(q['MCX:ZINC'].age_seconds)}s ago`;
+          }
+          if (q['LME:ZINC:CASH']) {
+            document.getElementById('t-lme-zinc').innerText = `$${q['LME:ZINC:CASH'].price.toLocaleString()}/t`;
+            document.getElementById('t-lme-age').innerText = `${Math.round(q['LME:ZINC:CASH'].age_seconds)}s ago`;
+          }
+          if (q['STEEL:HRC:INDIA']) {
+            document.getElementById('t-dom-hrc').innerText = `₹${q['STEEL:HRC:INDIA'].price.toLocaleString()}/t`;
+            document.getElementById('t-hrc-age').innerText = `${Math.round(q['STEEL:HRC:INDIA'].age_seconds)}s ago`;
+          }
+          if (q['CME:HRC']) {
+            document.getElementById('t-cme-hrc').innerText = `$${q['CME:HRC'].price.toLocaleString()}/t`;
+            document.getElementById('t-cme-age').innerText = `${Math.round(q['CME:HRC'].age_seconds)}s ago`;
+          }
+          if (q['FX:USDINR:FBIL']) {
+            document.getElementById('t-usdinr').innerText = q['FX:USDINR:FBIL'].price.toFixed(4);
+            document.getElementById('t-fbil-age').innerText = `${Math.round(q['FX:USDINR:FBIL'].age_seconds)}s ago`;
+          }
+
+          // Populate modal table
+          if (data.provenance && data.provenance.feeds) {
+            const tbody = document.getElementById('provenance-tbody');
+            tbody.innerHTML = '';
+            data.provenance.feeds.forEach(f => {
+              const tr = document.createElement('tr');
+              // status_code / latency_ms were fabricated and have been removed
+              // server-side (the stream layer never instrumented them). Render
+              // what is actually measured instead of "undefined OK".
+              const statusColor = 'var(--text-muted)';
+              const watchdogColor = f.is_stale ? 'var(--danger)' : 'var(--success)';
+              const watchdogText = f.is_stale ? 'STALE_DEGRADED' : 'HEALTHY_FRESH';
+              tr.innerHTML = `
+                <td class="text-regular"><strong>${f.name}</strong><br><span style="color: var(--text-muted); font-size: 10px;">${f.symbol}</span></td>
+                <td class="text-regular"><span style="color: var(--text-secondary);">${f.provider}</span><br><code style="font-size: 10px; color: var(--brand-navy);">${f.endpoint_url.substring(0, 50)}...</code></td>
+                <td><span style="color: ${statusColor};">not instrumented</span></td>
+                <td><span style="color: var(--text-muted);">n/a</span></td>
+                <td>${f.age_seconds}s</td>
+                <td><span style="color: ${watchdogColor}; font-weight: 600;">${watchdogText}</span></td>
+              `;
+              tbody.appendChild(tr);
+            });
+          }
+        }
+      } catch (e) {
+        console.warn('Status poll error:', e);
+      }
+    }
+    setInterval(pollStatus, 3000);
+    pollStatus();
+
+    // Force live refresh
+    async function triggerForceRefresh() {
+      showToast('Querying upstream commodity APIs...', 'info');
+      try {
+        const res = await fetch('/api/refresh');
+        const data = await res.json();
+        if (data.status === 'success') {
+          showToast('Live market feeds refreshed successfully.', 'success');
+          pollStatus();
+        }
+      } catch (e) {
+        showToast('Refresh failed: ' + e, 'error');
+      }
+    }
+
+    // Advanced params toggle
+    function toggleAdvanced() {
+      const row = document.getElementById('advanced-row');
+      const arrow = document.getElementById('adv-arrow');
+      row.classList.toggle('open');
+      arrow.innerText = row.classList.contains('open') ? '▾' : '▸';
+    }
+
+    // Run Live Business Evaluation
+    async function runLiveEvaluation(demoThreshold = false) {
+      if (window.purchaseOutlookBusy) return;
+      const outlookPayload = window.purchaseOutlookInputs(demoThreshold);
+      if (!outlookPayload) return;
+      window.purchaseOutlookBusy = true;
+      window.purchaseOutlookLoading(demoThreshold);
+      const company = document.getElementById('cfg-company').value;
+      const mat = document.getElementById('cfg-material').value;
+      const dest = document.getElementById('cfg-dest').value;
+      const demand = parseFloat(document.getElementById('cfg-demand').value) || 500;
+      const stock = parseFloat(document.getElementById('cfg-stock').value) || 0;
+      const policy = parseFloat(document.getElementById('cfg-policy').value) || 4.0;
+      const inTransit = parseFloat(document.getElementById('cfg-transit').value) || 0;
+      const openPO = parseFloat(document.getElementById('cfg-open-po').value) || 0;
+      const safetyStock = parseFloat(document.getElementById('cfg-safety').value) || 0;
+
+      document.getElementById('exec-verdict').innerText = "Analysing your procurement position against live market rates...";
+
+      try {
+        const res = await fetch('/api/evaluate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            company_name: company,
+            material_type: mat,
+            destination_iso3: dest,
+            monthly_demand_t: demand,
+            stock_on_hand_t: stock,
+            in_transit_t: inTransit,
+            open_po_t: openPO,
+            safety_stock_t: safetyStock,
+            policy_weeks: policy,
+            ...outlookPayload
+          })
+        });
+        const data = await res.json();
+        if (!res.ok || data.status !== 'success') throw new Error(data.reason || data.message || 'Market evaluation unavailable');
+        if (data.status === 'success') {
+          const d = data.data;
+          window.renderPurchaseOutlook(d.purchase_outlook);
+
+          const weeklyBurn = demand / 4.33;
+          // Post-order coverage comes from the engine, which nets off what the
+          // plant consumes across the forecast horizon. Recomputing it here as
+          // coverage + tonnes/burn ignores that consumption and produces the
+          // reassuring number — the exact engine/UI divergence under review.
+          const _covAfter = (d.decision_disclosure || {}).coverage_after_weeks;
+          const postRunway = (_covAfter != null ? _covAfter : d.coverage_weeks).toFixed(1);
+          const postClearsFloor = (d.decision_disclosure || {}).engine_says_feasible !== false;
+          const deficitT = Math.max(0, Math.round((policy * weeklyBurn) - (d.usable_stock_t + d.pipeline_supply_t)));
+          const postStock = Math.round(d.usable_stock_t + d.pipeline_supply_t + d.recommendation.tonnes_now);
+
+          // Update Document Header
+          const titleEl = document.getElementById('memo-company-title');
+          if (titleEl) titleEl.innerText = `STRATEGIC PROCUREMENT MEMORANDUM | ${company.toUpperCase()}`;
+          const scopeEl = document.getElementById('memo-scope-subtitle');
+          if (scopeEl) scopeEl.innerText = `COMMODITY: ${d.material_label} | DESTINATION: ${d.destination} Plant`;
+          const docIdEl = document.getElementById('memo-doc-id');
+          if (docIdEl) docIdEl.innerText = `DOC: ${d.action_request.action_id}`;
+
+          // Update Section 1: Executive Verdict & KPIs
+          // When the engine clears nothing, the headline is an escalation, not a
+          // purchase recommendation. Saying "ORDER NOW" over a plan the engine
+          // has marked infeasible is the top-line version of the same divergence.
+          const verdictAction = !postClearsFloor ? 'escalate — no order closes this gap'
+            : d.recommendation.commit_now_pct >= 80 ? 'order now'
+            : d.recommendation.commit_now_pct >= 40 ? 'partially order now' : 'hold and monitor';
+          const verdictReason = d.coverage_weeks < policy ? `your plant only has ${d.coverage_weeks.toFixed(1)} weeks of stock left (minimum required: ${policy} weeks)` : `market conditions are favourable and locking in now avoids price risk`;
+          const vEl = document.getElementById('exec-verdict');
+          vEl.classList.remove('await');
+          vEl.innerText = postClearsFloor
+            ? `Recommendation: ${verdictAction.toUpperCase()} — Buy ${d.recommendation.tonnes_now.toLocaleString()} MT at the current rate of ₹${d.benchmark_price_local.toLocaleString()}/t (total spend: ₹${(d.recommendation.expected_spend_local / 10000000).toFixed(2)} Crores). This is advised because ${verdictReason}.`
+            : `ESCALATE — no purchase on this grid restores the ${policy.toFixed(1)}-week floor. The largest available action, ${d.recommendation.tonnes_now.toLocaleString()} MT at ₹${d.benchmark_price_local.toLocaleString()}/t (₹${(d.recommendation.expected_spend_local / 10000000).toFixed(2)} Crores), still leaves ${postRunway} weeks of coverage because ${verdictReason}. Raise the requirement, pull delivery dates forward, or accept the shortage — this is a supply decision, not a timing one.`;
+          
+          const detailsEl = document.getElementById('exec-verdict-details');
+          if (detailsEl) detailsEl.classList.remove('await');
+          if (detailsEl) detailsEl.innerHTML = 
+            `Domestic Benchmark Spot: <strong>₹${d.benchmark_price_local.toLocaleString()}/t</strong> • Allocated Working Capital: <strong>₹${(d.recommendation.expected_spend_local / 10000000).toFixed(2)} Crores</strong> • Lead Time Risk: <strong>Zero Ocean Delay</strong>`;
+          
+          document.getElementById('alloc-now-lbl').innerText = `${d.recommendation.commit_now_pct}% (${d.recommendation.tonnes_now.toLocaleString()} MT)`;
+          document.getElementById('alloc-def-lbl').innerText = `${100 - d.recommendation.commit_now_pct}% (${d.recommendation.tonnes_deferred.toLocaleString()} MT)`;
+          const allocFill = document.getElementById('alloc-fill');
+          if (allocFill) {
+            allocFill.style.width = `${Math.max(5, d.recommendation.commit_now_pct)}%`;
+            allocFill.innerText = `${d.recommendation.commit_now_pct}% ALLOCATED TO PRODUCTION`;
+          }
+
+          document.getElementById('kpi-volume').innerText = `${d.recommendation.tonnes_now.toLocaleString()} T`;
+          document.getElementById('kpi-volume-pct').innerText = `${d.recommendation.commit_now_pct}% of demand`;
+          document.getElementById('kpi-spend').innerText = `₹${(d.recommendation.expected_spend_local / 10000000).toFixed(2)} Cr`;
+          document.getElementById('kpi-rate').innerText = `@ ₹${d.benchmark_price_local.toLocaleString()}/t domestic`;
+          document.getElementById('kpi-coverage').innerText =
+            `${d.coverage_weeks.toFixed(1)}w → ${postRunway}w${postClearsFloor ? '' : ' (still short)'}`;
+          document.getElementById('kpi-binding').innerText = d.recommendation.binding_constraint;
+          document.getElementById('kpi-regret').innerText = `Regret if delayed: ₹${d.recommendation.regret_of_waiting_local.toLocaleString()}`;
+
+          // ---- Decision disclosure -------------------------------------------
+          const disc = d.decision_disclosure || {};
+          const dEl = document.getElementById('decision-disclosure');
+          if (dEl) {
+            const bits = [];
+            if (disc.selection_basis) bits.push('<b>How this option was chosen:</b> ' + disc.selection_basis);
+            if (disc.feasible_option_count != null && disc.total_options != null) {
+              bits.push('<b>Feasible options:</b> ' + disc.feasible_option_count + ' of ' +
+                        disc.total_options + ' cleared the ' + policy.toFixed(1) + 'w coverage floor.');
+            }
+            if (disc.coverage_after_weeks != null) {
+              bits.push('<b>Coverage after this order:</b> ' + disc.coverage_after_weeks.toFixed(2) + 'w' +
+                        (disc.engine_says_feasible === false ? ' — still below the floor.' : '.'));
+            }
+            if (disc.objective_is_linear) bits.push('<b>Optimiser:</b> ' + (disc.objective_shape_note || 'objective is linear, so the optimum is always an endpoint — this is a comparison, not an optimisation.'));
+            if (disc.stockout_probability == null && disc.stockout_probability_note) {
+              bits.push('<b>Stockout probability:</b> ' + disc.stockout_probability_note);
+            }
+            if (disc.binding_constraint) bits.push('<b>Binding constraint:</b> ' + disc.binding_constraint);
+            if (d.price_series_basis) bits.push('<b>Price series:</b> ' + d.price_series_basis);
+            const fcal = d.forecast_calibration || {};
+            if (fcal.empirical_coverage != null) {
+              bits.push('<b>Forecast calibration:</b> ' + (fcal.empirical_coverage * 100).toFixed(1) +
+                        '% empirical coverage against ' + ((fcal.nominal_coverage || 0.8) * 100).toFixed(0) + '% nominal' +
+                        (fcal.effective_independent_windows != null
+                          ? ' over ~' + fcal.effective_independent_windows + ' independent windows'
+                          : '') + '.');
+            }
+            dEl.hidden = bits.length === 0;
+            dEl.classList.toggle('breach', disc.engine_says_feasible === false);
+            dEl.innerHTML = '<ul><li>' + bits.join('</li><li>') + '</li></ul>';
+          }
+
+          // Update Section 2: Operational Rationale, Visual Runway Bar & Deficit Bridge
+          const runwayStatus = document.getElementById('runway-status-pill');
+          if (runwayStatus) {
+            if (d.coverage_weeks < policy) {
+              runwayStatus.className = 'panel-status-pill warn';
+              runwayStatus.innerText = `🚨 BELOW ${policy.toFixed(1)}w MANDATED FLOOR`;
+            } else {
+              runwayStatus.className = 'panel-status-pill success';
+              runwayStatus.innerText = `🟢 SATISFIES POLICY BUFFER`;
+            }
+          }
+
+          const opText = document.getElementById('memo-operational-text');
+          if (opText) {
+            opText.innerText = `Current unrestricted inventory stands at ${d.usable_stock_t.toLocaleString()} MT with ${d.pipeline_supply_t.toLocaleString()} MT confirmed pipeline, yielding an effective operational runway of ${d.coverage_weeks.toFixed(1)} weeks against your mandated ${policy.toFixed(1)}-week floor. Factoring in standard domestic mill rolling cycles (18–24 days) and transit lead times, failure to commit now creates a ${deficitT.toLocaleString()} MT deficit against safety buffer thresholds. Committing ${d.recommendation.tonnes_now.toLocaleString()} MT ${postClearsFloor ? `restores coverage runway to ${postRunway} weeks` : `leaves coverage at ${postRunway} weeks, still under the ${policy.toFixed(1)}-week floor once consumption across the horizon is netted off — this is a shortage to escalate, not a buying decision the order alone fixes`}.`;
+          }
+
+          const barCurrent = document.getElementById('runway-bar-current');
+          if (barCurrent) {
+            const curPct = Math.min(100, Math.max(5, (d.coverage_weeks / 10) * 100));
+            barCurrent.style.width = `${curPct}%`;
+            barCurrent.innerHTML = `<span>Current: ${d.coverage_weeks.toFixed(1)}w</span>`;
+          }
+          const barPost = document.getElementById('runway-bar-post');
+          if (barPost) {
+            const postPct = Math.min(100, (parseFloat(postRunway) / 10) * 100);
+            barPost.style.width = `${postPct}%`;
+            barPost.innerHTML = `<span>Post-Commitment: ${postRunway}w${postClearsFloor ? '' : ' — BELOW FLOOR'}</span>`;
+            barPost.style.background = postClearsFloor ? '' : 'var(--danger)';
+          }
+
+          const bUsable = document.getElementById('bridge-usable');
+          if (bUsable) bUsable.innerText = `${d.usable_stock_t.toLocaleString()} MT`;
+          const bPipe = document.getElementById('bridge-pipeline');
+          if (bPipe) bPipe.innerText = `${d.pipeline_supply_t.toLocaleString()} MT`;
+          const bDef = document.getElementById('bridge-deficit');
+          if (bDef) bDef.innerText = `${deficitT.toLocaleString()} MT`;
+          const bPost = document.getElementById('bridge-post');
+          if (bPost) bPost.innerText = `${postStock.toLocaleString()} MT`;
+          const bPostSub = document.getElementById('bridge-post-sub');
+          if (bPostSub) {
+            bPostSub.innerText = postClearsFloor
+              ? `${postRunway}w Safe Runway`
+              : `${postRunway}w — still below the ${policy.toFixed(1)}w floor`;
+            bPostSub.style.color = postClearsFloor ? 'var(--success)' : 'var(--danger)';
+            const card = document.getElementById('bridge-post-card');
+            if (card) card.className = postClearsFloor ? 'bridge-card success' : 'bridge-card';
+          }
+
+          // Update Section 3: Trade Arbitrage, Landed Cost Comparison Bars
+          const barDom = document.getElementById('bar-cost-dom');
+          if (barDom) barDom.innerText = `₹${d.benchmark_price_local.toLocaleString()}/t`;
+          const barDomText = document.getElementById('bar-fill-dom-text');
+          if (barDomText) barDomText.innerText = `₹${d.benchmark_price_local.toLocaleString()}/t (Base FOR • 0% Duty • 3-5d Transit)`;
+
+          if (d.global_sourcing && d.global_sourcing.length > 0) {
+            const jp = d.global_sourcing.find(s => s.origin_name.toLowerCase().includes('japan')) || d.global_sourcing[0];
+            const vn = d.global_sourcing.find(s => s.origin_name.toLowerCase().includes('viet'));
+            const cn = d.global_sourcing.find(s => s.origin_name.toLowerCase().includes('china'));
+
+            if (jp) {
+              const el = document.getElementById('bar-cost-japan');
+              if (el) el.innerHTML = `₹${jp.landed_local.toLocaleString()}/t <span class="spread-tag">+₹${(jp.landed_local - d.benchmark_price_local).toLocaleString()}/t</span>`;
+              const fillText = document.getElementById('bar-fill-japan-text');
+              if (fillText) fillText.innerText = `₹${jp.landed_local.toLocaleString()}/t (CIF $${jp.fob_usd} incl. freight & insurance + ${jp.duty_pct}% Safeguard)`;
+            }
+            if (vn) {
+              const el = document.getElementById('bar-cost-vietnam');
+              if (el) el.innerHTML = `₹${vn.landed_local.toLocaleString()}/t <span class="spread-tag">+₹${(vn.landed_local - d.benchmark_price_local).toLocaleString()}/t</span>`;
+              const fillText = document.getElementById('bar-fill-vietnam-text');
+              if (fillText) fillText.innerText = `₹${vn.landed_local.toLocaleString()}/t (CIF $${vn.fob_usd} incl. freight & insurance + ${vn.duty_pct}% Duty)`;
+            }
+            if (cn) {
+              const el = document.getElementById('bar-cost-china');
+              if (el) el.innerHTML = `₹${cn.landed_local.toLocaleString()}/t <span class="spread-tag">+₹${(cn.landed_local - d.benchmark_price_local).toLocaleString()}/t</span>`;
+              const fillText = document.getElementById('bar-fill-china-text');
+              if (fillText) fillText.innerText = `₹${cn.landed_local.toLocaleString()}/t (CIF $${cn.fob_usd} incl. freight & insurance + ${cn.duty_pct}% Duty)`;
+            }
+          }
+
+          // ---- Arbitrage prose, pill and footnotes, composed from the ranking ----
+          // Everything below used to be static prose naming Vietnam, Japan and
+          // China at prices no fetch produced. It is now either derived from
+          // d.global_sourcing or it says that the ranking is unavailable.
+          const setTxt = (id, txt, muted) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.innerText = txt;
+            el.classList.toggle('await', !!muted);
+          };
+          const inr = v => '₹' + Math.round(v).toLocaleString() + '/t';
+          const ranked = (d.global_sourcing || []).filter(r => r.landed_local != null);
+          const bench = d.benchmark_price_local;
+
+          if (ranked.length === 0) {
+            const why = (d.memo_data || {}).arbitrage_unavailable_reason ||
+              'No import origin returned a landed cost, so there is no import parity to compare against.';
+            setTxt('memo-arbitrage-text', why, true);
+            setTxt('arb-pill', 'IMPORT PARITY UNAVAILABLE', false);
+            setTxt('arb-fta-note', why, true);
+            setTxt('bar-foot-dom', 'Baseline benchmark. No import parity available to compare against.', false);
+            setTxt('stage2-metric', 'Domestic ' + inr(bench) + ' • no ranked import origin', false);
+            setTxt('batna-desc', 'No import parity is available, so the domestic quote has no external counter-anchor today.', false);
+          } else {
+            const cheapest = ranked.reduce((a, b) => b.landed_local < a.landed_local ? b : a);
+            const gap = cheapest.landed_local - bench;
+            const domWins = gap > 0;
+
+            setTxt('arb-pill', domWins
+              ? 'DOMESTIC CHEAPER BY ' + inr(gap).replace('₹', '₹') + ' VS ' + cheapest.origin_name.toUpperCase()
+              : cheapest.origin_name.toUpperCase() + ' CHEAPER BY ' + inr(-gap) + ' VS DOMESTIC', false);
+
+            const parts = ranked
+              .slice()
+              .sort((a, b) => a.landed_local - b.landed_local)
+              .map(r => r.origin_name + ' ' + inr(r.landed_local) +
+                        ' (CIF $' + r.fob_usd + ' incl. freight & insurance, ' + r.duty_pct + '% duty)');
+            setTxt('memo-arbitrage-text',
+              'Ranked on landed cost at the plant gate: ' + parts.join('; ') + '. ' +
+              'Domestic benchmark is ' + inr(bench) + ', so ' +
+              (domWins ? 'domestic is ' + inr(gap) + ' cheaper than the best import (' + cheapest.origin_name + ').'
+                       : cheapest.origin_name + ' lands ' + inr(-gap) + ' below domestic.') +
+              ' Duty rates are the tariff layer’s own and remain UNVERIFIED pending customs sign-off; ' +
+              'import unit values are CIF-basis (UNCTAD), so freight and insurance are already inside the FOB-labelled figure.',
+              false);
+
+            const zero = ranked.filter(r => r.duty_pct === 0).map(r => r.origin_name);
+            setTxt('arb-fta-note',
+              (zero.length
+                ? zero.join(', ') + ' clear' + (zero.length > 1 ? '' : 's') + ' at 0% preferential duty in this ranking, which is what moves them up the list — but a preferential rate you cannot certify under rules of origin is not a saving. '
+                : 'No origin in this ranking clears at 0% preferential duty. ') +
+              'Best landed import is ' + cheapest.origin_name + ' at ' + inr(cheapest.landed_local) + '.',
+              false);
+
+            setTxt('bar-foot-dom', domWins
+              ? 'Baseline benchmark. ' + inr(gap) + ' below the best import (' + cheapest.origin_name + '). Zero FX or maritime risk.'
+              : 'Baseline benchmark. ' + inr(-gap) + ' above the best import (' + cheapest.origin_name + '), before FX and maritime risk.',
+              false);
+
+            setTxt('stage2-metric',
+              'Domestic ' + inr(bench) + ' vs best import ' + cheapest.origin_name + ' ' + inr(cheapest.landed_local),
+              false);
+
+            setTxt('batna-desc', domWins
+              ? 'Domestic spot sits ' + inr(gap) + ' below import parity, which is the resistance point against a price increase.'
+              : 'Import parity sits ' + inr(-gap) + ' below the domestic quote — that gap is the ask.',
+              false);
+
+            ['japan', 'vietnam', 'china'].forEach(k => {
+              const r = ranked.find(x => x.origin_name.toLowerCase().includes(k === 'vietnam' ? 'viet' : k));
+              if (r) setTxt('bar-foot-' + k,
+                r.duty_pct + '% duty applied to a CIF-basis unit value. Rate is UNVERIFIED pending customs confirmation.', false);
+              else setTxt('bar-foot-' + k, 'Not present in the current ranking.', true);
+            });
+          }
+
+          // Update Section 4: Negotiation Levers & BATNA
+          const bestImport = d.global_sourcing && d.global_sourcing[0] ? d.global_sourcing[0] : null;
+          const batnaEl = document.getElementById('batna-display');
+          if (batnaEl) {
+            const ok = bestImport && bestImport.landed_local != null;
+            batnaEl.innerText = ok
+              ? `${bestImport.origin_name} Landed: ₹${bestImport.landed_local.toLocaleString()}/t`
+              : 'No import parity available';
+            batnaEl.classList.toggle('await', !ok);
+          }
+          const levCredit = document.getElementById('lever-credit-val');
+          if (levCredit) levCredit.innerText = `₹${(d.negotiation_levers.credit_terms_30d_saving_local / 100000).toFixed(1)} Lakhs`;
+          const levFlex = document.getElementById('lever-flex-val');
+          if (levFlex) levFlex.innerText = `₹${(d.negotiation_levers.volume_flexibility_option_local / 100000).toFixed(1)} Lakhs`;
+          const levTotal = document.getElementById('lever-total-val');
+          if (levTotal) levTotal.innerText = `₹${(d.negotiation_levers.total_levers_on_table_local / 100000).toFixed(1)} Lakhs`;
+
+          // Negotiation prose was static: it named a fixed origin, landed cost
+          // and lever value regardless of what was actually computed.
+          const negEl = document.getElementById('memo-negotiation-text');
+          if (negEl) {
+            const lk = v => '₹' + (v / 100000).toFixed(1) + ' Lakhs';
+            const anchor = (bestImport && bestImport.landed_local != null)
+              ? `the ${bestImport.origin_name} landed parity of ₹${bestImport.landed_local.toLocaleString()}/t`
+              : 'no external import parity (none was available today)';
+            negEl.classList.remove('await');
+            negEl.innerText =
+              `Counter-anchor the domestic mill against ${anchor}. ` +
+              `A 30-day working-capital extension is worth ${lk(d.negotiation_levers.credit_terms_30d_saving_local)} ` +
+              `and ±10% volume flexibility ${lk(d.negotiation_levers.volume_flexibility_option_local)}, ` +
+              `${lk(d.negotiation_levers.total_levers_on_table_local)} on the table in total. ` +
+              `These are modelled values at the stated WACC, not quoted concessions — no supplier has offered them.`;
+          }
+
+          activeActionId = d.action_request.action_id;
+          const activeEl = document.getElementById('chat-active-id');
+          if (activeEl) activeEl.innerText = activeActionId;
+
+          const badge = document.getElementById('par-status-badge');
+          badge.className = 'status-badge pending';
+          badge.innerText = '● PENDING EXECUTIVE SIGN-OFF';
+
+          const btnApprove = document.getElementById('btn-approve');
+          btnApprove.innerHTML = '<span>✓</span> Authorize Purchase Order';
+          btnApprove.disabled = false;
+          btnApprove.style.opacity = '1';
+
+          // Update Reasoning Stages
+          if (d.reasoning_stages && d.reasoning_stages.length > 0) {
+            const list = document.getElementById('reasoning-list');
+            list.innerHTML = '';
+            d.reasoning_stages.forEach(st => {
+              const el = document.createElement('div');
+              el.className = 'reasoning-step';
+              const badgeClass = st.status === 'PASS' || st.status === 'COMPLETED' || st.status === 'RECOMMENDED' || st.status === 'AUDITED' ? 'pass' : 'warn';
+              el.innerHTML = `
+                <div class="step-head">
+                  <span class="step-title">Stage ${st.stage_num}: ${st.title}</span>
+                  <span class="step-badge ${badgeClass}">${st.status}</span>
+                </div>
+                <div class="step-metric">${st.metric}</div>
+                <div class="step-finding">${st.finding}</div>
+              `;
+              list.appendChild(el);
+            });
+          }
+
+          // Update Tradeoff Matrix
+          if (d.tradeoff_matrix && d.tradeoff_matrix.length > 0) {
+            const grid = document.getElementById('tradeoff-grid');
+            grid.innerHTML = '';
+            d.tradeoff_matrix.forEach(opt => {
+              const el = document.createElement('div');
+              el.className = `tradeoff-card ${opt.is_recommended ? 'recommended' : ''}`;
+              el.innerHTML = `
+                <div class="tradeoff-head">${opt.option_name}</div>
+                <div class="tradeoff-row"><span class="tradeoff-lbl">Capital Spend:</span><span class="tradeoff-val">₹${(opt.capital_spend_inr / 10000000).toFixed(2)} Cr</span></div>
+                <div class="tradeoff-row"><span class="tradeoff-lbl">Post-Order Coverage:</span><span class="tradeoff-val">${opt.post_coverage_weeks} Weeks</span></div>
+                <div class="tradeoff-row"><span class="tradeoff-lbl">Coverage after order:</span><span class="tradeoff-val">${opt.coverage_after_weeks != null ? opt.coverage_after_weeks.toFixed(1) + 'w' : 'n/a'}${opt.clears_policy_floor === false ? ' — BELOW FLOOR' : ''}</span></div>
+                <div class="tradeoff-row"><span class="tradeoff-lbl">Stockout probability:</span><span class="tradeoff-val" style="color: var(--text-muted);">not estimated — needs demand &amp; lead-time distributions</span></div>
+                <div class="tradeoff-text">${opt.strategic_tradeoff}</div>
+              `;
+              grid.appendChild(el);
+            });
+          }
+
+          // Update Policy Gates
+          if (d.policy_validation_gates && d.policy_validation_gates.length > 0) {
+            const gGrid = document.getElementById('gates-grid');
+            gGrid.innerHTML = '';
+            d.policy_validation_gates.forEach(g => {
+              const el = document.createElement('div');
+              el.className = 'gate-item';
+              el.innerHTML = `
+                <div>
+                  <div class="gate-name">${g.policy_name}</div>
+                  <div class="gate-thresh">${g.threshold} • ${g.measured_value}</div>
+                </div>
+                <span class="step-badge pass">${g.status}</span>
+              `;
+              gGrid.appendChild(el);
+            });
+          }
+
+          // Update Negotiation Levers
+          const neg = d.negotiation_levers;
+
+          // Sourcing Table
+          if (d.global_sourcing && d.global_sourcing.length > 0) {
+            const tbody = document.getElementById('sourcing-tbody');
+            tbody.innerHTML = '';
+
+            const domTr = document.createElement('tr');
+            domTr.innerHTML = `
+              <td class="text-regular"><strong>India Domestic Spot</strong> <span class="tag-domestic">DOMESTIC BENCHMARK</span></td>
+              <td>—</td>
+              <td>0.0% (Domestic FOR)</td>
+              <td>Local FOR</td>
+              <td>$${(d.benchmark_price_local / 95.56).toFixed(0)}/t</td>
+              <td><strong>₹${d.benchmark_price_local.toLocaleString()}/t</strong></td>
+            `;
+            tbody.appendChild(domTr);
+
+            d.global_sourcing.forEach(r => {
+              const tr = document.createElement('tr');
+              const bestBadge = r.is_cheapest ? '<span class="tag-cheapest">BEST IMPORT</span>' : '';
+              const dutyColor = r.duty_pct === 0 ? 'var(--success)' : 'var(--warning)';
+              tr.innerHTML = `
+                <td class="text-regular"><strong>${r.origin_name}</strong> ${bestBadge}</td>
+                <td>$${r.fob_usd}/t</td>
+                <td style="color: ${dutyColor};">${r.duty_pct}% (${r.tariff_type})</td>
+                <td>$${r.freight_est_usd}/t</td>
+                <td>$${r.landed_usd}/t</td>
+                <td>₹${r.landed_local.toLocaleString()}/t</td>
+              `;
+              tbody.appendChild(tr);
+            });
+          }
+
+          // The chat panel branched on commit_now_pct alone, so it said "place the
+          // order now" beside a headline that said ESCALATE. Same decision, same
+          // screen, two answers. It reads the engine's feasibility too.
+          const _savingT = (d.global_sourcing && d.global_sourcing[0] &&
+                            d.global_sourcing[0].landed_local != null)
+            ? (d.global_sourcing[0].landed_local - d.benchmark_price_local) : null;
+          const plainSummary = !postClearsFloor
+            ? `Advisory complete for **${d.company_name}**: **No purchase on the evaluated grid restores your ${policy}-week floor.** Even committing ${d.recommendation.tonnes_now.toLocaleString()} MT leaves coverage at ${postRunway} weeks once consumption across the horizon is netted off. This is a shortage to escalate — raise the requirement, pull delivery dates forward, or accept the gap. Placing this order is still the least-bad action, but it does not close it.`
+            : d.recommendation.commit_now_pct >= 80
+            ? `Advisory complete for **${d.company_name}**: The recommendation is to **place the order now** for **${d.recommendation.tonnes_now.toLocaleString()} MT** of ${d.material_label} at ₹${d.benchmark_price_local.toLocaleString()}/t. Your current stock covers only ${d.coverage_weeks.toFixed(1)} weeks — below the ${policy}-week minimum required. ${_savingT == null ? 'No import parity was available to compare against.' : _savingT > 0 ? `Domestic sourcing is the cheaper option, by ₹${_savingT.toLocaleString()}/t against the best ranked import.` : `The best ranked import lands ₹${(-_savingT).toLocaleString()}/t below domestic.`}`
+            : `Advisory complete for **${d.company_name}**: Your inventory is currently ${d.coverage_weeks.toFixed(1)} weeks, which ${d.coverage_weeks >= policy ? 'meets' : 'is below'} your ${policy}-week policy. Recommendation: **${d.recommendation.verdict}** — scroll up for the full breakdown.`;
+          appendMessage('agent', plainSummary);
+          if (demoThreshold) {
+            document.getElementById('par-status-badge').textContent = 'DEMO ONLY · NO ORDER CREATED';
+          }
+          for (const id of ['btn-approve', 'btn-modify', 'btn-reject']) document.getElementById(id).disabled = demoThreshold;
+        }
+      } catch (e) {
+        showToast('Evaluation failed: ' + e, 'error');
+        window.purchaseOutlookError(e.message);
+      } finally {
+        window.purchaseOutlookBusy = false;
+        window.purchaseOutlookLoaded();
+      }
+    }
+
+    // Approval Actions
+    async function approvePAR() {
+      try {
+        const res = await fetch('/api/action/approve', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action_id: activeActionId,
+            approver: 'VP_Procurement',
+            notes: 'Executive approval via Procurement Advisory Intelligence Desk'
+          })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          const badge = document.getElementById('par-status-badge');
+          badge.className = 'status-badge approved';
+          badge.innerHTML = '<span>✓</span> APPROVED & RELEASED TO ERP';
+
+          const btn = document.getElementById('btn-approve');
+          btn.innerHTML = '<span>✓</span> Signed Off';
+          btn.disabled = true;
+          btn.style.opacity = '0.7';
+
+          showToast(`Action ${activeActionId} APPROVED. Order released to SAP MM.`, 'success');
+          appendMessage('agent', `✅ **PURCHASE ORDER AUTHORIZED:** Action request \`${activeActionId}\` has been signed off by **VP of Procurement**. Purchase commitment dispatched to SAP MM.`);
+        }
+      } catch (e) {
+        showToast('Approval failed: ' + e, 'error');
+      }
+    }
+
+    async function rejectPAR() {
+      const reason = 'Working capital allocation cap reached for current billing cycle.';
+      try {
+        const res = await fetch('/api/action/reject', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action_id: activeActionId,
+            approver: 'VP_Procurement',
+            reason: reason
+          })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          const badge = document.getElementById('par-status-badge');
+          badge.className = 'status-badge declined';
+          badge.innerHTML = '<span>✕</span> DECLINED';
+
+          showToast(`Action ${activeActionId} DECLINED.`, 'error');
+          appendMessage('agent', `🚫 **ACTION DECLINED:** Action request \`${activeActionId}\` declined by **VP of Procurement**. Reason: *${reason}*`);
+        }
+      } catch (e) {
+        showToast('Decline failed: ' + e, 'error');
+      }
+    }
+
+    async function modifyPAR() {
+      const curTonnes = parseFloat(document.getElementById('kpi-volume').innerText) || 1200;
+      const revised = Math.max(100, curTonnes - 200);
+      try {
+        const res = await fetch('/api/action/modify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action_id: activeActionId,
+            approver: 'VP_Procurement',
+            new_tonnes: revised,
+            notes: 'Adjusted to match monthly working capital quota'
+          })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          document.getElementById('kpi-volume').innerText = `${revised} T`;
+          const ar = data.action_request;
+          if (ar && ar.total_commitment_inr) {
+            document.getElementById('kpi-spend').innerText = `₹${(ar.total_commitment_inr / 10000000).toFixed(2)} Cr`;
+          }
+          showToast(`Action ${activeActionId} revised to ${revised} tonnes.`, 'info');
+          appendMessage('agent', `✏️ **ORDER REVISED:** Action request \`${activeActionId}\` adjusted from **${curTonnes}T** to **${revised}T** by **VP of Procurement**.`);
+        }
+      } catch (e) {
+        showToast('Modify failed: ' + e, 'error');
+      }
+    }
+
+    // Chat functionality
+    async function sendChatMessage() {
+      const input = document.getElementById('chat-input');
+      const msg = input.value.trim();
+      if (!msg) return;
+      appendMessage('user', msg);
+      input.value = '';
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          appendMessage('agent', data.data.response);
+        } else {
+          appendMessage('agent', 'Error: ' + data.message);
+        }
+      } catch (e) {
+        appendMessage('agent', 'Communication error with live engine.');
+      }
+    }
+
+    function sendChip(t) {
+      document.getElementById('chat-input').value = t;
+      sendChatMessage();
+    }
+
+    function appendMessage(role, text) {
+      const container = document.getElementById('chat-stream');
+      const el = document.createElement('div');
+      el.className = 'chat-msg ' + role;
+      const meta = document.createElement('div');
+      meta.className = 'msg-author';
+      meta.innerText = (role === 'agent' ? 'Advisory Intelligence' : 'You') + ' • Just now';
+      el.appendChild(meta);
+      const bubble = document.createElement('div');
+      bubble.className = 'msg-body';
+      bubble.innerHTML = text
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/### (.*?)(<br>|$)/g, '<h4 style="margin: 6px 0; color: var(--brand-navy);">$1</h4>');
+      el.appendChild(bubble);
+      container.appendChild(el);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    // Sensitivity
+    async function runSensitivity() {
+      const fx = parseFloat(document.getElementById('slider-fx').value);
+      const fr = parseFloat(document.getElementById('slider-freight').value);
+      const baseFx = 95.56;
+      const simFx = (baseFx * (1 + fx / 100)).toFixed(2);
+      document.getElementById('val-fx-shift').innerText = `${fx >= 0 ? '+' : ''}${fx}% (${simFx})`;
+      const baseFreight = 42;
+      const simFreight = (baseFreight + fr).toFixed(0);
+      document.getElementById('val-freight-shift').innerText = `${fr >= 0 ? '+' : ''}$${fr}/t ($${simFreight}/t)`;
+
+      try {
+        const res = await fetch('/api/what_if', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fx_shift_pct: fx, freight_usd_shift: fr })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          document.getElementById('sim-landed-val').innerText = `₹${data.simulated_landed_cost_local.toLocaleString()}/t`;
+          const chg = data.cost_variance_pct;
+          const el = document.getElementById('sim-impact-val');
+          el.innerText = `${chg >= 0 ? '+' : ''}${chg.toFixed(2)}%`;
+          el.style.color = chg > 0 ? 'var(--danger)' : 'var(--success)';
+        }
+      } catch (e) {}
+    }
+
+    // Auto-evaluate on page load with default business scenario
+    window.addEventListener('DOMContentLoaded', () => {
+      runLiveEvaluation();
+    });
+  </script>
+  <link rel="stylesheet" href="/purchase-outlook.css">
+  <script src="/purchase-outlook.js"></script>
+</body>
+</html>

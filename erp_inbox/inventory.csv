@@ -1,0 +1,3 @@
+material_id,plant,as_of,unrestricted_t,in_transit_t,blocked_t,consignment_t,safety_stock_t,unit
+HRC-E250A-2.0,PLANT-PUNE-1,2026-09-05,430.0,210.0,45.0,60.0,160.0,T
+ZINC-SHG-INGOT,PLANT-PUNE-1,2026-09-05,120000.0,40000.0,10000.0,0.0,30000.0,KG
