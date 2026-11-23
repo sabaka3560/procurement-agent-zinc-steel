@@ -113,3 +113,7 @@ Captured runs: `SAMPLE_OUTPUT_DEPLOYMENT.txt`, `SAMPLE_OUTPUT_COUNTRIES.txt`, `S
 - **Rules of origin cannot be automated at all.** No machine-readable global source exists. A preferential rate you cannot certify is not a saving.
 - UN Comtrade's free tier rate-limits (429). `country_rank.py` caches, backs off, and walks back years — Vietnam has no 2024 data but does have 2023.
 - MCX futures instrument tokens **roll every expiry**. Refresh monthly or you will silently stream a dead contract.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
